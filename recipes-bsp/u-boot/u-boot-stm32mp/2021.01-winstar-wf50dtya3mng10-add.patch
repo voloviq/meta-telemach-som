@@ -1,0 +1,934 @@
+diff --git a/configs/stm32mp15_basic_defconfig b/configs/stm32mp15_basic_defconfig
+index 9cd37aa..66bcf94 100644
+--- a/configs/stm32mp15_basic_defconfig
++++ b/configs/stm32mp15_basic_defconfig
+@@ -157,6 +157,7 @@ CONFIG_USB_GADGET_PRODUCT_NUM=0x5720
+ CONFIG_USB_GADGET_DWC2_OTG=y
+ CONFIG_DM_VIDEO=y
+ CONFIG_BACKLIGHT_GPIO=y
++CONFIG_VIDEO_LCD_ILITEK_ILI9881C=y
+ CONFIG_VIDEO_LCD_ORISETECH_OTM8009A=y
+ CONFIG_VIDEO_LCD_RAYDIUM_RM68200=y
+ CONFIG_VIDEO_LCD_ROCKTECH_HX8394=y
+diff --git a/configs/stm32mp15_defconfig b/configs/stm32mp15_defconfig
+index b4b2954..300ceda 100644
+--- a/configs/stm32mp15_defconfig
++++ b/configs/stm32mp15_defconfig
+@@ -1,30 +1,26 @@
+ CONFIG_ARM=y
+ CONFIG_ARCH_STM32MP=y
+ CONFIG_TFABOOT=y
+-CONFIG_SYS_MALLOC_F_LEN=0x80000
+-CONFIG_SYS_MEMTEST_START=0xc0000000
+-CONFIG_SYS_MEMTEST_END=0xc4000000
+-CONFIG_ENV_OFFSET=0x900000
++CONFIG_SYS_MALLOC_F_LEN=0x3000
++CONFIG_ENV_OFFSET=0x480000
+ CONFIG_ENV_SECT_SIZE=0x40000
+-CONFIG_DEFAULT_DEVICE_TREE="stm32mp157c-ev1"
+-CONFIG_DDR_CACHEABLE_SIZE=0x10000000
+-CONFIG_CMD_STM32KEY=y
+ CONFIG_TARGET_ST_STM32MP15x=y
+-CONFIG_ENV_OFFSET_REDUND=0x940000
+ CONFIG_CMD_STM32PROG=y
+-# CONFIG_ARMV7_NONSEC is not set
++CONFIG_TYPEC_STUSB160X=y
++CONFIG_ENV_OFFSET_REDUND=0x4C0000
++CONFIG_DEFAULT_DEVICE_TREE="stm32mp157c-ev1"
+ CONFIG_DISTRO_DEFAULTS=y
+ CONFIG_FIT=y
+ CONFIG_BOOTDELAY=1
+ CONFIG_BOOTCOMMAND="run bootcmd_stm32mp"
+-CONFIG_FDT_SIMPLEFB=y
+ CONFIG_SYS_PROMPT="STM32MP> "
+ CONFIG_CMD_ADTIMG=y
++# CONFIG_CMD_ELF is not set
+ CONFIG_CMD_ERASEENV=y
+-CONFIG_CMD_NVEDIT_EFI=y
+ CONFIG_CMD_MEMINFO=y
+ CONFIG_CMD_MEMTEST=y
+-CONFIG_CMD_UNZIP=y
++CONFIG_SYS_MEMTEST_START=0xc0000000
++CONFIG_SYS_MEMTEST_END=0xc4000000
+ CONFIG_CMD_ADC=y
+ CONFIG_CMD_CLK=y
+ CONFIG_CMD_DFU=y
+@@ -38,17 +34,13 @@ CONFIG_CMD_USB=y
+ CONFIG_CMD_USB_MASS_STORAGE=y
+ CONFIG_CMD_BMP=y
+ CONFIG_CMD_CACHE=y
+-CONFIG_CMD_EFIDEBUG=y
+ CONFIG_CMD_TIME=y
+-CONFIG_CMD_RNG=y
+ CONFIG_CMD_TIMER=y
+ CONFIG_CMD_PMIC=y
+ CONFIG_CMD_REGULATOR=y
+ CONFIG_CMD_EXT4_WRITE=y
+ CONFIG_CMD_MTDPARTS=y
+-CONFIG_CMD_LOG=y
+ CONFIG_CMD_UBI=y
+-CONFIG_OF_LIVE=y
+ CONFIG_ENV_IS_NOWHERE=y
+ CONFIG_ENV_IS_IN_MMC=y
+ CONFIG_ENV_IS_IN_SPI_FLASH=y
+@@ -68,14 +60,6 @@ CONFIG_FASTBOOT_BUF_SIZE=0x02000000
+ CONFIG_FASTBOOT_USB_DEV=1
+ CONFIG_FASTBOOT_FLASH=y
+ CONFIG_FASTBOOT_FLASH_MMC_DEV=1
+-CONFIG_FASTBOOT_MMC_BOOT_SUPPORT=y
+-CONFIG_FASTBOOT_MMC_BOOT1_NAME="mmc1boot0"
+-CONFIG_FASTBOOT_MMC_BOOT2_NAME="mmc1boot1"
+-CONFIG_FASTBOOT_MMC_USER_SUPPORT=y
+-CONFIG_FASTBOOT_MMC_USER_NAME="mmc1"
+-CONFIG_FASTBOOT_CMD_OEM_FORMAT=y
+-CONFIG_FASTBOOT_CMD_OEM_PARTCONF=y
+-CONFIG_FASTBOOT_CMD_OEM_BOOTBUS=y
+ CONFIG_GPIO_HOG=y
+ CONFIG_DM_HWSPINLOCK=y
+ CONFIG_HWSPINLOCK_STM32=y
+@@ -83,8 +67,12 @@ CONFIG_DM_I2C=y
+ CONFIG_SYS_I2C_STM32F7=y
+ CONFIG_LED=y
+ CONFIG_LED_GPIO=y
++CONFIG_DM_MAILBOX=y
++CONFIG_STM32_IPCC=y
+ CONFIG_STM32_FMC2_EBI=y
++CONFIG_DM_MMC=y
+ CONFIG_SUPPORT_EMMC_BOOT=y
++CONFIG_STM32_SDMMC1=y
+ CONFIG_STM32_SDMMC2=y
+ CONFIG_MTD=y
+ CONFIG_DM_MTD=y
+@@ -117,7 +105,6 @@ CONFIG_REMOTEPROC_OPTEE=y
+ CONFIG_REMOTEPROC_STM32_COPRO=y
+ CONFIG_RESET_SCMI=y
+ CONFIG_DM_RNG=y
+-CONFIG_RNG_OPTEE=y
+ CONFIG_RNG_STM32MP1=y
+ CONFIG_DM_RTC=y
+ CONFIG_RTC_STM32=y
+@@ -126,16 +113,14 @@ CONFIG_SPI=y
+ CONFIG_DM_SPI=y
+ CONFIG_STM32_QSPI=y
+ CONFIG_STM32_SPI=y
+-CONFIG_SYSRESET_PSCI=y
+ CONFIG_TEE=y
+ CONFIG_OPTEE=y
+ # CONFIG_OPTEE_TA_AVB is not set
+ CONFIG_USB=y
++CONFIG_DM_USB=y
+ CONFIG_DM_USB_GADGET=y
+ CONFIG_USB_EHCI_HCD=y
+ CONFIG_USB_EHCI_GENERIC=y
+-CONFIG_TYPEC=y
+-CONFIG_TYPEC_STUSB160X=y
+ CONFIG_USB_GADGET=y
+ CONFIG_USB_GADGET_MANUFACTURER="STMicroelectronics"
+ CONFIG_USB_GADGET_VENDOR_NUM=0x0483
+@@ -143,22 +128,15 @@ CONFIG_USB_GADGET_PRODUCT_NUM=0x5720
+ CONFIG_USB_GADGET_DWC2_OTG=y
+ CONFIG_DM_VIDEO=y
+ CONFIG_BACKLIGHT_GPIO=y
++CONFIG_VIDEO_LCD_ILITEK_ILI9881C=y
+ CONFIG_VIDEO_LCD_ORISETECH_OTM8009A=y
+ CONFIG_VIDEO_LCD_RAYDIUM_RM68200=y
+-CONFIG_VIDEO_LCD_ROCKTECH_HX8394=y
+ CONFIG_VIDEO_STM32=y
+ CONFIG_VIDEO_STM32_DSI=y
+ CONFIG_VIDEO_STM32_MAX_XRES=1280
+ CONFIG_VIDEO_STM32_MAX_YRES=800
+-CONFIG_VIDEO_BMP_RLE8=y
+-CONFIG_BMP_16BPP=y
+-CONFIG_BMP_24BPP=y
+-CONFIG_BMP_32BPP=y
+ CONFIG_WDT=y
+ CONFIG_WDT_STM32MP=y
+-# CONFIG_BINMAN_FDT is not set
+ CONFIG_ERRNO_STR=y
+ CONFIG_FDT_FIXUP_PARTITIONS=y
+-# CONFIG_LMB_USE_MAX_REGIONS is not set
+-CONFIG_LMB_MEMORY_REGIONS=2
+ CONFIG_LMB_RESERVED_REGIONS=16
+diff --git a/configs/stm32mp15_trusted_defconfig b/configs/stm32mp15_trusted_defconfig
+index 17233a5..300ceda 100644
+--- a/configs/stm32mp15_trusted_defconfig
++++ b/configs/stm32mp15_trusted_defconfig
+@@ -1,31 +1,26 @@
+ CONFIG_ARM=y
+ CONFIG_ARCH_STM32MP=y
+ CONFIG_TFABOOT=y
+-CONFIG_SYS_MALLOC_F_LEN=0x10000
+-CONFIG_SYS_MEMTEST_START=0xc0000000
+-CONFIG_SYS_MEMTEST_END=0xc4000000
+-CONFIG_ENV_OFFSET=0x280000
++CONFIG_SYS_MALLOC_F_LEN=0x3000
++CONFIG_ENV_OFFSET=0x480000
+ CONFIG_ENV_SECT_SIZE=0x40000
+-CONFIG_DEFAULT_DEVICE_TREE="stm32mp157c-ev1"
+-CONFIG_DDR_CACHEABLE_SIZE=0x10000000
+-CONFIG_CMD_STM32KEY=y
+-CONFIG_STM32MP15x_STM32IMAGE=y
+ CONFIG_TARGET_ST_STM32MP15x=y
+-CONFIG_ENV_OFFSET_REDUND=0x2C0000
+ CONFIG_CMD_STM32PROG=y
+-# CONFIG_ARMV7_NONSEC is not set
++CONFIG_TYPEC_STUSB160X=y
++CONFIG_ENV_OFFSET_REDUND=0x4C0000
++CONFIG_DEFAULT_DEVICE_TREE="stm32mp157c-ev1"
+ CONFIG_DISTRO_DEFAULTS=y
+ CONFIG_FIT=y
+ CONFIG_BOOTDELAY=1
+ CONFIG_BOOTCOMMAND="run bootcmd_stm32mp"
+-CONFIG_FDT_SIMPLEFB=y
+ CONFIG_SYS_PROMPT="STM32MP> "
+ CONFIG_CMD_ADTIMG=y
++# CONFIG_CMD_ELF is not set
+ CONFIG_CMD_ERASEENV=y
+-CONFIG_CMD_NVEDIT_EFI=y
+ CONFIG_CMD_MEMINFO=y
+ CONFIG_CMD_MEMTEST=y
+-CONFIG_CMD_UNZIP=y
++CONFIG_SYS_MEMTEST_START=0xc0000000
++CONFIG_SYS_MEMTEST_END=0xc4000000
+ CONFIG_CMD_ADC=y
+ CONFIG_CMD_CLK=y
+ CONFIG_CMD_DFU=y
+@@ -39,17 +34,13 @@ CONFIG_CMD_USB=y
+ CONFIG_CMD_USB_MASS_STORAGE=y
+ CONFIG_CMD_BMP=y
+ CONFIG_CMD_CACHE=y
+-CONFIG_CMD_EFIDEBUG=y
+ CONFIG_CMD_TIME=y
+-CONFIG_CMD_RNG=y
+ CONFIG_CMD_TIMER=y
+ CONFIG_CMD_PMIC=y
+ CONFIG_CMD_REGULATOR=y
+ CONFIG_CMD_EXT4_WRITE=y
+ CONFIG_CMD_MTDPARTS=y
+-CONFIG_CMD_LOG=y
+ CONFIG_CMD_UBI=y
+-CONFIG_OF_LIVE=y
+ CONFIG_ENV_IS_NOWHERE=y
+ CONFIG_ENV_IS_IN_MMC=y
+ CONFIG_ENV_IS_IN_SPI_FLASH=y
+@@ -69,14 +60,6 @@ CONFIG_FASTBOOT_BUF_SIZE=0x02000000
+ CONFIG_FASTBOOT_USB_DEV=1
+ CONFIG_FASTBOOT_FLASH=y
+ CONFIG_FASTBOOT_FLASH_MMC_DEV=1
+-CONFIG_FASTBOOT_MMC_BOOT_SUPPORT=y
+-CONFIG_FASTBOOT_MMC_BOOT1_NAME="mmc1boot0"
+-CONFIG_FASTBOOT_MMC_BOOT2_NAME="mmc1boot1"
+-CONFIG_FASTBOOT_MMC_USER_SUPPORT=y
+-CONFIG_FASTBOOT_MMC_USER_NAME="mmc1"
+-CONFIG_FASTBOOT_CMD_OEM_FORMAT=y
+-CONFIG_FASTBOOT_CMD_OEM_PARTCONF=y
+-CONFIG_FASTBOOT_CMD_OEM_BOOTBUS=y
+ CONFIG_GPIO_HOG=y
+ CONFIG_DM_HWSPINLOCK=y
+ CONFIG_HWSPINLOCK_STM32=y
+@@ -84,8 +67,12 @@ CONFIG_DM_I2C=y
+ CONFIG_SYS_I2C_STM32F7=y
+ CONFIG_LED=y
+ CONFIG_LED_GPIO=y
++CONFIG_DM_MAILBOX=y
++CONFIG_STM32_IPCC=y
+ CONFIG_STM32_FMC2_EBI=y
++CONFIG_DM_MMC=y
+ CONFIG_SUPPORT_EMMC_BOOT=y
++CONFIG_STM32_SDMMC1=y
+ CONFIG_STM32_SDMMC2=y
+ CONFIG_MTD=y
+ CONFIG_DM_MTD=y
+@@ -118,7 +105,6 @@ CONFIG_REMOTEPROC_OPTEE=y
+ CONFIG_REMOTEPROC_STM32_COPRO=y
+ CONFIG_RESET_SCMI=y
+ CONFIG_DM_RNG=y
+-CONFIG_RNG_OPTEE=y
+ CONFIG_RNG_STM32MP1=y
+ CONFIG_DM_RTC=y
+ CONFIG_RTC_STM32=y
+@@ -127,16 +113,14 @@ CONFIG_SPI=y
+ CONFIG_DM_SPI=y
+ CONFIG_STM32_QSPI=y
+ CONFIG_STM32_SPI=y
+-CONFIG_SYSRESET_PSCI=y
+ CONFIG_TEE=y
+ CONFIG_OPTEE=y
+ # CONFIG_OPTEE_TA_AVB is not set
+ CONFIG_USB=y
++CONFIG_DM_USB=y
+ CONFIG_DM_USB_GADGET=y
+ CONFIG_USB_EHCI_HCD=y
+ CONFIG_USB_EHCI_GENERIC=y
+-CONFIG_TYPEC=y
+-CONFIG_TYPEC_STUSB160X=y
+ CONFIG_USB_GADGET=y
+ CONFIG_USB_GADGET_MANUFACTURER="STMicroelectronics"
+ CONFIG_USB_GADGET_VENDOR_NUM=0x0483
+@@ -144,22 +128,15 @@ CONFIG_USB_GADGET_PRODUCT_NUM=0x5720
+ CONFIG_USB_GADGET_DWC2_OTG=y
+ CONFIG_DM_VIDEO=y
+ CONFIG_BACKLIGHT_GPIO=y
++CONFIG_VIDEO_LCD_ILITEK_ILI9881C=y
+ CONFIG_VIDEO_LCD_ORISETECH_OTM8009A=y
+ CONFIG_VIDEO_LCD_RAYDIUM_RM68200=y
+-CONFIG_VIDEO_LCD_ROCKTECH_HX8394=y
+ CONFIG_VIDEO_STM32=y
+ CONFIG_VIDEO_STM32_DSI=y
+ CONFIG_VIDEO_STM32_MAX_XRES=1280
+ CONFIG_VIDEO_STM32_MAX_YRES=800
+-CONFIG_VIDEO_BMP_RLE8=y
+-CONFIG_BMP_16BPP=y
+-CONFIG_BMP_24BPP=y
+-CONFIG_BMP_32BPP=y
+ CONFIG_WDT=y
+ CONFIG_WDT_STM32MP=y
+-# CONFIG_BINMAN_FDT is not set
+ CONFIG_ERRNO_STR=y
+ CONFIG_FDT_FIXUP_PARTITIONS=y
+-# CONFIG_LMB_USE_MAX_REGIONS is not set
+-CONFIG_LMB_MEMORY_REGIONS=2
+ CONFIG_LMB_RESERVED_REGIONS=16
+diff --git a/drivers/video/Kconfig b/drivers/video/Kconfig
+index 1dd7d23..09c38e1 100644
+--- a/drivers/video/Kconfig
++++ b/drivers/video/Kconfig
+@@ -411,6 +411,14 @@ config VIDEO_LCD_ANX9804
+ 	Support for the ANX9804 bridge chip, which can take pixel data coming
+ 	from a parallel LCD interface and translate it on the fy into a DP
+ 	interface for driving eDP TFT displays. It uses I2C for configuration.
++	
++config VIDEO_LCD_ILITEK_ILI9881C
++        bool "ILI9881C DSI LCD panel support"
++        depends on DM_VIDEO
++        select VIDEO_MIPI_DSI
++        default n
++        ---help---
++        Support for Powertip PH720128T003 panel with ILI9881C controller.
+ 
+ config VIDEO_LCD_ORISETECH_OTM8009A
+ 	bool "OTM8009A DSI LCD panel support"
+diff --git a/drivers/video/Makefile b/drivers/video/Makefile
+index d4f9323..c8e480a 100644
+--- a/drivers/video/Makefile
++++ b/drivers/video/Makefile
+@@ -54,6 +54,7 @@ obj-$(CONFIG_VIDEO_IPUV3) += imx/
+ obj-$(CONFIG_VIDEO_IVYBRIDGE_IGD) += ivybridge_igd.o
+ obj-$(CONFIG_VIDEO_LCD_ANX9804) += anx9804.o
+ obj-$(CONFIG_VIDEO_LCD_HITACHI_TX18D42VM) += hitachi_tx18d42vm_lcd.o
++obj-$(CONFIG_VIDEO_LCD_ILITEK_ILI9881C) += ilitek-ili9881c.o
+ obj-$(CONFIG_VIDEO_LCD_ORISETECH_OTM8009A) += orisetech_otm8009a.o
+ obj-$(CONFIG_VIDEO_LCD_RAYDIUM_RM68200) += raydium-rm68200.o
+ obj-$(CONFIG_VIDEO_LCD_ROCKTECH_HX8394) += rocktech-hx8394.o
+diff --git b/drivers/video/ilitek-ili9881c.c b/drivers/video/ilitek-ili9881c.c
+new file mode 100644
+index 0000000..3e88c39
+--- /dev/null
++++ b/drivers/video/ilitek-ili9881c.c
+@@ -0,0 +1,606 @@
++// SPDX-License-Identifier: GPL-2.0+
++
++#include <common.h>
++#include <backlight.h>
++#include <dm.h>
++#include <mipi_dsi.h>
++#include <panel.h>
++#include <asm/gpio.h>
++#include <dm/device_compat.h>
++#include <linux/delay.h>
++#include <power/regulator.h>
++
++ #define LOG_DEBUG
++ #define DEBUG
++
++struct ili9881c_panel_priv {
++	struct udevice *reg;
++	struct udevice *backlight;
++	struct gpio_desc reset;
++};
++
++static const struct display_timing default_timing = {
++	.pixelclock = {.min = 54000000, .typ = 54000000, .max = 54000000,},
++	.hactive = {.min = 720, .typ = 720, .max = 720,},
++	.hfront_porch = {.min = 20, .typ = 20, .max = 20,},
++	.hback_porch = {.min = 20, .typ = 20, .max = 20,},
++	.hsync_len = {.min = 2, .typ = 2, .max = 2,},
++	.vactive = {.min = 1280, .typ = 1280, .max = 1280,},
++	.vfront_porch = {.min = 15, .typ = 15, .max = 15,},
++	.vback_porch = {.min = 10, .typ = 10, .max = 10,},
++	.vsync_len = {.min = 2, .typ = 2, .max = 2,},
++	.flags = 0,
++};
++
++static int ili9881c_switch_page(struct udevice *dev, u8 page)
++{
++	u8 buf[4] = { 0xff, 0x98, 0x81, page };
++
++        struct mipi_dsi_panel_plat *plat = dev_get_plat(dev);
++        struct mipi_dsi_device *device = plat->device;
++
++        return mipi_dsi_dcs_write_buffer(device, buf, sizeof(buf));
++}
++
++static int ili9881c_send_cmd_data(struct udevice *dev, u8 cmd, u8 data)
++{
++	u8 buf[2] = { cmd, data };
++	struct mipi_dsi_panel_plat *plat = dev_get_plat(dev);
++        struct mipi_dsi_device *device = plat->device;
++
++        return mipi_dsi_dcs_write_buffer(device, buf, sizeof(buf));
++}
++
++struct ili9881c_instr {
++	u8 cmd;
++	u8 data;
++};
++
++#define LCD_ILI9881C_CMD(CMD, DATA)	{.cmd = CMD, .data = DATA}
++
++static const struct ili9881c_instr ili9881c_init_data[] = {
++    LCD_ILI9881C_CMD(0xFF, 0x03),
++    //GIP_1
++    LCD_ILI9881C_CMD(0x02, 0x00),
++
++    LCD_ILI9881C_CMD(0x03, 0x73),
++
++    LCD_ILI9881C_CMD(0x04, 0x00),
++
++    LCD_ILI9881C_CMD(0x05, 0x00),
++
++    LCD_ILI9881C_CMD(0x06, 0x0A),
++
++    LCD_ILI9881C_CMD(0x07, 0x00),
++
++    LCD_ILI9881C_CMD(0x08, 0x00),
++
++    LCD_ILI9881C_CMD(0x09, 0x01),
++
++    LCD_ILI9881C_CMD(0x0a, 0x00),
++
++    LCD_ILI9881C_CMD(0x0b, 0x00),
++
++    LCD_ILI9881C_CMD(0x0c, 0x01),
++
++    LCD_ILI9881C_CMD(0x0d, 0x00),
++
++    LCD_ILI9881C_CMD(0x0e, 0x00),
++
++    LCD_ILI9881C_CMD(0x0f, 0x1D),
++
++    LCD_ILI9881C_CMD(0x10, 0x1D),
++
++    LCD_ILI9881C_CMD(0x11, 0x00),
++
++    LCD_ILI9881C_CMD(0x12, 0x00),
++
++    LCD_ILI9881C_CMD(0x13, 0x00),
++
++    LCD_ILI9881C_CMD(0x14, 0x00),
++
++    LCD_ILI9881C_CMD(0x15, 0x00),
++
++    LCD_ILI9881C_CMD(0x16, 0x00),
++
++    LCD_ILI9881C_CMD(0x17, 0x00),
++
++    LCD_ILI9881C_CMD(0x18, 0x00),
++
++    LCD_ILI9881C_CMD(0x19, 0x00),
++
++    LCD_ILI9881C_CMD(0x1a, 0x00),
++
++    LCD_ILI9881C_CMD(0x1b, 0x00),
++
++    LCD_ILI9881C_CMD(0x1c, 0x00),
++
++    LCD_ILI9881C_CMD(0x1d, 0x00),
++
++    LCD_ILI9881C_CMD(0x1e, 0x40),
++
++    LCD_ILI9881C_CMD(0x1f, 0x80),
++
++    LCD_ILI9881C_CMD(0x20, 0x06),
++
++    LCD_ILI9881C_CMD(0x21, 0x02),
++
++    LCD_ILI9881C_CMD(0x22, 0x00),
++
++    LCD_ILI9881C_CMD(0x23, 0x00),
++
++    LCD_ILI9881C_CMD(0x24, 0x00),
++
++    LCD_ILI9881C_CMD(0x25, 0x00),
++
++    LCD_ILI9881C_CMD(0x26, 0x00),
++
++    LCD_ILI9881C_CMD(0x27, 0x00),
++
++    LCD_ILI9881C_CMD(0x28, 0x33),
++
++    LCD_ILI9881C_CMD(0x29, 0x03),
++
++    LCD_ILI9881C_CMD(0x2a, 0x00),
++
++    LCD_ILI9881C_CMD(0x2b, 0x00),
++
++    LCD_ILI9881C_CMD(0x2c, 0x00),
++
++    LCD_ILI9881C_CMD(0x2d, 0x00),
++
++    LCD_ILI9881C_CMD(0x2e, 0x00),
++
++    LCD_ILI9881C_CMD(0x2f, 0x00),
++
++    LCD_ILI9881C_CMD(0x30, 0x00),
++
++    LCD_ILI9881C_CMD(0x31, 0x00),
++
++    LCD_ILI9881C_CMD(0x32, 0x00),
++
++    LCD_ILI9881C_CMD(0x33, 0x00),
++
++    LCD_ILI9881C_CMD(0x34, 0x04),
++
++    LCD_ILI9881C_CMD(0x35, 0x00),
++
++    LCD_ILI9881C_CMD(0x36, 0x00),
++
++    LCD_ILI9881C_CMD(0x37, 0x00),
++
++    LCD_ILI9881C_CMD(0x38, 0x3C),
++
++    LCD_ILI9881C_CMD(0x39, 0x00),
++
++    LCD_ILI9881C_CMD(0x3a, 0x40),
++
++    LCD_ILI9881C_CMD(0x3b, 0x40),
++
++    LCD_ILI9881C_CMD(0x3c, 0x00),
++
++    LCD_ILI9881C_CMD(0x3d, 0x00),
++
++    LCD_ILI9881C_CMD(0x3e, 0x00),
++
++    LCD_ILI9881C_CMD(0x3f, 0x00),
++
++    LCD_ILI9881C_CMD(0x40, 0x00),
++
++    LCD_ILI9881C_CMD(0x41, 0x00),
++
++    LCD_ILI9881C_CMD(0x42, 0x00),
++
++    LCD_ILI9881C_CMD(0x43, 0x00),
++
++    LCD_ILI9881C_CMD(0x44, 0x00),
++
++    //GIP_2
++    LCD_ILI9881C_CMD(0x50, 0x01),
++
++    LCD_ILI9881C_CMD(0x51, 0x23),
++
++    LCD_ILI9881C_CMD(0x52, 0x45),
++
++    LCD_ILI9881C_CMD(0x53, 0x67),
++
++    LCD_ILI9881C_CMD(0x54, 0x89),
++
++    LCD_ILI9881C_CMD(0x55, 0xab),
++
++    LCD_ILI9881C_CMD(0x56, 0x01),
++
++    LCD_ILI9881C_CMD(0x57, 0x23),
++
++    LCD_ILI9881C_CMD(0x58, 0x45),
++
++    LCD_ILI9881C_CMD(0x59, 0x67),
++
++    LCD_ILI9881C_CMD(0x5a, 0x89),
++
++    LCD_ILI9881C_CMD(0x5b, 0xab),
++
++    LCD_ILI9881C_CMD(0x5c, 0xcd),
++
++    LCD_ILI9881C_CMD(0x5d, 0xef),
++
++    //GIP_3
++    LCD_ILI9881C_CMD(0x5e, 0x11),
++
++    LCD_ILI9881C_CMD(0x5f, 0x01),
++
++    LCD_ILI9881C_CMD(0x60, 0x00),
++
++    LCD_ILI9881C_CMD(0x61, 0x15),
++
++    LCD_ILI9881C_CMD(0x62, 0x14),
++
++    LCD_ILI9881C_CMD(0x63, 0x0E),
++
++    LCD_ILI9881C_CMD(0x64, 0x0F),
++
++    LCD_ILI9881C_CMD(0x65, 0x0C),
++
++    LCD_ILI9881C_CMD(0x66, 0x0D),
++
++    LCD_ILI9881C_CMD(0x67, 0x06),
++
++    LCD_ILI9881C_CMD(0x68, 0x02),
++
++    LCD_ILI9881C_CMD(0x69, 0x07),
++
++    LCD_ILI9881C_CMD(0x6a, 0x02),
++
++    LCD_ILI9881C_CMD(0x6b, 0x02),
++
++    LCD_ILI9881C_CMD(0x6c, 0x02),
++
++    LCD_ILI9881C_CMD(0x6d, 0x02),
++
++    LCD_ILI9881C_CMD(0x6e, 0x02),
++
++    LCD_ILI9881C_CMD(0x6f, 0x02),
++
++    LCD_ILI9881C_CMD(0x70, 0x02),
++
++    LCD_ILI9881C_CMD(0x71, 0x02),
++
++    LCD_ILI9881C_CMD(0x72, 0x02),
++
++    LCD_ILI9881C_CMD(0x73, 0x02),
++
++    LCD_ILI9881C_CMD(0x74, 0x02),
++
++    LCD_ILI9881C_CMD(0x75, 0x01),
++
++    LCD_ILI9881C_CMD(0x76, 0x00),
++
++    LCD_ILI9881C_CMD(0x77, 0x14),
++
++    LCD_ILI9881C_CMD(0x78, 0x15),
++
++    LCD_ILI9881C_CMD(0x79, 0x0E),
++
++    LCD_ILI9881C_CMD(0x7a, 0x0F),
++
++    LCD_ILI9881C_CMD(0x7b, 0x0C),
++
++    LCD_ILI9881C_CMD(0x7c, 0x0D),
++
++    LCD_ILI9881C_CMD(0x7d, 0x06),
++
++    LCD_ILI9881C_CMD(0x7e, 0x02),
++
++    LCD_ILI9881C_CMD(0x7f, 0x07),
++
++    LCD_ILI9881C_CMD(0x80, 0x02),
++
++    LCD_ILI9881C_CMD(0x81, 0x02),
++
++    LCD_ILI9881C_CMD(0x83, 0x02),
++
++    LCD_ILI9881C_CMD(0x84, 0x02),
++
++    LCD_ILI9881C_CMD(0x85, 0x02),
++
++    LCD_ILI9881C_CMD(0x86, 0x02),
++
++    LCD_ILI9881C_CMD(0x87, 0x02),
++
++    LCD_ILI9881C_CMD(0x88, 0x02),
++
++    LCD_ILI9881C_CMD(0x89, 0x02),
++
++    LCD_ILI9881C_CMD(0x8A, 0x02),
++    
++    //ILI9881C PAGE4
++    LCD_ILI9881C_CMD(0xFF, 0x4),
++
++    LCD_ILI9881C_CMD(0x6C, 0x15),
++
++    LCD_ILI9881C_CMD(0x6E, 0x2B),
++
++    LCD_ILI9881C_CMD(0x6F, 0x33),
++
++    LCD_ILI9881C_CMD(0x8D, 0x18),
++
++    LCD_ILI9881C_CMD(0x87, 0xBA),
++
++    LCD_ILI9881C_CMD(0x26, 0x76),
++
++    LCD_ILI9881C_CMD(0xB2, 0xD1),
++
++    LCD_ILI9881C_CMD(0xB5, 0x06),
++
++    LCD_ILI9881C_CMD(0x3A, 0x24),
++
++    LCD_ILI9881C_CMD(0x35, 0x1F),
++
++    //ILI9881C PAGE1
++    LCD_ILI9881C_CMD(0xFF, 0x1),
++
++    LCD_ILI9881C_CMD(0x22, 0x09),
++
++    LCD_ILI9881C_CMD(0x31, 0x00),
++
++    LCD_ILI9881C_CMD(0x40, 0x33),
++
++    LCD_ILI9881C_CMD(0x53, 0xA3),
++
++    LCD_ILI9881C_CMD(0x55, 0x92),
++
++    LCD_ILI9881C_CMD(0x50, 0x96),
++
++    LCD_ILI9881C_CMD(0x51, 0x96),
++
++    LCD_ILI9881C_CMD(0x60, 0x22),
++
++    LCD_ILI9881C_CMD(0x61, 0x00),
++
++    LCD_ILI9881C_CMD(0x62, 0x19),
++
++    LCD_ILI9881C_CMD(0x63, 0x00),
++
++    //---P-GAMMA START---
++    LCD_ILI9881C_CMD(0xA0, 0x08),
++
++    LCD_ILI9881C_CMD(0xA1, 0x11),
++
++    LCD_ILI9881C_CMD(0xA2, 0x19),
++
++    LCD_ILI9881C_CMD(0xA3, 0x0D),
++
++    LCD_ILI9881C_CMD(0xA4, 0x0D),
++
++    LCD_ILI9881C_CMD(0xA5, 0x1E),
++
++    LCD_ILI9881C_CMD(0xA6, 0x14),
++
++    LCD_ILI9881C_CMD(0xA7, 0x17),
++
++    LCD_ILI9881C_CMD(0xA8, 0x4F),
++
++    LCD_ILI9881C_CMD(0xA9, 0x1A),
++
++    LCD_ILI9881C_CMD(0xAA, 0x27),
++
++    LCD_ILI9881C_CMD(0xAB, 0x49),
++
++    LCD_ILI9881C_CMD(0xAC, 0x1A),
++
++    LCD_ILI9881C_CMD(0xAD, 0x18),
++
++    LCD_ILI9881C_CMD(0xAE, 0x4C),
++
++    LCD_ILI9881C_CMD(0xAF, 0x22),
++
++    LCD_ILI9881C_CMD(0xB0, 0x27),
++
++    LCD_ILI9881C_CMD(0xB1, 0x4B),
++
++    LCD_ILI9881C_CMD(0xB2, 0x60),
++
++    LCD_ILI9881C_CMD(0xB3, 0x39),
++
++    LCD_ILI9881C_CMD(0xC0, 0x08),
++
++    LCD_ILI9881C_CMD(0xC1, 0x11),
++
++    LCD_ILI9881C_CMD(0xC2, 0x19),
++
++    LCD_ILI9881C_CMD(0xC3, 0x0D),
++
++    LCD_ILI9881C_CMD(0xC4, 0x0D),
++
++    LCD_ILI9881C_CMD(0xC5, 0x1E),
++
++    LCD_ILI9881C_CMD(0xC6, 0x14),
++
++    LCD_ILI9881C_CMD(0xC7, 0x17),
++
++    LCD_ILI9881C_CMD(0xC8, 0x4F),
++
++    LCD_ILI9881C_CMD(0xC9, 0x1A),
++
++    LCD_ILI9881C_CMD(0xCA, 0x27),
++
++    LCD_ILI9881C_CMD(0xCB, 0x49),
++
++    LCD_ILI9881C_CMD(0xCC, 0x1A),
++
++    LCD_ILI9881C_CMD(0xCD, 0x18),
++
++    LCD_ILI9881C_CMD(0xCE, 0x4C),
++
++    LCD_ILI9881C_CMD(0xCF, 0x33),
++
++    LCD_ILI9881C_CMD(0xD0, 0x27),
++
++    LCD_ILI9881C_CMD(0xD1, 0x4B),
++
++    LCD_ILI9881C_CMD(0xD2, 0x60),
++
++    LCD_ILI9881C_CMD(0xD3, 0x39),
++
++    //ILI9881C PAGE0
++    LCD_ILI9881C_CMD(0xFF, 0x00),
++    
++    LCD_ILI9881C_CMD(0x35, 0x00),
++    LCD_ILI9881C_CMD(0x36, 0x03),
++    LCD_ILI9881C_CMD(0x29, 0x00),
++};
++
++static void ili9881c_init_sequence(struct udevice *dev)
++{
++	int i;
++	int ret;
++	u8 buf[128] = {0};
++
++        struct mipi_dsi_panel_plat *plat = dev_get_plat(dev);
++        struct mipi_dsi_device *device = plat->device;
++
++	printf("MIPI DSI LCD ILI9881C setup.\n");
++	for (i = 0; i < ARRAY_SIZE(ili9881c_init_data); i++) {
++		const struct ili9881c_instr *instr = &ili9881c_init_data[i];
++
++		if (instr->cmd == 0xFF) {
++			ret = ili9881c_switch_page(dev, instr->data);
++		} else {
++			ret = ili9881c_send_cmd_data(dev, instr->cmd, instr->data);
++		}
++		if (ret < 0){
++			printf("MIPI DSI LCD ILI9881C setup failed with cmd: %08X.\n", instr->cmd);
++			return;
++		}
++	}
++
++	ili9881c_switch_page(dev, 0);
++	buf[0] = MIPI_DCS_EXIT_SLEEP_MODE;
++	buf[1] = 0;
++        mipi_dsi_dcs_write_buffer(device, buf, 2);
++	mdelay(120);
++	buf[0] = MIPI_DCS_SET_DISPLAY_ON;
++        mipi_dsi_dcs_write_buffer(device, buf, 2);
++
++	return;
++}
++
++static int ili9881c_panel_enable_backlight(struct udevice *dev)
++{
++	struct mipi_dsi_panel_plat *plat = dev_get_plat(dev);
++	struct mipi_dsi_device *device = plat->device;
++	struct ili9881c_panel_priv *priv = dev_get_priv(dev);
++	int ret;
++
++	ret = mipi_dsi_attach(device);
++	if (ret < 0)
++		return ret;
++
++	ili9881c_init_sequence(dev);
++
++	ret = mipi_dsi_dcs_exit_sleep_mode(device);
++	if (ret)
++		return ret;
++
++	mdelay(125);
++
++	ret = mipi_dsi_dcs_set_display_on(device);
++	if (ret)
++		return ret;
++
++	mdelay(20);
++
++	return 0;
++}
++
++static int ili9881c_panel_get_display_timing(struct udevice *dev,
++                                             struct display_timing *timings)
++{
++	memcpy(timings, &default_timing, sizeof(*timings));
++	return 0;
++}
++
++static int ili9881c_panel_ofdata_to_platdata(struct udevice *dev)
++{
++	struct ili9881c_panel_priv *priv = dev_get_priv(dev);
++	int ret;
++
++	if (IS_ENABLED(CONFIG_DM_REGULATOR)) {
++		ret =  device_get_supply_regulator(dev, "power-supply",
++						   &priv->reg);
++		if (ret && ret != -ENOENT) {
++			dev_err(dev, "Warning: cannot get power supply\n");
++			return ret;
++		}
++	}
++
++	ret = gpio_request_by_name(dev, "reset-gpios", 0, &priv->reset,
++				   GPIOD_IS_OUT);
++	if (ret) {
++		dev_err(dev, "Warning: cannot get reset GPIO\n");
++		if (ret != -ENOENT)
++			return ret;
++	}
++
++	ret = uclass_get_device_by_phandle(UCLASS_PANEL_BACKLIGHT, dev,
++					   "backlight", &priv->backlight);
++	if (ret) {
++		dev_err(dev, "Cannot get backlight: ret=%d\n", ret);
++		return ret;
++	}
++
++	return 0;
++}
++
++static int ili9881c_panel_probe(struct udevice *dev)
++{
++
++	struct ili9881c_panel_priv *priv = dev_get_priv(dev);
++	struct mipi_dsi_panel_plat *plat = dev_get_plat(dev);
++        
++	int ret;
++
++	if (IS_ENABLED(CONFIG_DM_REGULATOR) && priv->reg) {
++		ret = regulator_set_enable(priv->reg, true);
++		if (ret)
++			return ret;
++	}
++
++	/* reset panel */
++	dm_gpio_set_value(&priv->reset, true);
++	mdelay(1);
++	dm_gpio_set_value(&priv->reset, false);
++        mdelay(1);
++        dm_gpio_set_value(&priv->reset, true);
++        mdelay(120);
++        /*ili9881c_send_cmd_data(dev, 0x11, 0x00);*/
++
++	plat->lanes = 2;
++	plat->format = MIPI_DSI_FMT_RGB888;
++	plat->mode_flags = MIPI_DSI_MODE_VIDEO |
++			MIPI_DSI_MODE_VIDEO_SYNC_PULSE |
++			MIPI_DSI_MODE_LPM;
++
++	return 0;
++}
++
++static const struct panel_ops ili9881c_panel_ops = {
++	.enable_backlight = ili9881c_panel_enable_backlight,
++	.get_display_timing = ili9881c_panel_get_display_timing,
++};
++
++static const struct udevice_id ili9881c_panel_ids[] = {
++	{ .compatible = "winstar,WF50DTYA3MNG10" },
++	{ }
++};
++
++U_BOOT_DRIVER(ili9881c_panel) = {
++	.name	    = "ili9881c_panel",
++	.id	    = UCLASS_PANEL,
++	.of_match   = ili9881c_panel_ids,
++	.ops	    = &ili9881c_panel_ops,
++	.of_to_plat = ili9881c_panel_ofdata_to_platdata,
++	.probe	    = ili9881c_panel_probe,
++	.plat_auto  = sizeof(struct mipi_dsi_panel_plat),
++	.priv_auto  = sizeof(struct ili9881c_panel_priv),
++};
