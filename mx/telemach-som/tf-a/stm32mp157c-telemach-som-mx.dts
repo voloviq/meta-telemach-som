@@ -142,7 +142,9 @@
 		};
 		pins2 {
 			pinmux = <STM32_PINMUX('H', 14, AF8)>; /* UART4_RX */
-			bias-disable;
+			bias-pull-up;
+			drive-open-drain;
+			slew-rate = <0>;
 		};
 	};
 
