@@ -103,43 +103,43 @@
 		compatible = "gpio-leds";
 
 		led1_grn{
-			label = "LED_GRN_1";
-			gpios = <&gpiok 4 GPIO_ACTIVE_LOW>;
+			label = "LED_GREEN";
+			gpios = <&gpiok 2 GPIO_ACTIVE_LOW>;
 			linux,default-trigger = "heartbeat";
 			status = "okay";
 			default-state = "off";
 		};
 
 		led1_red{
-			label = "LED_RED_1";
-			gpios = <&gpiok 3 GPIO_ACTIVE_LOW>;
+			label = "LED_BLUE";
+			gpios = <&gpiok 0 GPIO_ACTIVE_LOW>;
 			linux,default-trigger = "cpu0";
 			status = "okay";
 			default-state = "off";
 		};
 
 		led2_red{
-			label = "LED_RED_2";
-			gpios = <&gpiok 6 GPIO_ACTIVE_LOW>;
+			label = "LED_RED";
+			gpios = <&gpiok 1 GPIO_ACTIVE_LOW>;
 			status = "okay";
 			default-state = "off";
 		};
 
 		led2_grn{
-			label = "LED_GRN_2";
-			gpios = <&gpioj 14 GPIO_ACTIVE_LOW>;
+			label = "LED_YELLOW";
+			gpios = <&gpiok 7 GPIO_ACTIVE_LOW>;
 			default-state = "off";
 		};
 	};
 
 	humidity_sensor: humidity-sensor {
         compatible = "dht11";
-        gpios = <&gpioe 2 0>;
+        gpios = <&gpiok 5 0>;
     };
 
 	panel_backlight: panel-backlight {
 		compatible = "gpio-backlight";
-		gpios = <&gpiog 0 GPIO_ACTIVE_HIGH>;
+		gpios = <&gpioa 15 GPIO_ACTIVE_HIGH>;
 		default-on;
 		status = "okay";
 	};
@@ -356,6 +356,23 @@
 		pins {
 			pinmux = <STM32_PINMUX('H', 13, ANALOG)>, /* UART4_TX */
 					 <STM32_PINMUX('H', 14, ANALOG)>; /* UART4_RX */
+		};
+	};
+
+	i2c5_pins_mx: i2c5_mx-0 {
+		pins {
+			pinmux = <STM32_PINMUX('A', 11, AF4)>, /* I2C5_SCL */
+					 <STM32_PINMUX('A', 12, AF4)>; /* I2C5_SDA */
+			bias-pull-up;
+			drive-open-drain;
+			slew-rate = <0>;
+		};
+	};
+
+	i2c5_sleep_pins_mx: i2c5_sleep_mx-0 {
+		pins {
+			pinmux = <STM32_PINMUX('A', 11, ANALOG)>, /* I2C5_SCL */
+					 <STM32_PINMUX('A', 12, ANALOG)>; /* I2C5_SDA */
 		};
 	};
 
@@ -683,6 +700,50 @@
 		};
 	};
 	/* USER CODE END i2c4 */
+};
+
+&i2c5{
+	pinctrl-names = "default", "sleep";
+	pinctrl-0 = <&i2c5_pins_mx>;
+	pinctrl-1 = <&i2c5_sleep_pins_mx>;
+	status = "okay";
+
+	/* USER CODE BEGIN i2c5 */
+	/*touchscreen@38 {
+		compatible = "focaltech,ft6236";
+		reg = <0x38>;
+		interrupts = <0 14>;
+		interrupt-parent = <&gpioa>;
+		interrupt-controller;
+		touchscreen-size-x = <480>;
+		touchscreen-size-y = <800>;
+		panel = <&panel_WF50DTYA3MNG10>;
+		vcc-supply = <&v3v3>;
+		iovcc-supply = <&v3v3>;
+		status = "okay";
+	};*/
+	goodixat0x14: gt911@14 {
+		compatible = "goodix,gt911";
+		reg = <0x14>;
+		pinctrl-names = "default";
+		interrupt-parent = <&gpioa>;
+		interrupts = <14 IRQ_TYPE_EDGE_FALLING>;
+		reset-gpios = <&gpiob 11 GPIO_ACTIVE_LOW>;
+		touchscreen-size-x = <720>;
+		touchscreen-size-y = <1280>;
+	};
+
+	goodixat0x5d: gt911@5d {
+		compatible = "goodix,gt911";
+		reg = <0x5d>;
+		pinctrl-names = "default";
+		interrupt-parent = <&gpioa>;
+		interrupts = <14 IRQ_TYPE_EDGE_FALLING>;
+		reset-gpios = <&gpiob 11 GPIO_ACTIVE_LOW>;
+		touchscreen-size-x = <720>;
+		touchscreen-size-y = <1280>;
+	};
+	/* USER CODE END i2c5 */
 };
 
 &ipcc{
