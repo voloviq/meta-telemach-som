@@ -707,21 +707,9 @@
 	pinctrl-0 = <&i2c5_pins_mx>;
 	pinctrl-1 = <&i2c5_sleep_pins_mx>;
 	status = "okay";
+	/delete-property/ dmas;
+	/delete-property/ dma-names;
 
-	/* USER CODE BEGIN i2c5 */
-	/*touchscreen@38 {
-		compatible = "focaltech,ft6236";
-		reg = <0x38>;
-		interrupts = <0 14>;
-		interrupt-parent = <&gpioa>;
-		interrupt-controller;
-		touchscreen-size-x = <480>;
-		touchscreen-size-y = <800>;
-		panel = <&panel_WF50DTYA3MNG10>;
-		vcc-supply = <&v3v3>;
-		iovcc-supply = <&v3v3>;
-		status = "okay";
-	};*/
 	goodixat0x14: gt911@14 {
 		compatible = "goodix,gt911";
 		reg = <0x14>;
