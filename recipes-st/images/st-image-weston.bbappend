@@ -25,4 +25,5 @@ CORE_IMAGE_EXTRA_INSTALL += " \
 	libiio \
 	packagegroup-st-demo \
 	libftdi \
+	ffmpeg \
 "
