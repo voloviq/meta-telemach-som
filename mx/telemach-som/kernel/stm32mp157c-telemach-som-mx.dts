@@ -584,7 +584,7 @@
 	pinctrl-names = "default", "sleep";
 	phy-mode = "rgmii-id";
 	max-speed = <1000>;
-	phy-handle = <&phy0>;
+	phy-handle = <&phy1>;
 	nvmem-cells = <&ethernet_mac_address>;
 	nvmem-cell-names = "mac-address";
 
