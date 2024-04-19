@@ -594,7 +594,10 @@
 		compatible = "snps,dwmac-mdio";
 		phy1: ethernet-phy@1 {
 			reg = <1>;
+			compatible = "ethernet-phy-id0022.1510";
 			reset-gpios = <&gpiob 10 GPIO_ACTIVE_LOW>;
+			reset-delay-us = <10000>;
+			post-reset-delay-us = <1000>;
 		};
 	};
 };
