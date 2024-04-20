@@ -39,25 +39,31 @@
 		ranges;
 
 		/* USER CODE BEGIN reserved-memory */
-		mcuram2: mcuram2@10000000 {
+		mcuram:mcuram@0x30000000 {
+			compatible = "shared-dma-pool";
+			reg =  <0x30000000 0x40000>; /* define memory base and size for Cortex-M4 firmware*/
+			no-map;
+		};
+
+		mcuram2:mcuram2@10000000{
 			compatible = "shared-dma-pool";
 			reg = <0x10000000 0x40000>;
 			no-map;
 		};
 
-		vdev0vring0: vdev0vring0@10040000 {
+		vdev0vring0:vdev0vring0@10040000{
 			compatible = "shared-dma-pool";
 			reg = <0x10040000 0x1000>;
 			no-map;
 		};
 
-		vdev0vring1: vdev0vring1@10041000 {
+		vdev0vring1:vdev0vring1@10041000{
 			compatible = "shared-dma-pool";
 			reg = <0x10041000 0x1000>;
 			no-map;
 		};
 
-		vdev0buffer: vdev0buffer@10042000 {
+		vdev0buffer:vdev0buffer@10042000{
 			compatible = "shared-dma-pool";
 			reg = <0x10042000 0x4000>;
 			no-map;
@@ -66,12 +72,6 @@
 		mcu_rsc_table: mcu_rsc_table@10048000 {
 			compatible = "shared-dma-pool";
 			reg = <0x10048000 0x8000>;
-			no-map;
-		};
-
-		mcuram: mcuram@30000000 {
-			compatible = "shared-dma-pool";
-			reg = <0x30000000 0x40000>;
 			no-map;
 		};
 
@@ -86,9 +86,10 @@
 			no-map;
 		};
 
-		optee@de000000 {
-			reg = <0xde000000 0x2000000>;
+		optee_memory:optee@0xde000000{
+			reg = <0xde000000 0x02000000>;
 			no-map;
+			status = "okay";
 		};
 
 		fb_reserved: fb@fd000000 {
@@ -137,10 +138,21 @@
         gpios = <&gpiok 5 0>;
     };
 
+	/*
 	panel_backlight: panel-backlight {
 		compatible = "gpio-backlight";
 		gpios = <&gpioa 15 GPIO_ACTIVE_HIGH>;
 		default-on;
+		status = "okay";
+	};
+	*/
+
+	panel_backlight: panel_backlight {
+		compatible = "pwm-backlight";
+		pwms = <&{/soc/timer@40000000/pwm} 0 500000 0>;
+		brightness-levels = <0 4 8 16 32 64 128 255>;
+		default-brightness-level = <2>;
+		power-supply = <&v3v3>;
 		status = "okay";
 	};
 
@@ -390,6 +402,21 @@
 		};
 	};
 
+	tim2_pwm_pins_mx: tim2_pwm_mx-0 {
+		pins {
+			pinmux = <STM32_PINMUX('A', 15, AF1)>; /* TIM2_CH1 */
+			bias-disable;
+			drive-push-pull;
+			slew-rate = <0>;
+		};
+	};
+
+	tim2_pwm_sleep_pins_mx: tim2_pwm_sleep_mx-0 {
+		pins {
+			pinmux = <STM32_PINMUX('A', 15, ANALOG)>; /* TIM2_CH1 */
+		};
+	};
+
 	uart4_pins_mx: uart4_mx-0 {
 		pins1 {
 			pinmux = <STM32_PINMUX('H', 13, AF8)>; /* UART4_TX */
@@ -467,12 +494,10 @@
 
 	/* USER CODE BEGIN m4_rproc */
 	memory-region = <&retram>, <&mcuram>, <&mcuram2>, <&vdev0vring0>,
-                    <&vdev0vring1>, <&vdev0buffer>;
-    mboxes = <&ipcc 0>, <&ipcc 1>, <&ipcc 2>;
-    mbox-names = "vq0", "vq1", "shutdown";
-    interrupt-parent = <&exti>;
-    interrupts = <68 1>;
-    wakeup-source;
+			<&vdev0vring1>, <&vdev0buffer>;
+	interrupt-parent = <&exti>;
+	interrupts = <68 1>;
+	wakeup-source;
 	/* USER CODE END m4_rproc */
 
 	m4_system_resources{
@@ -487,15 +512,18 @@
 	status = "okay";
 
 	/* USER CODE BEGIN timers2 */
-
 	/delete-property/dmas;
 	/delete-property/dma-names;
+	/* USER CODE END timers2 */
 
-	timer@1 {
+	/* USER CODE BEGIN timers2_pwm */
+	pwm{
+		pinctrl-names = "default", "sleep";
+		pinctrl-0 = <&tim2_pwm_pins_mx>;
+		pinctrl-1 = <&tim2_pwm_sleep_pins_mx>;
 		status = "okay";
 	};
-
-	/* USER CODE END timers2 */
+	/* USER CODE END timers2_pwm */
 };
 
 &bsec{
@@ -587,12 +615,14 @@
 	phy-handle = <&phy1>;
 	nvmem-cells = <&ethernet_mac_address>;
 	nvmem-cell-names = "mac-address";
-
+	u-boot,dm-pre-reloc;
 	mdio0 {
+		u-boot,dm-pre-reloc;
 		#address-cells = <1>;
 		#size-cells = <0>;
 		compatible = "snps,dwmac-mdio";
 		phy1: ethernet-phy@1 {
+			u-boot,dm-pre-reloc;
 			reg = <1>;
 			compatible = "ethernet-phy-id001c.c916";
 			reset-gpios = <&gpiob 10 GPIO_ACTIVE_LOW>;
@@ -979,6 +1009,19 @@
 };
 
 /* USER CODE BEGIN addons */
+&cpu0{
+	cpu-supply = <&vddcore>;
+};
 
+&cpu1{
+	cpu-supply = <&vddcore>;
+};
+
+&sram{
+	dma_pool:dma_pool@0{
+		reg = <0x50000 0x10000>;
+		pool;
+	};
+};
 /* USER CODE END addons */
 
