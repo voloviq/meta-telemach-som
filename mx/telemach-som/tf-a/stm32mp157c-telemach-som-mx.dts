@@ -475,7 +475,8 @@
 	status = "okay";
 
 	/* USER CODE BEGIN sdmmc1 */
-	broken-cd;
+	/*broken-cd;*/
+	cd-gpios = <&gpioh 10 1>;
 	disable-wp;
 	st,neg-edge;
 	bus-width = <4>;
