@@ -105,30 +105,30 @@
 
 		led1_grn{
 			label = "LED_GREEN";
-			gpios = <&gpiok 2 GPIO_ACTIVE_LOW>;
+			gpios = <&gpiod 11 GPIO_ACTIVE_LOW>;
 			linux,default-trigger = "heartbeat";
 			status = "okay";
 			default-state = "off";
 		};
 
-		led1_red{
+		led2_blue{
 			label = "LED_BLUE";
-			gpios = <&gpiok 0 GPIO_ACTIVE_LOW>;
+			gpios = <&gpiod 12 GPIO_ACTIVE_LOW>;
 			linux,default-trigger = "cpu0";
 			status = "okay";
 			default-state = "off";
 		};
 
-		led2_red{
+		led3_red{
 			label = "LED_RED";
-			gpios = <&gpiok 1 GPIO_ACTIVE_LOW>;
+			gpios = <&gpiob 2 GPIO_ACTIVE_LOW>;
 			status = "okay";
 			default-state = "off";
 		};
 
-		led2_grn{
+		led4_grn{
 			label = "LED_YELLOW";
-			gpios = <&gpiok 7 GPIO_ACTIVE_LOW>;
+			gpios = <&gpiod 13 GPIO_ACTIVE_LOW>;
 			default-state = "off";
 		};
 	};
@@ -591,7 +591,7 @@
 	panel_WF50DTYA3MNG10: panel-WF50DTYA3MNG10@0 {
 		compatible = "winstar,WF50DTYA3MNG10";
 		reg = <0>;
-		reset-gpios = <&gpioi 0 GPIO_ACTIVE_LOW>;
+		reset-gpios = <&gpioh 12 GPIO_ACTIVE_LOW>;
 		power-supply = <&v3v3>;
 		backlight = <&panel_backlight>;
 		status = "okay";
@@ -820,8 +820,8 @@
 		compatible = "goodix,gt911";
 		reg = <0x14>;
 		pinctrl-names = "default";
-		interrupt-parent = <&gpioa>;
-		interrupts = <14 IRQ_TYPE_EDGE_FALLING>;
+		interrupt-parent = <&gpioi>;
+		interrupts = <8 IRQ_TYPE_EDGE_FALLING>;
 		reset-gpios = <&gpiob 11 GPIO_ACTIVE_LOW>;
 		touchscreen-size-x = <720>;
 		touchscreen-size-y = <1280>;
@@ -831,8 +831,8 @@
 		compatible = "goodix,gt911";
 		reg = <0x5d>;
 		pinctrl-names = "default";
-		interrupt-parent = <&gpioa>;
-		interrupts = <14 IRQ_TYPE_EDGE_FALLING>;
+		interrupt-parent = <&gpioi>;
+		interrupts = <8 IRQ_TYPE_EDGE_FALLING>;
 		reset-gpios = <&gpiob 11 GPIO_ACTIVE_LOW>;
 		touchscreen-size-x = <720>;
 		touchscreen-size-y = <1280>;
@@ -916,7 +916,7 @@
 
 	/* USER CODE BEGIN sdmmc1 */
 	/*broken-cd;*/
-	cd-gpios = <&gpioh 10 GPIO_ACTIVE_LOW>;
+	cd-gpios = <&gpioj 6 GPIO_ACTIVE_LOW>;
 	disable-wp;
 	st,neg-edge;
 	bus-width = <4>;
