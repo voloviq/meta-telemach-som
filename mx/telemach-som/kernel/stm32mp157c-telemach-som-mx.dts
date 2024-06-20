@@ -147,6 +147,15 @@
 	};
 	*/
 
+	pwmleds {
+		compatible = "pwm-leds";
+		control {
+			label = "pb7-pwm4-ch2";
+			pwms = <&{/soc/timer@40002000/pwm} 1 500000 0>;
+			max-brightness = <4096>;
+		};
+	};
+
 	panel_backlight: panel_backlight {
 		compatible = "pwm-backlight";
 		pwms = <&{/soc/timer@40000000/pwm} 0 500000 0>;
