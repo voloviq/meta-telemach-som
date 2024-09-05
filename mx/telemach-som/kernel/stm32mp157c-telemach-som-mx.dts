@@ -266,7 +266,7 @@
 		pins {
 			pinmux = <STM32_PINMUX('F', 1, AF4)>, /* I2C2_SCL */
 					 <STM32_PINMUX('G', 15, AF4)>; /* I2C2_SDA */
-			bias-disable;
+			bias-pull-up;
 			drive-open-drain;
 			slew-rate = <0>;
 		};
@@ -327,6 +327,43 @@
 					 <STM32_PINMUX('G', 11, ANALOG)>, /* ETH1_TX_CTL */
 					 <STM32_PINMUX('H', 6, ANALOG)>, /* ETH1_RXD2 */
 					 <STM32_PINMUX('H', 7, ANALOG)>; /* ETH1_RXD3 */
+		};
+	};
+
+	fmc_pins_mx: fmc_mx-0 {
+		pins {
+			pinmux = <STM32_PINMUX('D', 0, AF12)>, /* FMC_D2 */
+					 <STM32_PINMUX('D', 1, AF12)>, /* FMC_D3 */
+					 <STM32_PINMUX('D', 4, AF12)>, /* FMC_NOE */
+					 <STM32_PINMUX('D', 5, AF12)>, /* FMC_NWE */
+					 <STM32_PINMUX('D', 7, AF12)>, /* FMC_NE1 */
+					 <STM32_PINMUX('D', 14, AF12)>, /* FMC_D0 */
+					 <STM32_PINMUX('D', 15, AF12)>, /* FMC_D1 */
+					 <STM32_PINMUX('E', 7, AF12)>, /* FMC_D4 */
+					 <STM32_PINMUX('E', 8, AF12)>, /* FMC_D5 */
+					 <STM32_PINMUX('E', 9, AF12)>, /* FMC_D6 */
+					 <STM32_PINMUX('E', 10, AF12)>, /* FMC_D7 */
+					 <STM32_PINMUX('F', 0, AF12)>; /* FMC_A0 */
+			bias-disable;
+			drive-push-pull;
+			slew-rate = <1>;
+		};
+	};
+
+	fmc_sleep_pins_mx: fmc_sleep_mx-0 {
+		pins {
+			pinmux = <STM32_PINMUX('D', 0, ANALOG)>, /* FMC_D2 */
+					 <STM32_PINMUX('D', 1, ANALOG)>, /* FMC_D3 */
+					 <STM32_PINMUX('D', 4, ANALOG)>, /* FMC_NOE */
+					 <STM32_PINMUX('D', 5, ANALOG)>, /* FMC_NWE */
+					 <STM32_PINMUX('D', 7, ANALOG)>, /* FMC_NE1 */
+					 <STM32_PINMUX('D', 14, ANALOG)>, /* FMC_D0 */
+					 <STM32_PINMUX('D', 15, ANALOG)>, /* FMC_D1 */
+					 <STM32_PINMUX('E', 7, ANALOG)>, /* FMC_D4 */
+					 <STM32_PINMUX('E', 8, ANALOG)>, /* FMC_D5 */
+					 <STM32_PINMUX('E', 9, ANALOG)>, /* FMC_D6 */
+					 <STM32_PINMUX('E', 10, ANALOG)>, /* FMC_D7 */
+					 <STM32_PINMUX('F', 0, ANALOG)>; /* FMC_A0 */
 		};
 	};
 
@@ -550,24 +587,18 @@
 };
 
 &pinctrl_z {
-	u-boot,dm-pre-reloc;
-
 	i2c4_pins_z_mx: i2c4_mx-0 {
-		u-boot,dm-pre-reloc;
 		pins {
-			u-boot,dm-pre-reloc;
 			pinmux = <STM32_PINMUX('Z', 4, AF6)>, /* I2C4_SCL */
 					 <STM32_PINMUX('Z', 5, AF6)>; /* I2C4_SDA */
-			bias-pull-up;
+			bias-disable;
 			drive-open-drain;
 			slew-rate = <0>;
 		};
 	};
 
 	i2c4_sleep_pins_z_mx: i2c4_sleep_mx-0 {
-		u-boot,dm-pre-reloc;
 		pins {
-			u-boot,dm-pre-reloc;
 			pinmux = <STM32_PINMUX('Z', 4, ANALOG)>, /* I2C4_SCL */
 					 <STM32_PINMUX('Z', 5, ANALOG)>; /* I2C4_SDA */
 		};
@@ -811,6 +842,16 @@
 			post-reset-delay-us = <1000>;
 		};
 	};
+};
+
+&fmc{
+	pinctrl-names = "default", "sleep";
+	pinctrl-0 = <&fmc_pins_mx>;
+	pinctrl-1 = <&fmc_sleep_pins_mx>;
+	status = "okay";
+
+	/* USER CODE BEGIN fmc */
+	/* USER CODE END fmc */
 };
 
 &gpu{

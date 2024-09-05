@@ -35,4 +35,5 @@ CORE_IMAGE_EXTRA_INSTALL += " \
 	qtsvg-plugins \
 	qtcharts \
 	rsync \
+    advancemame \
 "
