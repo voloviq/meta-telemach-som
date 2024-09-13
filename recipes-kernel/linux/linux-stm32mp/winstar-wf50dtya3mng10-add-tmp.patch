@@ -1,5 +1,5 @@
 diff --git a/drivers/gpu/drm/panel/panel-ilitek-ili9881c.c b/drivers/gpu/drm/panel/panel-ilitek-ili9881c.c
-index 534dd74..fae7092 100644
+index 534dd74..7df89f6 100644
 --- a/drivers/gpu/drm/panel/panel-ilitek-ili9881c.c
 +++ b/drivers/gpu/drm/panel/panel-ilitek-ili9881c.c
 @@ -51,6 +51,8 @@ struct ili9881c {
@@ -11,7 +11,7 @@ index 534dd74..fae7092 100644
  };
  
  #define ILI9881C_SWITCH_PAGE_INSTR(_page)	\
-@@ -453,6 +455,406 @@ static const struct ili9881c_instr k101_im2byl02_init[] = {
+@@ -453,6 +455,400 @@ static const struct ili9881c_instr k101_im2byl02_init[] = {
  	ILI9881C_COMMAND_INSTR(0xD3, 0x3F), /* VN0 */
  };
  
@@ -273,8 +273,6 @@ index 534dd74..fae7092 100644
 +    //ILI9881C PAGE4
 +    ILI9881C_SWITCH_PAGE_INSTR(0x4),
 +
-+	ILI9881C_COMMAND_INSTR(0x00, 0x80),
-+
 +    ILI9881C_COMMAND_INSTR(0x6C, 0x15),
 +
 +    ILI9881C_COMMAND_INSTR(0x6E, 0x2B),
@@ -361,10 +359,6 @@ index 534dd74..fae7092 100644
 +
 +    ILI9881C_COMMAND_INSTR(0xB3, 0x39),
 +
-+	ILI9881C_COMMAND_INSTR(0xB6, 0xA0),
-+
-+	ILI9881C_COMMAND_INSTR(0xB7, 0x03),
-+
 +    ILI9881C_COMMAND_INSTR(0xC0, 0x08),
 +
 +    ILI9881C_COMMAND_INSTR(0xC1, 0x11),
@@ -418,7 +412,7 @@ index 534dd74..fae7092 100644
  static inline struct ili9881c *panel_to_ili9881c(struct drm_panel *panel)
  {
  	return container_of(panel, struct ili9881c, panel);
-@@ -501,8 +903,9 @@ static int ili9881c_prepare(struct drm_panel *panel)
+@@ -501,8 +897,9 @@ static int ili9881c_prepare(struct drm_panel *panel)
  
  	/* Power the panel */
  	ret = regulator_enable(ctx->power);
@@ -429,7 +423,7 @@ index 534dd74..fae7092 100644
  	msleep(5);
  
  	/* And reset it */
-@@ -515,27 +918,50 @@ static int ili9881c_prepare(struct drm_panel *panel)
+@@ -515,27 +912,50 @@ static int ili9881c_prepare(struct drm_panel *panel)
  	for (i = 0; i < ctx->desc->init_length; i++) {
  		const struct ili9881c_instr *instr = &ctx->desc->init[i];
  
@@ -488,7 +482,7 @@ index 534dd74..fae7092 100644
  
  	return 0;
  }
-@@ -603,12 +1029,28 @@ static const struct drm_display_mode k101_im2byl02_default_mode = {
+@@ -603,12 +1023,28 @@ static const struct drm_display_mode k101_im2byl02_default_mode = {
  	.height_mm	= 217,
  };
  
@@ -518,7 +512,7 @@ index 534dd74..fae7092 100644
  	mode = drm_mode_duplicate(connector->dev, ctx->desc->mode);
  	if (!mode) {
  		dev_err(&ctx->dsi->dev, "failed to add mode %ux%ux@%u\n",
-@@ -617,12 +1059,10 @@ static int ili9881c_get_modes(struct drm_panel *panel,
+@@ -617,12 +1053,10 @@ static int ili9881c_get_modes(struct drm_panel *panel,
  			drm_mode_vrefresh(ctx->desc->mode));
  		return -ENOMEM;
  	}
@@ -531,7 +525,7 @@ index 534dd74..fae7092 100644
  	connector->display_info.width_mm = mode->width_mm;
  	connector->display_info.height_mm = mode->height_mm;
  
-@@ -653,16 +1093,14 @@ static int ili9881c_dsi_probe(struct mipi_dsi_device *dsi)
+@@ -653,16 +1087,14 @@ static int ili9881c_dsi_probe(struct mipi_dsi_device *dsi)
  		       DRM_MODE_CONNECTOR_DSI);
  
  	ctx->power = devm_regulator_get(&dsi->dev, "power");
@@ -555,7 +549,7 @@ index 534dd74..fae7092 100644
  
  	ret = drm_panel_of_backlight(&ctx->panel);
  	if (ret)
-@@ -670,11 +1108,19 @@ static int ili9881c_dsi_probe(struct mipi_dsi_device *dsi)
+@@ -670,11 +1102,19 @@ static int ili9881c_dsi_probe(struct mipi_dsi_device *dsi)
  
  	drm_panel_add(&ctx->panel);
  
@@ -578,7 +572,7 @@ index 534dd74..fae7092 100644
  }
  
  static int ili9881c_dsi_remove(struct mipi_dsi_device *dsi)
-@@ -699,9 +1145,16 @@ static const struct ili9881c_desc k101_im2byl02_desc = {
+@@ -699,9 +1139,16 @@ static const struct ili9881c_desc k101_im2byl02_desc = {
  	.mode = &k101_im2byl02_default_mode,
  };
  
