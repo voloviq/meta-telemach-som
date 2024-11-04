@@ -1,6 +1,6 @@
-/* SPDX-License-Identifier: (GPL-2.0+ OR BSD-3-Clause) */
+// SPDX-License-Identifier: (GPL-2.0-or-later OR BSD-3-Clause)
 /*
- * Copyright (C) STMicroelectronics 2023 - All Rights Reserved
+ * Copyright (C) 2024, STMicroelectronics - All Rights Reserved
  * Author: STM32CubeMX code generation for STMicroelectronics.
  */
 
@@ -9,6 +9,7 @@
  */
 
 /dts-v1/;
+
 #include <dt-bindings/pinctrl/stm32-pinfunc.h>
 #include <dt-bindings/clock/stm32mp1-clksrc.h>
 #include <dt-bindings/soc/st,stm32-etzpc.h>
@@ -24,8 +25,8 @@
 /* USER CODE END includes */
 
 / {
-	model = "MW Sofjan Telemach SOM STM32CubeMX - openstlinux-5.15-yocto-kirkstone-mp1-v22.11.23";
-	compatible = "st,stm32mp157c-telemach-som-mx", "st,stm32mp157";
+	model = "MW Sofjan Telemach SOM STM32CubeMX - openstlinux-6.1-yocto-mickledore-mpu-v24.06.26";
+	compatible = "st,stm32mp157c-stm32mp1-telemach-som-mx", "st,stm32mp157";
 
 	memory@c0000000 {
 		device_type = "memory";
@@ -68,15 +69,21 @@
 		/* USER CODE BEGIN clocks */
 		/* USER CODE END clocks */
 
+		clk_hsi: clk-hsi {
+			clock-frequency = <64000000>;
+
+			/* USER CODE BEGIN clk_hsi */
+			/* USER CODE END clk_hsi */
+		};
 		clk_lse: clk-lse {
+			clock-frequency = <32768>;
 			st,drive = < LSEDRV_MEDIUM_HIGH >;
 
 			/* USER CODE BEGIN clk_lse */
 			/* USER CODE END clk_lse */
 		};
-
 		clk_hse: clk-hse {
-			st,digbypass;
+			clock-frequency = <24000000>;
 
 			/* USER CODE BEGIN clk_hse */
 			/* USER CODE END clk_hse */
@@ -86,66 +93,6 @@
 }; /*root*/
 
 &pinctrl {
-	sdmmc1_pins_mx: sdmmc1_mx-0 {
-		pins1 {
-			pinmux = <STM32_PINMUX('C', 8, AF12)>, /* SDMMC1_D0 */
-					 <STM32_PINMUX('C', 9, AF12)>, /* SDMMC1_D1 */
-					 <STM32_PINMUX('C', 11, AF12)>, /* SDMMC1_D3 */
-					 <STM32_PINMUX('E', 6, AF8)>; /* SDMMC1_D2 */
-			bias-pull-up;
-			drive-push-pull;
-			slew-rate = <1>;
-		};
-		pins2 {
-			pinmux = <STM32_PINMUX('C', 12, AF12)>; /* SDMMC1_CK */
-			bias-disable;
-			drive-push-pull;
-			slew-rate = <3>;
-		};
-		pins3 {
-			pinmux = <STM32_PINMUX('D', 2, AF12)>; /* SDMMC1_CMD */
-			bias-disable;
-			drive-push-pull;
-			slew-rate = <1>;
-		};
-	};
-
-	sdmmc2_pins_mx: sdmmc2_mx-0 {
-		pins1 {
-			pinmux = <STM32_PINMUX('A', 8, AF9)>, /* SDMMC2_D4 */
-					 <STM32_PINMUX('A', 9, AF10)>, /* SDMMC2_D5 */
-					 <STM32_PINMUX('B', 3, AF9)>, /* SDMMC2_D2 */
-					 <STM32_PINMUX('B', 4, AF9)>, /* SDMMC2_D3 */
-					 <STM32_PINMUX('B', 14, AF9)>, /* SDMMC2_D0 */
-					 <STM32_PINMUX('B', 15, AF9)>, /* SDMMC2_D1 */
-					 <STM32_PINMUX('C', 6, AF10)>, /* SDMMC2_D6 */
-					 <STM32_PINMUX('C', 7, AF10)>, /* SDMMC2_D7 */
-					 <STM32_PINMUX('G', 6, AF10)>; /* SDMMC2_CMD */
-			bias-disable;
-			drive-push-pull;
-			slew-rate = <1>;
-		};
-		pins2 {
-			pinmux = <STM32_PINMUX('E', 3, AF9)>; /* SDMMC2_CK */
-			bias-disable;
-			drive-push-pull;
-			slew-rate = <3>;
-		};
-	};
-
-	uart4_pins_mx: uart4_mx-0 {
-		pins1 {
-			pinmux = <STM32_PINMUX('H', 13, AF8)>; /* UART4_TX */
-			bias-disable;
-			drive-push-pull;
-			slew-rate = <0>;
-		};
-		pins2 {
-			pinmux = <STM32_PINMUX('H', 14, AF8)>; /* UART4_RX */
-			bias-pull-up;
-		};
-	};
-
 	/* USER CODE BEGIN pinctrl */
 	/* USER CODE END pinctrl */
 };
@@ -155,7 +102,7 @@
 		pins {
 			pinmux = <STM32_PINMUX('Z', 4, AF6)>, /* I2C4_SCL */
 					 <STM32_PINMUX('Z', 5, AF6)>; /* I2C4_SDA */
-			bias-disable;
+			bias-pull-up;
 			drive-open-drain;
 			slew-rate = <0>;
 		};
@@ -384,91 +331,86 @@
 	/* USER CODE END rcc */
 
 	st,clksrc = <
+		CLK_CKPER_DISABLED
+		CLK_STGEN_HSI
+		CLK_I2C46_PCLK5
 		CLK_MPU_PLL1P
 		CLK_AXI_PLL2P
 		CLK_MCU_PLL3P
-		CLK_PLL12_HSE
-		CLK_PLL3_HSE
-		CLK_PLL4_HSE
-		CLK_RTC_LSE
-		CLK_MCO1_DISABLED
-		CLK_MCO2_DISABLED
 	>;
 	st,clkdiv = <
-		1 		/*MPU*/
-		0 		/*AXI*/
-		0 		/*MCU*/
-		1 		/*APB1*/
-		1 		/*APB2*/
-		1 		/*APB3*/
-		1 		/*APB4*/
-		2 		/*APB5*/
-		0 		/*RTC*/
-		0 		/*MCO1*/
-		0 		/*MCO2*/
+		DIV(DIV_MPU, 1)
+		DIV(DIV_AXI, 0)
+		DIV(DIV_MCU, 0)
+		DIV(DIV_APB1, 1)
+		DIV(DIV_APB2, 1)
+		DIV(DIV_APB3, 1)
+		DIV(DIV_APB4, 1)
+		DIV(DIV_APB5, 2)
+		DIV(DIV_RTC, 0)
+		DIV(DIV_MCO1, 0)
+		DIV(DIV_MCO2, 0)
 	>;
-	st,pkcs = <
-		CLK_CKPER_DISABLED
-		CLK_ETH_PLL4P
-		CLK_SDMMC12_PLL4P
-		CLK_DSI_DSIPLL
-		CLK_STGEN_HSE
-		CLK_USBPHY_HSE
-		CLK_SPI2S1_PLL4P
-		CLK_SPI2S23_PLL4P
-		CLK_SPI45_DISABLED
-		CLK_SPI6_DISABLED
-		CLK_I2C46_PLL3Q
-		CLK_SDMMC3_DISABLED
-		CLK_USBO_USBPHY
-		CLK_ADC_PLL4R
-		CLK_CEC_DISABLED
-		CLK_I2C12_PCLK1
-		CLK_I2C35_PCLK1
-		CLK_UART1_DISABLED
-		CLK_UART24_HSE
-		CLK_UART35_HSE
-		CLK_UART6_DISABLED
-		CLK_UART78_HSE
-		CLK_SPDIF_DISABLED
-		CLK_SAI1_DISABLED
-		CLK_SAI2_DISABLED
-		CLK_SAI3_DISABLED
-		CLK_SAI4_DISABLED
-		CLK_LPTIM1_DISABLED
-		CLK_LPTIM23_DISABLED
-		CLK_LPTIM45_DISABLED
-	>;
+	st,pll_vco {
+		pll1_vco_1299Mhz: pll1-vco-1299Mhz {
+			src = < CLK_PLL12_HSE >;
+			divmn = < 1 53 >;
+			frac = < 0x555 >;
+		};
+		pll2_vco_1066Mhz: pll2-vco-1066Mhz {
+			src = < CLK_PLL12_HSE >;
+			divmn = < 2 65 >;
+			frac = < 0x1400 >;
+		};
+		pll3_vco_400Mhz: pll3-vco-400Mhz {
+			src = < CLK_PLL3_HSE >;
+			divmn = < 2 49 >;
+		};
+		/* USER CODE BEGIN rcc_st-pll_vco */
+		/* USER CODE END rcc_st-pll_vco */
+	};
+
 	pll1:st,pll@0 {
 		compatible = "st,stm32mp1-pll";
 		reg = <0>;
-		cfg = < 2 80 0 1 1 PQR(1,0,0) >;
-		frac = < 0x800 >;
+
+		st,pll = < &pll1_cfg1 >;
+
+		pll1_cfg1: pll1_cfg1 {
+			st,pll_vco = < &pll1_vco_1299Mhz >;
+			st,pll_div_pqr = < 0 1 1 >;
+		};
+		/* USER CODE BEGIN pll1 */
+		/* USER CODE END pll1 */
 	};
+
 	pll2:st,pll@1 {
 		compatible = "st,stm32mp1-pll";
 		reg = <1>;
-		cfg = < 2 65 1 0 0 PQR(1,1,1) >;
-		frac = < 0x1400 >;
+
+		st,pll = < &pll2_cfg1 >;
+
+		pll2_cfg1: pll2_cfg1 {
+			st,pll_vco = < &pll2_vco_1066Mhz >;
+			st,pll_div_pqr = < 1 1 0 >;
+		};
+		/* USER CODE BEGIN pll2 */
+		/* USER CODE END pll2 */
 	};
+
 	pll3:st,pll@2 {
 		compatible = "st,stm32mp1-pll";
 		reg = <2>;
-		cfg = < 2 24 0 3 7 PQR(1,1,0) >;
-	};
-	pll4:st,pll@3 {
-		compatible = "st,stm32mp1-pll";
-		reg = <3>;
-		cfg = < 3 124 5 9 5 PQR(1,1,1) >;
-	};
-};
 
-&rtc{
-	status = "okay";
+		st,pll = < &pll3_cfg1 >;
 
-	/* USER CODE BEGIN rtc */
-	/* USER CODE END rtc */
-};
+		pll3_cfg1: pll3_cfg1 {
+			st,pll_vco = < &pll3_vco_400Mhz >;
+			st,pll_div_pqr = < 1 3 1 >;
+		};
+		/* USER CODE BEGIN pll3 */
+		/* USER CODE END pll3 */
+	};
 
 &sdmmc1{
 	pinctrl-names = "default";
