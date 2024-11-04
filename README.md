@@ -2,7 +2,7 @@
 
 ## Introduction
 
-meta-stm32mp157-som is a layer providing the Sofjan Stm32mp157 SOM board hardware support for Yocto-based OpenSTLinux system.
+meta-stm32mp157-som is a layer providing the Michał Wołowik Sofjan Stm32mp157 SOM board hardware support for Yocto-based OpenSTLinux system.
 
 Stm32mp157 SOM - Telemach <br>
 <br>
@@ -22,12 +22,12 @@ https://wiki.st.com/stm32mpu/wiki/STM32MP1_Distribution_Package
 The summary of required steps is shown below:
 
 ```shell
-mkdir openstlinux-5.15-yocto-kirkstone-mp1-v22.11.23
-cd openstlinux-5.15-yocto-kirkstone-mp1-v22.11.23
-repo init -u https://github.com/STMicroelectronics/oe-manifest.git -b refs/tags/openstlinux-5.15-yocto-kirkstone-mp1-v22.11.23
+mkdir openstlinux-6.1-yocto-mickledore-mpu-v24.06.26
+cd openstlinux-6.1-yocto-mickledore-mpu-v24.06.26
+repo init -u https://github.com/STMicroelectronics/oe-manifest.git -b refs/tags/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26
 repo sync
 cd layers/meta-st
-git clone -b kirkstone git@github.com:voloviq/meta-telemach-som.git
+git clone -b mickledore git@github.com:voloviq/meta-telemach-som.git
 cd ../../
 DISTRO=openstlinux-weston MACHINE=telemach-som source layers/meta-st/scripts/envsetup.sh
 bitbake-layers add-layer ../layers/meta-st/meta-st-stm32mp-addons/
@@ -37,8 +37,8 @@ bitbake st-image-weston
 ```
 **Note:**
 To save some space in disk modify two records in local.conf file <br>
-DL_DIR ?= "${HOME}/openstlinux-5.15-yocto-kirkstone-mp1-v22.11.23/downloads" <br>
-SSTATE_DIR ?= "${HOME}/openstlinux-5.15-yocto-kirkstone-mp1-v22.11.23/sstate-cache" <br>
+DL_DIR ?= "${HOME}/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/downloads" <br>
+SSTATE_DIR ?= "${HOME}/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/sstate-cache" <br>
 
 **Note:**
 Adding new layer can only be one time <br>
@@ -52,7 +52,7 @@ The following Sofjan Stm32mp157 Telemach SOM are available:
 The compiled image files are located in the directory:
 
 ```
-/.../openstlinux-5.15-yocto-kirkstone-mp1-v22.11.23/build-openstlinuxweston-telemach-som/tmp-glibc/deploy/images
+/.../openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/build-openstlinuxweston-telemach-som/tmp-glibc/deploy/images
 ```
 
 ## Installing SD card image
@@ -60,7 +60,7 @@ The compiled image files are located in the directory:
 The SD card image needs to be created using the available script after the building process:
 
 ```
-cd ~/openstlinux-5.15-yocto-kirkstone-mp1-v22.11.23/build-openstlinuxweston-telemach-som/tmp-glibc/deploy/images/telemach-som/scripts
+cd ~/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/build-openstlinuxweston-telemach-som/tmp-glibc/deploy/images/telemach-som/scripts
 ./create_sdcard_from_flashlayout.sh ../flashlayout_st-image-weston/trusted/FlashLayout_telemach-som-trusted.tsv
 ```
 
