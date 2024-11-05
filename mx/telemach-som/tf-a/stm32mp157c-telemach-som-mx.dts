@@ -26,7 +26,7 @@
 
 / {
 	model = "MW Sofjan Telemach SOM STM32CubeMX - openstlinux-6.1-yocto-mickledore-mpu-v24.06.26";
-	compatible = "st,stm32mp157c-stm32mp1-telemach-som-mx", "st,stm32mp157";
+	compatible = "st,stm32mp157c-telemach-som-mx", "st,stm32mp157";
 
 	memory@c0000000 {
 		device_type = "memory";

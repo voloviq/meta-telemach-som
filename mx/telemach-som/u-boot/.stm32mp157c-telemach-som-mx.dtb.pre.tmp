@@ -1206,3 +1206,4 @@
 
 /* USER CODE END addons */
 
+#include "stm32mp157c-telemach-som-mx-u-boot.dtsi"

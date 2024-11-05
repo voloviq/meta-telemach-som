@@ -17,13 +17,14 @@
 #include "stm32mp15-m4-srm.dtsi"
 
 /* USER CODE BEGIN includes */
+#include "stm32mp15-scmi.dtsi"
 #include <dt-bindings/mfd/st,stpmic1.h>
 #include <dt-bindings/rtc/rtc-stm32.h>
 /* USER CODE END includes */
 
 / {
 	model = "MW Sofjan Telemach SOM STM32CubeMX - openstlinux-6.1-yocto-mickledore-mpu-v24.06.26";
-	compatible = "st,stm32mp157c-stm32mp1-telemach-som-mx", "st,stm32mp157";
+	compatible = "st,stm32mp157c-telemach-som-mx", "st,stm32mp157";
 
 	memory@c0000000 {
 		device_type = "memory";
@@ -140,14 +141,14 @@
 		compatible = "pwm-leds";
 		control {
 			label = "pb7-pwm4-ch2";
-			pwms = <&{/soc/timer@40002000/pwm} 1 500000 0>;
+			/*pwms = <&{/soc/timer@40002000/pwm} 1 500000 0>;*/
 			max-brightness = <4096>;
 		};
 	};
 
 	panel_backlight: panel_backlight {
 		compatible = "pwm-backlight";
-		pwms = <&{/soc/timer@40000000/pwm} 0 500000 0>;
+		/*pwms = <&{/soc/timer@40000000/pwm} 0 500000 0>;*/
 		brightness-levels = <0 4 8 16 32 64 128 255>;
 		default-brightness-level = <2>;
 		power-supply = <&v3v3>;
@@ -1215,13 +1216,6 @@
 
 &cpu1{
 	cpu-supply = <&vddcore>;
-};
-
-&sram{
-	dma_pool:dma_pool@0{
-		reg = <0x50000 0x10000>;
-		pool;
-	};
 };
 /* USER CODE END addons */
 
