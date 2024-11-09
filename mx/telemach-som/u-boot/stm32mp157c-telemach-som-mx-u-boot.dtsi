@@ -9,7 +9,6 @@
  */
 
 /* !!! log : Internal error - unknown 'U-BOOT' dtsi  !!! */
-#include "stm32mp15-u-boot.dtsi"
 
 /* USER CODE BEGIN includes */
 /* USER CODE END includes */

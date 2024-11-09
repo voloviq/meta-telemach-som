@@ -20,5 +20,4 @@
  /home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp15-scmi-u-boot.dtsi \
  /home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/mfd/st,stpmic1.h \
  /home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/rtc/rtc-stm32.h \
- /home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/stm32mp157c-telemach-som-mx-u-boot.dtsi \
- /home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp15-u-boot.dtsi
+ /home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/stm32mp157c-telemach-som-mx-u-boot.dtsi
