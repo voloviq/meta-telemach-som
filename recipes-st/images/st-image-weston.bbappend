@@ -26,4 +26,11 @@ CORE_IMAGE_EXTRA_INSTALL += " \
 	packagegroup-st-demo \
 	libftdi \
 	ffmpeg \
+    lora-packet-forwarder \
+    lora-gateway-dev \
+    lora-gateway-staticdev \
+    lora-gateway-utils \
+    nginx \    
+    fcgi \
+    nginx-fcgi \
 "

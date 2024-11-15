@@ -823,7 +823,8 @@
 
 	/* USER CODE BEGIN sdmmc1 */
 	/*broken-cd;*/
-	cd-gpios = <&gpioh 10 GPIO_ACTIVE_LOW>;
+	/*cd-gpios = <&gpioj 6 GPIO_ACTIVE_LOW>;*/
+	broken-cd;
 	disable-wp;
 	st,neg-edge;
 	bus-width = <4>;

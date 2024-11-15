@@ -1,0 +1,25 @@
+diff --git a/fast.c b/fast.c
+index 8cf66b0..0a028d8 100644
+--- a/fast.c
++++ b/fast.c
+@@ -10,6 +10,8 @@
+ #include "mpsse.h"
+ #include "support.h"
+ 
++static unsigned char fast_rw_buf[SPI_RW_SIZE + CMD_SIZE];
++
+ /* Builds a block buffer for the Fast* functions. For internal use only. */
+ int fast_build_block_buffer(struct mpsse_context *mpsse, uint8_t cmd, unsigned char *data, int size, int *buf_size)
+ {
+diff --git a/mpsse.h b/mpsse.h
+index 4a00eed..3e2fa05 100644
+--- a/mpsse.h
++++ b/mpsse.h
+@@ -218,7 +218,6 @@ swig_string_data Transfer(struct mpsse_context *mpsse, char *data, int size);
+ char *Read(struct mpsse_context *mpsse, int size);
+ char *Transfer(struct mpsse_context *mpsse, char *data, int size);
+ 
+-unsigned char fast_rw_buf[SPI_RW_SIZE + CMD_SIZE];
+ int FastWrite(struct mpsse_context *mpsse, char *data, int size);
+ int FastRead(struct mpsse_context *mpsse, char *data, int size);
+ int FastTransfer(struct mpsse_context *mpsse, char *wdata, char *rdata, int size);

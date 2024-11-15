@@ -90,9 +90,10 @@
 		pins1 {
 			pinmux = <STM32_PINMUX('C', 8, AF12)>, /* SDMMC1_D0 */
 					 <STM32_PINMUX('C', 9, AF12)>, /* SDMMC1_D1 */
+					 <STM32_PINMUX('C', 10, AF12)>, /* SDMMC1_D2 */
 					 <STM32_PINMUX('C', 11, AF12)>, /* SDMMC1_D3 */
-					 <STM32_PINMUX('E', 6, AF8)>; /* SDMMC1_D2 */
-			bias-pull-up;
+					 <STM32_PINMUX('D', 2, AF12)>; /* SDMMC1_CMD */
+			bias-disable;
 			drive-push-pull;
 			slew-rate = <1>;
 		};
@@ -101,12 +102,6 @@
 			bias-disable;
 			drive-push-pull;
 			slew-rate = <3>;
-		};
-		pins3 {
-			pinmux = <STM32_PINMUX('D', 2, AF12)>; /* SDMMC1_CMD */
-			bias-disable;
-			drive-push-pull;
-			slew-rate = <1>;
 		};
 	};
 
@@ -192,6 +187,7 @@
 	DECPROT(STM32MP1_ETZPC_SPI1_ID, DECPROT_NS_RW, DECPROT_UNLOCK)
 	DECPROT(STM32MP1_ETZPC_SPI2_ID, DECPROT_NS_RW, DECPROT_UNLOCK)
 	DECPROT(STM32MP1_ETZPC_UART4_ID, DECPROT_NS_RW, DECPROT_UNLOCK)
+	DECPROT(STM32MP1_ETZPC_USART3_ID, DECPROT_NS_RW, DECPROT_UNLOCK)
 	DECPROT(STM32MP1_ETZPC_UART5_ID, DECPROT_NS_RW, DECPROT_UNLOCK)
 	DECPROT(STM32MP1_ETZPC_UART7_ID, DECPROT_NS_RW, DECPROT_UNLOCK)
 	DECPROT(STM32MP1_ETZPC_OTG_ID, DECPROT_NS_RW, DECPROT_UNLOCK)
@@ -476,8 +472,8 @@
 	status = "okay";
 
 	/* USER CODE BEGIN sdmmc1 */
-	/*broken-cd;*/
-	cd-gpios = <&gpioh 10 1>;
+	broken-cd;
+	/*cd-gpios = <&gpioj 6 1>;*/
 	disable-wp;
 	st,neg-edge;
 	bus-width = <4>;

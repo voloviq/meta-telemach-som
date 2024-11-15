@@ -80,11 +80,6 @@
 			no-map;
 			status = "okay";
 		};
-
-		fb_reserved: fb@fd000000 {
-			reg = <0xfd000000 0x8000000>;
-			no-map;
-		};
 		/* USER CODE END reserved-memory */
 	};
 
@@ -92,15 +87,7 @@
 	led{
 		compatible = "gpio-leds";
 
-		led1_grn{
-			label = "LED_GREEN";
-			gpios = <&gpiod 11 GPIO_ACTIVE_LOW>;
-			linux,default-trigger = "heartbeat";
-			status = "okay";
-			default-state = "off";
-		};
-
-		led2_blue{
+		led1_blue{
 			label = "LED_BLUE";
 			gpios = <&gpiod 12 GPIO_ACTIVE_LOW>;
 			linux,default-trigger = "cpu0";
@@ -108,14 +95,15 @@
 			default-state = "off";
 		};
 
-		led3_red{
+		led2_red{
 			label = "LED_RED";
 			gpios = <&gpiob 2 GPIO_ACTIVE_LOW>;
+			linux,default-trigger = "heartbeat";
 			status = "okay";
 			default-state = "off";
 		};
 
-		led4_grn{
+		led3_grn{
 			label = "LED_YELLOW";
 			gpios = <&gpiod 13 GPIO_ACTIVE_LOW>;
 			default-state = "off";
@@ -126,15 +114,6 @@
         compatible = "dht11";
         gpios = <&gpiok 5 0>;
     };
-
-	/*
-	panel_backlight: panel-backlight {
-		compatible = "gpio-backlight";
-		gpios = <&gpioa 15 GPIO_ACTIVE_HIGH>;
-		default-on;
-		status = "okay";
-	};
-	*/
 
 	pwmleds {
 		compatible = "pwm-leds";
@@ -201,6 +180,7 @@
 
 	aliases{
 		serial0 = &uart4;
+		serial1 = &usart3;
 		mmc0 = &sdmmc1;
 		mmc1 = &sdmmc2;
 	};
@@ -279,6 +259,13 @@
 		};
 	};
 
+	m4_uart7_pins_mx: m4_uart7_mx-0 {
+		pins {
+			pinmux = <STM32_PINMUX('E', 7, RSVD)>, /* UART7_RX */
+					 <STM32_PINMUX('E', 8, RSVD)>; /* UART7_TX */
+		};
+	};
+
 	eth1_pins_mx: eth1_mx-0 {
 		pins1 {
 			pinmux = <STM32_PINMUX('A', 1, AF11)>, /* ETH1_RX_CLK */
@@ -327,43 +314,6 @@
 					 <STM32_PINMUX('G', 11, ANALOG)>, /* ETH1_TX_CTL */
 					 <STM32_PINMUX('H', 6, ANALOG)>, /* ETH1_RXD2 */
 					 <STM32_PINMUX('H', 7, ANALOG)>; /* ETH1_RXD3 */
-		};
-	};
-
-	fmc_pins_mx: fmc_mx-0 {
-		pins {
-			pinmux = <STM32_PINMUX('D', 0, AF12)>, /* FMC_D2 */
-					 <STM32_PINMUX('D', 1, AF12)>, /* FMC_D3 */
-					 <STM32_PINMUX('D', 4, AF12)>, /* FMC_NOE */
-					 <STM32_PINMUX('D', 5, AF12)>, /* FMC_NWE */
-					 <STM32_PINMUX('D', 7, AF12)>, /* FMC_NE1 */
-					 <STM32_PINMUX('D', 14, AF12)>, /* FMC_D0 */
-					 <STM32_PINMUX('D', 15, AF12)>, /* FMC_D1 */
-					 <STM32_PINMUX('E', 7, AF12)>, /* FMC_D4 */
-					 <STM32_PINMUX('E', 8, AF12)>, /* FMC_D5 */
-					 <STM32_PINMUX('E', 9, AF12)>, /* FMC_D6 */
-					 <STM32_PINMUX('E', 10, AF12)>, /* FMC_D7 */
-					 <STM32_PINMUX('F', 0, AF12)>; /* FMC_A0 */
-			bias-disable;
-			drive-push-pull;
-			slew-rate = <1>;
-		};
-	};
-
-	fmc_sleep_pins_mx: fmc_sleep_mx-0 {
-		pins {
-			pinmux = <STM32_PINMUX('D', 0, ANALOG)>, /* FMC_D2 */
-					 <STM32_PINMUX('D', 1, ANALOG)>, /* FMC_D3 */
-					 <STM32_PINMUX('D', 4, ANALOG)>, /* FMC_NOE */
-					 <STM32_PINMUX('D', 5, ANALOG)>, /* FMC_NWE */
-					 <STM32_PINMUX('D', 7, ANALOG)>, /* FMC_NE1 */
-					 <STM32_PINMUX('D', 14, ANALOG)>, /* FMC_D0 */
-					 <STM32_PINMUX('D', 15, ANALOG)>, /* FMC_D1 */
-					 <STM32_PINMUX('E', 7, ANALOG)>, /* FMC_D4 */
-					 <STM32_PINMUX('E', 8, ANALOG)>, /* FMC_D5 */
-					 <STM32_PINMUX('E', 9, ANALOG)>, /* FMC_D6 */
-					 <STM32_PINMUX('E', 10, ANALOG)>, /* FMC_D7 */
-					 <STM32_PINMUX('F', 0, ANALOG)>; /* FMC_A0 */
 		};
 	};
 
@@ -582,6 +532,45 @@
 		};
 	};
 
+	spi3_pins_mx: spi3_mx-0 {
+		pins {
+			pinmux = <STM32_PINMUX('B', 5, AF7)>, /* SPI3_MOSI */
+					 <STM32_PINMUX('D', 10, AF5)>, /* SPI3_MISO */
+					 <STM32_PINMUX('E', 0, AF5)>; /* SPI3_SCK */
+			bias-disable;
+			drive-push-pull;
+			slew-rate = <1>;
+		};
+	};
+
+	spi3_sleep_pins_mx: spi3_sleep_mx-0 {
+		pins {
+			pinmux = <STM32_PINMUX('B', 5, ANALOG)>, /* SPI3_MOSI */
+					 <STM32_PINMUX('D', 10, ANALOG)>, /* SPI3_MISO */
+					 <STM32_PINMUX('E', 0, ANALOG)>; /* SPI3_SCK */
+		};
+	};
+
+	usart3_pins_mx: usart3_mx-0 {
+		pins1 {
+			pinmux = <STM32_PINMUX('D', 8, AF7)>; /* USART3_TX */
+			bias-disable;
+			drive-push-pull;
+			slew-rate = <0>;
+		};
+		pins2 {
+			pinmux = <STM32_PINMUX('D', 9, AF7)>; /* USART3_RX */
+			bias-disable;
+		};
+	};
+
+	usart3_sleep_pins_mx: usart3_sleep_mx-0 {
+		pins {
+			pinmux = <STM32_PINMUX('D', 8, ANALOG)>, /* USART3_TX */
+					 <STM32_PINMUX('D', 9, ANALOG)>; /* USART3_RX */
+		};
+	};
+
 	/* USER CODE BEGIN pinctrl */
 	/* USER CODE END pinctrl */
 };
@@ -610,8 +599,8 @@
 
 &m4_rproc{
 	/*Restriction: "memory-region" property is not managed - please to use User-Section if needed*/
-	mboxes = <&ipcc 2>;
-	mbox-names = "shutdown";
+	mboxes = <&ipcc 0>, <&ipcc 1>, <&ipcc 2>, <&ipcc 3>;
+	mbox-names = "vq0", "vq1", "shutdown", "detach";
 	status = "okay";
 
 	/* USER CODE BEGIN m4_rproc */
@@ -620,6 +609,7 @@
 	interrupt-parent = <&exti>;
 	interrupts = <68 1>;
 	wakeup-source;
+	st,auto-boot = <1>;
 	/* USER CODE END m4_rproc */
 
 	m4_system_resources{
@@ -842,16 +832,6 @@
 			post-reset-delay-us = <1000>;
 		};
 	};
-};
-
-&fmc{
-	pinctrl-names = "default", "sleep";
-	pinctrl-0 = <&fmc_pins_mx>;
-	pinctrl-1 = <&fmc_sleep_pins_mx>;
-	status = "okay";
-
-	/* USER CODE BEGIN fmc */
-	/* USER CODE END fmc */
 };
 
 &gpu{
@@ -1115,6 +1095,45 @@
 	/* USER CODE END m4_dma2 */
 };
 
+&m4_uart7{
+	pinctrl-names = "default";
+	pinctrl-0 = <&m4_uart7_pins_mx>;
+	status = "okay";
+
+	/* USER CODE BEGIN m4_uart7 */
+	/* USER CODE END m4_uart7 */
+};
+
+&spi3{
+	pinctrl-names = "default", "sleep";
+	pinctrl-0 = <&spi3_pins_mx>;
+	pinctrl-1 = <&spi3_sleep_pins_mx>;
+	status = "okay";
+
+	/* USER CODE BEGIN spi3 */
+	/delete-property/dmas;
+	/delete-property/dma-names;
+	cs-gpios = <&gpioe 1 0>;
+    spidev@0{
+        compatible = "rohm,dh2228fv";
+        reg = <0>;
+        spi-max-frequency = <8000000>;
+    };
+	/* USER CODE END spi3 */
+};
+
+&usart3{
+	pinctrl-names = "default", "sleep";
+	pinctrl-0 = <&usart3_pins_mx>;
+	pinctrl-1 = <&usart3_sleep_pins_mx>;
+	status = "okay";
+
+	/* USER CODE BEGIN usart3 */
+	/delete-property/dmas;
+	/delete-property/dma-names;
+	/* USER CODE END usart3 */
+};
+
 &mdma1{
 	status = "okay";
 
@@ -1271,11 +1290,11 @@
 	cpu-supply = <&vddcore>;
 };
 
-&sram{
-	dma_pool:dma_pool@0{
-		reg = <0x50000 0x10000>;
-		pool;
-	};
+&sram {
+       dma_pool: dma_pool@0 {
+        	reg = <0x50000 0x10000>;
+           pool;
+       };
 };
 /* USER CODE END addons */
 
