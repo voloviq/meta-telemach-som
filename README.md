@@ -37,8 +37,9 @@ bitbake st-image-weston
 ```
 **Note:**
 To save some space in disk modify two records in local.conf file <br>
-DL_DIR ?= "${HOME}/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/downloads" <br>
-SSTATE_DIR ?= "${HOME}/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/sstate-cache" <br>
+DL_DIR ?= "${HOME}/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/downloads" <br>
+SSTATE_DIR ?= "${HOME}/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/sstate-cache" <br>
+TMPDIR = "${HOME}/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp" <br>
 
 **Note:**
 Adding new layer can only be one time <br>
