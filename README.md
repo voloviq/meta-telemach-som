@@ -22,12 +22,12 @@ https://wiki.st.com/stm32mpu/wiki/STM32MP1_Distribution_Package
 The summary of required steps is shown below:
 
 ```shell
-mkdir openstlinux-6.1-yocto-mickledore-mpu-v24.06.26
-cd openstlinux-6.1-yocto-mickledore-mpu-v24.06.26
-repo init -u https://github.com/STMicroelectronics/oe-manifest.git -b refs/tags/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26
+mkdir openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05
+cd openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05
+repo init -u https://github.com/STMicroelectronics/oe-manifest.git -b refs/tags/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05
 repo sync
 cd layers/meta-st
-git clone -b mickledore git@github.com:voloviq/meta-telemach-som.git
+git clone -b scarthgap git@github.com:voloviq/meta-telemach-som.git
 cd ../../
 DISTRO=openstlinux-weston MACHINE=telemach-som source layers/meta-st/scripts/envsetup.sh
 bitbake-layers add-layer ../layers/meta-st/meta-st-stm32mp-addons/
@@ -53,7 +53,7 @@ The following Sofjan Stm32mp157 Telemach SOM are available:
 The compiled image files are located in the directory:
 
 ```
-/.../openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/build-openstlinuxweston-telemach-som/tmp-glibc/deploy/images
+/.../openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/build-openstlinuxweston-telemach-som/tmp-glibc/deploy/images
 ```
 
 ## Installing SD card image
@@ -61,7 +61,7 @@ The compiled image files are located in the directory:
 The SD card image needs to be created using the available script after the building process:
 
 ```
-cd ~/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/build-openstlinuxweston-telemach-som/tmp-glibc/deploy/images/telemach-som/scripts
+cd ~/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/build-openstlinuxweston-telemach-som/tmp-glibc/deploy/images/telemach-som/scripts
 ./create_sdcard_from_flashlayout.sh ../flashlayout_st-image-weston/trusted/FlashLayout_telemach-som-trusted.tsv
 ```
 
