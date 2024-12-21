@@ -1,23 +1,22 @@
 .stm32mp157c-telemach-som-mx.dtb.pre.o: \
- /home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-som-mx.dtb.pre.tmp \
- /home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/include/linux/kconfig.h \
+ /home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-som-mx.dtb.pre.tmp \
+ /home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/include/linux/kconfig.h \
  include/generated/autoconf.h \
- /home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/pinctrl/stm32-pinfunc.h \
- /home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp157.dtsi \
- /home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp153.dtsi \
- /home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp151.dtsi \
- /home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/bus/stm32mp15_sys_bus.h \
- /home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/interrupt-controller/arm-gic.h \
- /home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/interrupt-controller/irq.h \
- /home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/clock/stm32mp1-clks.h \
- /home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/gpio/gpio.h \
- /home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/reset/stm32mp1-resets.h \
- /home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp15xc.dtsi \
- /home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp15xa.dtsi \
- /home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp15xxaa-pinctrl.dtsi \
- /home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp15-m4-srm.dtsi \
- /home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp15-scmi.dtsi \
- /home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp15-scmi-u-boot.dtsi \
- /home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/mfd/st,stpmic1.h \
- /home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/rtc/rtc-stm32.h \
- /home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/stm32mp157c-telemach-som-mx-u-boot.dtsi
+ /home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/pinctrl/stm32-pinfunc.h \
+ /home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp157.dtsi \
+ /home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp153.dtsi \
+ /home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp151.dtsi \
+ /home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/interrupt-controller/arm-gic.h \
+ /home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/interrupt-controller/irq.h \
+ /home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/clock/stm32mp1-clks.h \
+ /home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/gpio/gpio.h \
+ /home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/reset/stm32mp1-resets.h \
+ /home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp15xc.dtsi \
+ /home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp15xa.dtsi \
+ /home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp15xxaa-pinctrl.dtsi \
+ /home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp15-m4-srm.dtsi \
+ /home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp15-scmi.dtsi \
+ /home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp15-scmi-u-boot.dtsi \
+ /home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/mfd/st,stpmic1.h \
+ /home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/rtc/rtc-stm32.h \
+ /home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/stm32mp157c-telemach-som-mx-u-boot.dtsi

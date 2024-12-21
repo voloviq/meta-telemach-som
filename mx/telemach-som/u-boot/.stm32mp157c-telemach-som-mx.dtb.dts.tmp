@@ -1,52 +1,50 @@
-# 0 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-som-mx.dtb.pre.tmp"
+# 0 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-som-mx.dtb.pre.tmp"
 # 0 "<built-in>"
 # 0 "<command-line>"
-# 1 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/include/linux/kconfig.h" 1
+# 1 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/include/linux/kconfig.h" 1
 
 
 
 # 1 "include/generated/autoconf.h" 1
-# 5 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/include/linux/kconfig.h" 2
+# 5 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/include/linux/kconfig.h" 2
 # 0 "<command-line>" 2
-# 1 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-som-mx.dtb.pre.tmp"
-# 11 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-som-mx.dtb.pre.tmp"
+# 1 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-som-mx.dtb.pre.tmp"
+# 11 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-som-mx.dtb.pre.tmp"
 /dts-v1/;
 
-# 1 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/pinctrl/stm32-pinfunc.h" 1
-# 14 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-som-mx.dtb.pre.tmp" 2
-# 1 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp157.dtsi" 1
+# 1 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/pinctrl/stm32-pinfunc.h" 1
+# 14 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-som-mx.dtb.pre.tmp" 2
+# 1 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp157.dtsi" 1
 
 
 
 
 
 
-# 1 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp153.dtsi" 1
+# 1 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp153.dtsi" 1
 
 
 
 
 
 
-# 1 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp151.dtsi" 1
+# 1 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp151.dtsi" 1
 
 
 
 
 
-# 1 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/bus/stm32mp15_sys_bus.h" 1
-# 7 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp151.dtsi" 2
-# 1 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/interrupt-controller/arm-gic.h" 1
-# 9 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/interrupt-controller/arm-gic.h"
-# 1 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/interrupt-controller/irq.h" 1
-# 10 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/interrupt-controller/arm-gic.h" 2
-# 8 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp151.dtsi" 2
-# 1 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/clock/stm32mp1-clks.h" 1
-# 9 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp151.dtsi" 2
-# 1 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/gpio/gpio.h" 1
-# 10 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp151.dtsi" 2
-# 1 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/reset/stm32mp1-resets.h" 1
-# 11 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp151.dtsi" 2
+# 1 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/interrupt-controller/arm-gic.h" 1
+# 9 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/interrupt-controller/arm-gic.h"
+# 1 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/interrupt-controller/irq.h" 1
+# 10 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/interrupt-controller/arm-gic.h" 2
+# 7 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp151.dtsi" 2
+# 1 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/clock/stm32mp1-clks.h" 1
+# 8 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp151.dtsi" 2
+# 1 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/gpio/gpio.h" 1
+# 9 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp151.dtsi" 2
+# 1 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/reset/stm32mp1-resets.h" 1
+# 10 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp151.dtsi" 2
 
 / {
  #address-cells = <1>;
@@ -92,14 +90,6 @@
   };
  };
 
- intc: interrupt-controller@a0021000 {
-  compatible = "arm,cortex-a7-gic";
-  #interrupt-cells = <3>;
-  interrupt-controller;
-  reg = <0xa0021000 0x1000>,
-        <0xa0022000 0x2000>;
- };
-
  arm-pmu {
   compatible = "arm,cortex-a7-pmu";
   interrupts = <0 200 4>;
@@ -109,13 +99,21 @@
 
  arm_wdt: watchdog {
   compatible = "arm,smc-wdt";
-  arm,smc-id = <0xb200005a>;
+  arm,smc-id = <0xbc000000>;
   status = "disabled";
  };
 
  psci {
   compatible = "arm,psci-1.0";
   method = "smc";
+ };
+
+ intc: interrupt-controller@a0021000 {
+  compatible = "arm,cortex-a7-gic";
+  #interrupt-cells = <3>;
+  interrupt-controller;
+  reg = <0xa0021000 0x1000>,
+        <0xa0022000 0x2000>;
  };
 
  timer {
@@ -125,6 +123,7 @@
         <1 11 ((((1 << (1)) - 1) << 8) | 8)>,
         <1 10 ((((1 << (1)) - 1) << 8) | 8)>;
   interrupt-parent = <&intc>;
+  arm,no-tick-in-suspend;
  };
 
  clocks {
@@ -179,12 +178,6 @@
   };
  };
 
- booster: regulator-booster {
-  compatible = "st,stm32mp1-booster";
-  st,syscfg = <&syscfg>;
-  status = "disabled";
- };
-
  thermal-zones {
   cpu_thermal: cpu-thermal {
    polling-delay-passive = <0>;
@@ -194,7 +187,7 @@
    trips {
     cpu-crit {
      temperature = <120000>;
-     hysteresis = <0>;
+     hysteresis = <1000>;
      type = "critical";
     };
    };
@@ -202,6 +195,12 @@
    cooling-maps {
    };
   };
+ };
+
+ booster: regulator-booster {
+  compatible = "st,stm32mp1-booster";
+  st,syscfg = <&syscfg>;
+  status = "disabled";
  };
 
  soc {
@@ -304,7 +303,6 @@
    ranges = <0 0x50002000 0xa400>;
    interrupt-parent = <&exti>;
    hwlocks = <&hsem 0 1>;
-   pins-are-numbered;
 
    gpioa: gpio@50002000 {
     gpio-controller;
@@ -433,7 +431,6 @@
    interrupt-controller;
    #interrupt-cells = <2>;
    reg = <0x5000d000 0x400>;
-   hwlocks = <&hsem 1 1>;
    wakeup-parent = <&pwr_irq>;
    interrupts-extended =
     <&intc 0 6 4>,
@@ -540,7 +537,6 @@
    #size-cells = <1>;
    compatible = "st,stm32mp157-z-pinctrl";
    ranges = <0 0x54004000 0x400>;
-   pins-are-numbered;
    interrupt-parent = <&exti>;
    hwlocks = <&hsem 0 1>;
 
@@ -705,14 +701,13 @@
    };
   };
 
-  etzpc: etzpc@5c007000 {
-   compatible = "st,stm32mp15-sys-bus";
+  etzpc: bus@5c007000 {
+   compatible = "st,stm32-etzpc", "simple-bus";
    reg = <0x5c007000 0x400>;
    #address-cells = <1>;
    #size-cells = <1>;
+   #access-controller-cells = <1>;
    ranges;
-   feature-domain-controller;
-   #feature-domain-cells = <1>;
 
    timers2: timer@40000000 {
     #address-cells = <1>;
@@ -729,7 +724,7 @@
            <&dmamux1 21 0x400 0x1>,
            <&dmamux1 22 0x400 0x1>;
     dma-names = "ch1", "ch2", "ch3", "ch4", "up";
-    feature-domains = <&etzpc 16>;
+    access-controllers = <&etzpc 16>;
     status = "disabled";
 
     pwm {
@@ -766,7 +761,7 @@
            <&dmamux1 27 0x400 0x1>,
            <&dmamux1 28 0x400 0x1>;
     dma-names = "ch1", "ch2", "ch3", "ch4", "up", "trig";
-    feature-domains = <&etzpc 17>;
+    access-controllers = <&etzpc 17>;
     status = "disabled";
 
     pwm {
@@ -801,7 +796,7 @@
            <&dmamux1 31 0x400 0x1>,
            <&dmamux1 32 0x400 0x1>;
     dma-names = "ch1", "ch2", "ch3", "ch4";
-    feature-domains = <&etzpc 18>;
+    access-controllers = <&etzpc 18>;
     status = "disabled";
 
     pwm {
@@ -838,7 +833,7 @@
            <&dmamux1 59 0x400 0x1>,
            <&dmamux1 60 0x400 0x1>;
     dma-names = "ch1", "ch2", "ch3", "ch4", "up", "trig";
-    feature-domains = <&etzpc 19>;
+    access-controllers = <&etzpc 19>;
     status = "disabled";
 
     pwm {
@@ -870,7 +865,7 @@
     clock-names = "int";
     dmas = <&dmamux1 69 0x400 0x1>;
     dma-names = "up";
-    feature-domains = <&etzpc 20>;
+    access-controllers = <&etzpc 20>;
     status = "disabled";
 
     counter {
@@ -896,7 +891,7 @@
     clock-names = "int";
     dmas = <&dmamux1 70 0x400 0x1>;
     dma-names = "up";
-    feature-domains = <&etzpc 21>;
+    access-controllers = <&etzpc 21>;
     status = "disabled";
 
     counter {
@@ -920,7 +915,7 @@
     interrupt-names = "global";
     clocks = <&rcc 203>;
     clock-names = "int";
-    feature-domains = <&etzpc 22>;
+    access-controllers = <&etzpc 22>;
     status = "disabled";
 
     counter {
@@ -950,7 +945,7 @@
     interrupt-names = "global";
     clocks = <&rcc 204>;
     clock-names = "int";
-    feature-domains = <&etzpc 23>;
+    access-controllers = <&etzpc 23>;
     status = "disabled";
 
     counter {
@@ -980,7 +975,7 @@
     interrupt-names = "global";
     clocks = <&rcc 205>;
     clock-names = "int";
-    feature-domains = <&etzpc 24>;
+    access-controllers = <&etzpc 24>;
     status = "disabled";
 
     counter {
@@ -1011,7 +1006,7 @@
     clock-names = "mux";
     power-domains = <&pd_core>;
     wakeup-source;
-    feature-domains = <&etzpc 25>;
+    access-controllers = <&etzpc 25>;
     status = "disabled";
 
     pwm {
@@ -1045,7 +1040,7 @@
     dmas = <&dmamux1 39 0x400 0x01>,
            <&dmamux1 40 0x400 0x01>;
     dma-names = "rx", "tx";
-    feature-domains = <&etzpc 27>;
+    access-controllers = <&etzpc 27>;
     status = "disabled";
    };
 
@@ -1060,7 +1055,7 @@
     dmas = <&dmamux1 39 0x400 0x01>,
            <&dmamux1 40 0x400 0x01>;
     dma-names = "rx", "tx";
-    feature-domains = <&etzpc 27>;
+    access-controllers = <&etzpc 27>;
     status = "disabled";
    };
 
@@ -1072,7 +1067,7 @@
     dmas = <&dmamux1 61 0x400 0x01>,
            <&dmamux1 62 0x400 0x01>;
     dma-names = "rx", "tx";
-    feature-domains = <&etzpc 28>;
+    access-controllers = <&etzpc 28>;
     status = "disabled";
    };
 
@@ -1087,7 +1082,7 @@
     dmas = <&dmamux1 61 0x400 0x01>,
            <&dmamux1 62 0x400 0x01>;
     dma-names = "rx", "tx";
-    feature-domains = <&etzpc 28>;
+    access-controllers = <&etzpc 28>;
     status = "disabled";
    };
 
@@ -1101,7 +1096,7 @@
     dmas = <&dmamux1 93 0x400 0x01>,
            <&dmamux1 94 0x400 0x01>;
     dma-names = "rx", "rx-ctrl";
-    feature-domains = <&etzpc 29>;
+    access-controllers = <&etzpc 29>;
     status = "disabled";
    };
 
@@ -1115,7 +1110,7 @@
     dmas = <&dmamux1 43 0x400 0x15>,
            <&dmamux1 44 0x400 0x11>;
     dma-names = "rx", "tx";
-    feature-domains = <&etzpc 30>;
+    access-controllers = <&etzpc 30>;
     status = "disabled";
    };
 
@@ -1129,7 +1124,7 @@
     dmas = <&dmamux1 45 0x400 0x15>,
            <&dmamux1 46 0x400 0x11>;
     dma-names = "rx", "tx";
-    feature-domains = <&etzpc 31>;
+    access-controllers = <&etzpc 31>;
     status = "disabled";
    };
 
@@ -1139,11 +1134,11 @@
     interrupts-extended = <&exti 30 4>;
     clocks = <&rcc 151>;
     wakeup-source;
-    power-domains = <&pd_core>;
     dmas = <&dmamux1 63 0x400 0x15>,
            <&dmamux1 64 0x400 0x11>;
     dma-names = "rx", "tx";
-    feature-domains = <&etzpc 32>;
+    power-domains = <&pd_core>;
+    access-controllers = <&etzpc 32>;
     status = "disabled";
    };
 
@@ -1157,7 +1152,7 @@
     dmas = <&dmamux1 65 0x400 0x15>,
            <&dmamux1 66 0x400 0x11>;
     dma-names = "rx", "tx";
-    feature-domains = <&etzpc 33>;
+    access-controllers = <&etzpc 33>;
     status = "disabled";
    };
 
@@ -1178,7 +1173,7 @@
     st,syscfg-fmp = <&syscfg 0x4 0x1>;
     wakeup-source;
     i2c-analog-filter;
-    feature-domains = <&etzpc 34>;
+    access-controllers = <&etzpc 34>;
     status = "disabled";
    };
 
@@ -1199,7 +1194,7 @@
     st,syscfg-fmp = <&syscfg 0x4 0x2>;
     wakeup-source;
     i2c-analog-filter;
-    feature-domains = <&etzpc 35>;
+    access-controllers = <&etzpc 35>;
     status = "disabled";
    };
 
@@ -1220,7 +1215,7 @@
     st,syscfg-fmp = <&syscfg 0x4 0x4>;
     wakeup-source;
     i2c-analog-filter;
-    feature-domains = <&etzpc 36>;
+    access-controllers = <&etzpc 36>;
     status = "disabled";
    };
 
@@ -1241,7 +1236,7 @@
     st,syscfg-fmp = <&syscfg 0x4 0x10>;
     wakeup-source;
     i2c-analog-filter;
-    feature-domains = <&etzpc 37>;
+    access-controllers = <&etzpc 37>;
     status = "disabled";
    };
 
@@ -1251,7 +1246,7 @@
     interrupts = <0 94 4>;
     clocks = <&rcc 136>, <&rcc 29>;
     clock-names = "cec", "hdmi-cec";
-    feature-domains = <&etzpc 38>;
+    access-controllers = <&etzpc 38>;
     status = "disabled";
    };
 
@@ -1262,7 +1257,7 @@
     clock-names = "pclk";
     #address-cells = <1>;
     #size-cells = <0>;
-    feature-domains = <&etzpc 39>;
+    access-controllers = <&etzpc 39>;
     status = "disabled";
 
     dac1: dac@1 {
@@ -1290,7 +1285,7 @@
     dmas = <&dmamux1 79 0x400 0x15>,
            <&dmamux1 80 0x400 0x11>;
     dma-names = "rx", "tx";
-    feature-domains = <&etzpc 40>;
+    access-controllers = <&etzpc 40>;
     status = "disabled";
    };
 
@@ -1304,7 +1299,7 @@
     dmas = <&dmamux1 81 0x400 0x15>,
            <&dmamux1 82 0x400 0x11>;
     dma-names = "rx", "tx";
-    feature-domains = <&etzpc 41>;
+    access-controllers = <&etzpc 41>;
     status = "disabled";
    };
 
@@ -1329,7 +1324,7 @@
            <&dmamux1 17 0x400 0x1>;
     dma-names = "ch1", "ch2", "ch3", "ch4",
          "up", "trig", "com";
-    feature-domains = <&etzpc 48>;
+    access-controllers = <&etzpc 48>;
     status = "disabled";
 
     pwm {
@@ -1371,7 +1366,7 @@
            <&dmamux1 53 0x400 0x1>;
     dma-names = "ch1", "ch2", "ch3", "ch4",
          "up", "trig", "com";
-    feature-domains = <&etzpc 49>;
+    access-controllers = <&etzpc 49>;
     status = "disabled";
 
     pwm {
@@ -1402,7 +1397,7 @@
     dmas = <&dmamux1 71 0x400 0x15>,
            <&dmamux1 72 0x400 0x11>;
     dma-names = "rx", "tx";
-    feature-domains = <&etzpc 51>;
+    access-controllers = <&etzpc 51>;
     status = "disabled";
    };
 
@@ -1414,7 +1409,7 @@
     dmas = <&dmamux1 37 0x400 0x01>,
            <&dmamux1 38 0x400 0x01>;
     dma-names = "rx", "tx";
-    feature-domains = <&etzpc 52>;
+    access-controllers = <&etzpc 52>;
     status = "disabled";
    };
 
@@ -1429,7 +1424,7 @@
     dmas = <&dmamux1 37 0x400 0x01>,
            <&dmamux1 38 0x400 0x01>;
     dma-names = "rx", "tx";
-    feature-domains = <&etzpc 52>;
+    access-controllers = <&etzpc 52>;
     status = "disabled";
    };
 
@@ -1444,7 +1439,7 @@
     dmas = <&dmamux1 83 0x400 0x01>,
            <&dmamux1 84 0x400 0x01>;
     dma-names = "rx", "tx";
-    feature-domains = <&etzpc 53>;
+    access-controllers = <&etzpc 53>;
     status = "disabled";
    };
 
@@ -1462,7 +1457,7 @@
            <&dmamux1 107 0x400 0x1>,
            <&dmamux1 108 0x400 0x1>;
     dma-names = "ch1", "up", "trig", "com";
-    feature-domains = <&etzpc 54>;
+    access-controllers = <&etzpc 54>;
     status = "disabled";
 
     counter {
@@ -1495,7 +1490,7 @@
     dmas = <&dmamux1 109 0x400 0x1>,
            <&dmamux1 110 0x400 0x1>;
     dma-names = "ch1", "up";
-    feature-domains = <&etzpc 55>;
+    access-controllers = <&etzpc 55>;
     status = "disabled";
 
     counter {
@@ -1528,7 +1523,7 @@
     dmas = <&dmamux1 111 0x400 0x1>,
            <&dmamux1 112 0x400 0x1>;
     dma-names = "ch1", "up";
-    feature-domains = <&etzpc 56>;
+    access-controllers = <&etzpc 56>;
     status = "disabled";
 
     counter {
@@ -1560,7 +1555,7 @@
     dmas = <&dmamux1 85 0x400 0x01>,
            <&dmamux1 86 0x400 0x01>;
     dma-names = "rx", "tx";
-    feature-domains = <&etzpc 57>;
+    access-controllers = <&etzpc 57>;
     status = "disabled";
    };
 
@@ -1572,7 +1567,7 @@
     reg = <0x4400a000 0x4>, <0x4400a3f0 0x10>;
     interrupts = <0 87 4>;
     resets = <&rcc 19536>;
-    feature-domains = <&etzpc 58>;
+    access-controllers = <&etzpc 58>;
     status = "disabled";
 
     sai1a: audio-controller@4400a004 {
@@ -1605,7 +1600,7 @@
     reg = <0x4400b000 0x4>, <0x4400b3f0 0x10>;
     interrupts = <0 91 4>;
     resets = <&rcc 19537>;
-    feature-domains = <&etzpc 59>;
+    access-controllers = <&etzpc 59>;
     status = "disabled";
 
     sai2a: audio-controller@4400b004 {
@@ -1637,7 +1632,7 @@
     reg = <0x4400c000 0x4>, <0x4400c3f0 0x10>;
     interrupts = <0 114 4>;
     resets = <&rcc 19538>;
-    feature-domains = <&etzpc 60>;
+    access-controllers = <&etzpc 60>;
     status = "disabled";
 
     sai3a: audio-controller@4400c004 {
@@ -1668,7 +1663,7 @@
     clock-names = "dfsdm";
     #address-cells = <1>;
     #size-cells = <0>;
-    feature-domains = <&etzpc 61>;
+    access-controllers = <&etzpc 61>;
     status = "disabled";
 
     dfsdm0: filter@0 {
@@ -1748,7 +1743,7 @@
     #dma-cells = <4>;
     st,mem2mem;
     dma-requests = <8>;
-    feature-domains = <&etzpc 88>;
+    access-controllers = <&etzpc 88>;
    };
 
    dma2: dma-controller@48001000 {
@@ -1767,7 +1762,7 @@
     #dma-cells = <4>;
     st,mem2mem;
     dma-requests = <8>;
-    feature-domains = <&etzpc 89>;
+    access-controllers = <&etzpc 89>;
    };
 
    dmamux1: dma-router@48002000 {
@@ -1779,7 +1774,7 @@
     dma-channels = <16>;
     clocks = <&rcc 73>;
     resets = <&rcc 19650>;
-    feature-domains = <&etzpc 90>;
+    access-controllers = <&etzpc 90>;
    };
 
    adc: adc@48003000 {
@@ -1794,7 +1789,7 @@
     #interrupt-cells = <1>;
     #address-cells = <1>;
     #size-cells = <0>;
-    feature-domains = <&etzpc 72>;
+    access-controllers = <&etzpc 72>;
     status = "disabled";
 
     adc1: adc@0 {
@@ -1845,8 +1840,8 @@
     cap-sd-highspeed;
     cap-mmc-highspeed;
     max-frequency = <120000000>;
+    access-controllers = <&etzpc 86>;
     status = "disabled";
-    feature-domains = <&etzpc 86>;
    };
 
    usbotg_hs: usb-otg@49000000 {
@@ -1865,7 +1860,7 @@
     usb33d-supply = <&usb33>;
     power-domains = <&pd_core>;
     wakeup-source;
-    feature-domains = <&etzpc 85>;
+    access-controllers = <&etzpc 85>;
     status = "disabled";
    };
 
@@ -1878,7 +1873,7 @@
     clock-names = "mclk";
     dmas = <&dmamux1 75 0x400 0x01>;
     dma-names = "tx";
-    feature-domains = <&etzpc 70>;
+    access-controllers = <&etzpc 70>;
     status = "disabled";
    };
 
@@ -1892,7 +1887,7 @@
     clock-names = "mux";
     power-domains = <&pd_core>;
     wakeup-source;
-    feature-domains = <&etzpc 64>;
+    access-controllers = <&etzpc 64>;
     status = "disabled";
 
     pwm {
@@ -1928,7 +1923,7 @@
     clock-names = "mux";
     power-domains = <&pd_core>;
     wakeup-source;
-    feature-domains = <&etzpc 65>;
+    access-controllers = <&etzpc 65>;
     status = "disabled";
 
     pwm {
@@ -1957,7 +1952,7 @@
     clock-names = "mux";
     power-domains = <&pd_core>;
     wakeup-source;
-    feature-domains = <&etzpc 66>;
+    access-controllers = <&etzpc 66>;
     status = "disabled";
 
     pwm {
@@ -1980,7 +1975,7 @@
     clock-names = "mux";
     power-domains = <&pd_core>;
     wakeup-source;
-    feature-domains = <&etzpc 67>;
+    access-controllers = <&etzpc 67>;
     status = "disabled";
 
     pwm {
@@ -2001,7 +1996,7 @@
     regulator-min-microvolt = <1500000>;
     regulator-max-microvolt = <2500000>;
     clocks = <&rcc 52>;
-    feature-domains = <&etzpc 69>;
+    access-controllers = <&etzpc 69>;
     status = "disabled";
    };
 
@@ -2013,7 +2008,7 @@
     reg = <0x50027000 0x4>, <0x500273f0 0x10>;
     interrupts = <0 146 4>;
     resets = <&rcc 19592>;
-    feature-domains = <&etzpc 68>;
+    access-controllers = <&etzpc 68>;
     status = "disabled";
 
     sai4a: audio-controller@50027004 {
@@ -2046,7 +2041,7 @@
     dmas = <&mdma1 31 0x2 0x1000a02 0x0 0x0>;
     dma-names = "in";
     dma-maxburst = <2>;
-    feature-domains = <&etzpc 8>;
+    access-controllers = <&etzpc 8>;
     status = "disabled";
    };
 
@@ -2055,7 +2050,7 @@
     reg = <0x54003000 0x400>;
     clocks = <&rcc 124>;
     resets = <&rcc 3206>;
-    feature-domains = <&etzpc 7>;
+    access-controllers = <&etzpc 7>;
     status = "disabled";
    };
 
@@ -2066,7 +2061,7 @@
     reg = <0x58002000 0x1000>;
     clocks = <&rcc 121>;
     resets = <&rcc 3276>;
-    feature-domains = <&etzpc 91>;
+    access-controllers = <&etzpc 91>;
     status = "disabled";
 
     ranges = <0 0 0x60000000 0x04000000>,
@@ -2106,7 +2101,7 @@
     resets = <&rcc 3278>;
     #address-cells = <1>;
     #size-cells = <0>;
-    feature-domains = <&etzpc 92>;
+    access-controllers = <&etzpc 92>;
     status = "disabled";
    };
 
@@ -2136,9 +2131,10 @@
     snps,en-tx-lpi-clockgating;
     snps,axi-config = <&stmmac_axi_config_0>;
     snps,tso;
-    feature-domains = <&etzpc 94>;
-    status = "disabled";
     power-domains = <&pd_core>;
+    wakeup-source;
+    access-controllers = <&etzpc 94>;
+    status = "disabled";
 
     stmmac_axi_config_0: stmmac-axi-config {
      snps,wr_osr_lmt = <0x7>;
@@ -2154,7 +2150,7 @@
     clocks = <&rcc 148>;
     wakeup-source;
     power-domains = <&pd_core>;
-    feature-domains = <&etzpc 3>;
+    access-controllers = <&etzpc 3>;
     status = "disabled";
    };
 
@@ -2169,7 +2165,7 @@
     dmas = <&mdma1 34 0x0 0x40008 0x0 0x0>,
            <&mdma1 35 0x0 0x40002 0x0 0x0>;
     dma-names = "rx", "tx";
-    feature-domains = <&etzpc 4>;
+    access-controllers = <&etzpc 4>;
     status = "disabled";
    };
 
@@ -2190,7 +2186,7 @@
     st,syscfg-fmp = <&syscfg 0x4 0x8>;
     wakeup-source;
     i2c-analog-filter;
-    feature-domains = <&etzpc 5>;
+    access-controllers = <&etzpc 5>;
     status = "disabled";
    };
 
@@ -2211,7 +2207,7 @@
     st,syscfg-fmp = <&syscfg 0x4 0x20>;
     wakeup-source;
     i2c-analog-filter;
-    feature-domains = <&etzpc 12>;
+    access-controllers = <&etzpc 12>;
     status = "disabled";
    };
   };
@@ -2225,77 +2221,80 @@
 
    nvram: nvram@5c00a100 {
     compatible = "st,stm32mp15-tamp-nvram";
-    #address-cells = <1>;
-    #size-cells = <1>;
     reg = <0x5c00a100 0x80>;
 
-    wakeup_sec: tamp-bkp@0 {
-     reg = <0x0 0x4>;
-    };
+    nvmem-layout {
+     compatible = "fixed-layout";
+     #address-cells = <1>;
+     #size-cells = <1>;
+     wakeup_sec: tamp-bkp@0 {
+      reg = <0x0 0x4>;
+     };
 
-    m4_security_perimeter_exti1: tamp-bkp@4 {
+     m4_security_perimeter_exti1: tamp-bkp@4 {
 
-     reg = <0x4 0x4>;
-    };
+      reg = <0x4 0x4>;
+     };
 
-    m4_security_perimeter_exti2: tamp-bkp@8 {
+     m4_security_perimeter_exti2: tamp-bkp@8 {
 
-     reg = <0x8 0x4>;
-    };
+      reg = <0x8 0x4>;
+     };
 
-    m4_security_perimeter_exti3: tamp-bkp@c {
+     m4_security_perimeter_exti3: tamp-bkp@c {
 
-     reg = <0xc 0x4>;
-    };
+      reg = <0xc 0x4>;
+     };
 
-    magic_number: tamp-bkp@10 {
+     magic_number: tamp-bkp@10 {
 
-     reg = <0x10 0x4>;
-    };
+      reg = <0x10 0x4>;
+     };
 
-    branch_address: tamp-bkp@14 {
+     branch_address: tamp-bkp@14 {
 
-     reg = <0x14 0x4>;
-    };
+      reg = <0x14 0x4>;
+     };
 
-    fwu_info: tamp-bkp@28 {
+     fwu_info: tamp-bkp@28 {
 
-     reg = <0x28 0x4>;
-    };
+      reg = <0x28 0x4>;
+     };
 
-    copro_rsc_tbl_address: tamp-bkp@44 {
+     copro_rsc_tbl_address: tamp-bkp@44 {
 
-     reg = <0x44 0x4>;
-    };
+      reg = <0x44 0x4>;
+     };
 
-    cortex_m_state: tamp-bkp@48 {
+     cortex_m_state: tamp-bkp@48 {
 
-     reg = <0x48 0x4>;
-    };
+      reg = <0x48 0x4>;
+     };
 
-    boot_mode: tamp-bkp@50 {
+     boot_mode: tamp-bkp@50 {
 
-     reg = <0x50 0x4>;
-    };
+      reg = <0x50 0x4>;
+     };
 
-    boot_counter: tamp-bkp@54 {
+     boot_counter: tamp-bkp@54 {
 
-     reg = <0x54 0x4>;
-    };
+      reg = <0x54 0x4>;
+     };
 
-    m4_wakeup_area_start: tamp-bkp@58 {
+     m4_wakeup_area_start: tamp-bkp@58 {
 
-     reg = <0x58 0x4>;
-    };
+      reg = <0x58 0x4>;
+     };
 
-    m4_wakeup_area_length: tamp-bkp@5c {
+     m4_wakeup_area_length: tamp-bkp@5c {
 
-     reg = <0x5c 0x4>;
-    };
+      reg = <0x5c 0x4>;
+     };
 
-    m4_wakeup_area_hash: tamp-bkp@60 {
+     m4_wakeup_area_hash: tamp-bkp@60 {
 
-     reg = <0x60 0x20>;
+      reg = <0x60 0x20>;
+     };
     };
    };
 
@@ -2330,6 +2329,7 @@
          <0x30000000 0x40000>,
          <0x38000000 0x10000>;
    resets = <&rcc 8225>;
+   reset-names = "mcu_rst";
    st,syscfg-holdboot = <&rcc 0x10c 0x1>;
    st,syscfg-pdds = <&pwr_mcu 0x0 0x1>;
    st,syscfg-rsc-tbl = <&tamp 0x144 0xffffffff>;
@@ -2343,7 +2343,7 @@
   };
  };
 };
-# 8 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp153.dtsi" 2
+# 8 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp153.dtsi" 2
 
 / {
  cpus {
@@ -2368,40 +2368,38 @@
         <1 11 ((((1 << (2)) - 1) << 8) | 8)>,
         <1 10 ((((1 << (2)) - 1) << 8) | 8)>;
  };
+};
 
- soc {
-  etzpc: etzpc@5c007000 {
-   m_can1: can@4400e000 {
-    compatible = "bosch,m_can";
-    reg = <0x4400e000 0x400>, <0x44011000 0x1400>;
-    reg-names = "m_can", "message_ram";
-    interrupts = <0 19 4>,
-          <0 21 4>;
-    interrupt-names = "int0", "int1";
-    clocks = <&rcc 0>, <&rcc 157>;
-    clock-names = "hclk", "cclk";
-    bosch,mram-cfg = <0x0 0 0 32 0 0 2 2>;
-    feature-domains = <&etzpc 62>;
-    status = "disabled";
-   };
+&etzpc {
+ m_can1: can@4400e000 {
+  compatible = "bosch,m_can";
+  reg = <0x4400e000 0x400>, <0x44011000 0x1400>;
+  reg-names = "m_can", "message_ram";
+  interrupts = <0 19 4>,
+        <0 21 4>;
+  interrupt-names = "int0", "int1";
+  clocks = <&rcc 0>, <&rcc 157>;
+  clock-names = "hclk", "cclk";
+  bosch,mram-cfg = <0x0 0 0 32 0 0 2 2>;
+  access-controllers = <&etzpc 62>;
+  status = "disabled";
+ };
 
-   m_can2: can@4400f000 {
-    compatible = "bosch,m_can";
-    reg = <0x4400f000 0x400>, <0x44011000 0x2800>;
-    reg-names = "m_can", "message_ram";
-    interrupts = <0 20 4>,
-          <0 22 4>;
-    interrupt-names = "int0", "int1";
-    clocks = <&rcc 0>, <&rcc 157>;
-    clock-names = "hclk", "cclk";
-    bosch,mram-cfg = <0x1400 0 0 32 0 0 2 2>;
-    feature-domains = <&etzpc 62>;
-    status = "disabled";
-   };
-  };
+ m_can2: can@4400f000 {
+  compatible = "bosch,m_can";
+  reg = <0x4400f000 0x400>, <0x44011000 0x2800>;
+  reg-names = "m_can", "message_ram";
+  interrupts = <0 20 4>,
+        <0 22 4>;
+  interrupt-names = "int0", "int1";
+  clocks = <&rcc 0>, <&rcc 157>;
+  clock-names = "hclk", "cclk";
+  bosch,mram-cfg = <0x1400 0 0 32 0 0 2 2>;
+  access-controllers = <&etzpc 62>;
+  status = "disabled";
  };
 };
-# 8 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp157.dtsi" 2
+# 8 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp157.dtsi" 2
 
 / {
  soc {
@@ -2417,46 +2415,59 @@
   dsi: dsi@5a000000 {
    compatible = "st,stm32-dsi";
    reg = <0x5a000000 0x800>;
-   phy-dsi-supply = <&reg18>;
    clocks = <&rcc 57>, <&clk_hse>, <&rcc 164>;
    clock-names = "pclk", "ref", "px_clk";
+   phy-dsi-supply = <&reg18>;
    resets = <&rcc 3076>;
    reset-names = "apb";
    status = "disabled";
-  };
- };
-};
-# 15 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-som-mx.dtb.pre.tmp" 2
-# 1 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp15xc.dtsi" 1
 
+   ports {
+    #address-cells = <1>;
+    #size-cells = <0>;
 
+    port@0 {
+     reg = <0>;
+     dsi_in: endpoint {
+     };
+    };
 
-
-
-
-# 1 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp15xa.dtsi" 1
-# 8 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp15xc.dtsi" 2
-
-/ {
- soc {
-  etzpc: etzpc@5c007000 {
-   cryp1: cryp@54001000 {
-    compatible = "st,stm32mp1-cryp";
-    reg = <0x54001000 0x400>;
-    interrupts = <0 79 4>;
-    clocks = <&rcc 96>;
-    resets = <&rcc 3204>;
-    dmas = <&mdma1 29 0x0 0x400202 0x0 0x0>,
-           <&mdma1 30 0x3 0x400808 0x0 0x0>;
-    dma-names = "in", "out";
-    feature-domains = <&etzpc 9>;
-    status = "disabled";
+    port@1 {
+     reg = <1>;
+     dsi_out: endpoint {
+     };
+    };
    };
   };
  };
 };
-# 16 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-som-mx.dtb.pre.tmp" 2
-# 1 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp15xxaa-pinctrl.dtsi" 1
+# 15 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-som-mx.dtb.pre.tmp" 2
+# 1 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp15xc.dtsi" 1
+
+
+
+
+
+
+# 1 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp15xa.dtsi" 1
+# 8 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp15xc.dtsi" 2
+
+&etzpc {
+ cryp1: cryp@54001000 {
+  compatible = "st,stm32mp1-cryp";
+  reg = <0x54001000 0x400>;
+  interrupts = <0 79 4>;
+  clocks = <&rcc 96>;
+  resets = <&rcc 3204>;
+  dmas = <&mdma1 29 0x0 0x400202 0x0 0x0>,
+         <&mdma1 30 0x3 0x400808 0x0 0x0>;
+  dma-names = "in", "out";
+  access-controllers = <&etzpc 9>;
+  status = "disabled";
+ };
+};
+# 16 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-som-mx.dtb.pre.tmp" 2
+# 1 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp15xxaa-pinctrl.dtsi" 1
 
 
 
@@ -2542,8 +2553,8 @@
   gpio-ranges = <&pinctrl_z 0 400 8>;
  };
 };
-# 17 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-som-mx.dtb.pre.tmp" 2
-# 1 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp15-m4-srm.dtsi" 1
+# 17 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-som-mx.dtb.pre.tmp" 2
+# 1 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp15-m4-srm.dtsi" 1
 
 
 
@@ -2991,10 +3002,10 @@
   };
  };
 };
-# 18 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-som-mx.dtb.pre.tmp" 2
+# 18 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-som-mx.dtb.pre.tmp" 2
 
 
-# 1 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp15-scmi.dtsi" 1
+# 1 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp15-scmi.dtsi" 1
 
 
 
@@ -3006,6 +3017,8 @@
   optee: optee {
    compatible = "linaro,optee-tz";
    method = "smc";
+   interrupt-parent = <&intc>;
+   interrupts = <1 15 ((((1 << (2)) - 1) << 8) | 8)>;
   };
 
   scmi: scmi {
@@ -3032,8 +3045,8 @@
 /delete-node/ &clk_lse;
 /delete-node/ &clk_lsi;
 /delete-node/ &clk_csi;
-# 21 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-som-mx.dtb.pre.tmp" 2
-# 1 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp15-scmi-u-boot.dtsi" 1
+# 21 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-som-mx.dtb.pre.tmp" 2
+# 1 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/arch/arm/dts/stm32mp15-scmi-u-boot.dtsi" 1
 
 
 
@@ -3063,20 +3076,15 @@
 
  firmware {
   optee {
-   u-boot,dm-pre-reloc;
+   bootph-all;
   };
  };
 
-
- psci {
-  u-boot,dm-pre-proper;
- };
-
  soc {
-  u-boot,dm-pre-reloc;
+  bootph-all;
 
   ddr: ddr@5a003000 {
-   u-boot,dm-pre-reloc;
+   bootph-all;
 
    compatible = "st,stm32mp1-ddr";
 
@@ -3086,67 +3094,76 @@
    status = "okay";
   };
  };
+
+
+ psci {
+  bootph-some-ram;
+ };
 };
 
 &bsec {
- u-boot,dm-pre-reloc;
+ bootph-all;
 };
 
 &gpioa {
- u-boot,dm-pre-reloc;
+ bootph-all;
 };
 
 &gpiob {
- u-boot,dm-pre-reloc;
+ bootph-all;
 };
 
 &gpioc {
- u-boot,dm-pre-reloc;
+ bootph-all;
 };
 
 &gpiod {
- u-boot,dm-pre-reloc;
+ bootph-all;
 };
 
 &gpioe {
- u-boot,dm-pre-reloc;
+ bootph-all;
 };
 
 &gpiof {
- u-boot,dm-pre-reloc;
+ bootph-all;
 };
 
 &gpiog {
- u-boot,dm-pre-reloc;
+ bootph-all;
 };
 
 &gpioh {
- u-boot,dm-pre-reloc;
+ bootph-all;
 };
 
 &gpioi {
- u-boot,dm-pre-reloc;
+ bootph-all;
 };
 
 &gpioj {
- u-boot,dm-pre-reloc;
+ bootph-all;
 };
 
 &gpiok {
- u-boot,dm-pre-reloc;
+ bootph-all;
 };
 
 &gpioz {
- u-boot,dm-pre-reloc;
+ bootph-all;
+};
+
+&optee {
+ bootph-some-ram;
 };
 
 &iwdg2 {
- u-boot,dm-pre-reloc;
+ bootph-all;
 };
 
 
 &ltdc {
- u-boot,dm-pre-proper;
+ bootph-some-ram;
 };
 
 
@@ -3157,19 +3174,19 @@
 };
 
 &pinctrl {
- u-boot,dm-pre-reloc;
+ bootph-all;
 };
 
 &pinctrl_z {
- u-boot,dm-pre-reloc;
+ bootph-all;
 };
 
 &rcc {
- u-boot,dm-pre-reloc;
+ bootph-all;
 };
 
 &scmi {
- u-boot,dm-pre-proper;
+ bootph-some-ram;
 };
 
 &usart1 {
@@ -3203,11 +3220,11 @@
 &uart8{
  resets = <&rcc 19475>;
 };
-# 22 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-som-mx.dtb.pre.tmp" 2
-# 1 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/mfd/st,stpmic1.h" 1
-# 23 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-som-mx.dtb.pre.tmp" 2
-# 1 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/rtc/rtc-stm32.h" 1
-# 24 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-som-mx.dtb.pre.tmp" 2
+# 22 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-som-mx.dtb.pre.tmp" 2
+# 1 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/mfd/st,stpmic1.h" 1
+# 23 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-som-mx.dtb.pre.tmp" 2
+# 1 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/tmp-glibc/work-shared/telemach-som/uboot-source/include/dt-bindings/rtc/rtc-stm32.h" 1
+# 24 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-som-mx.dtb.pre.tmp" 2
 
 
 / {
@@ -3325,7 +3342,7 @@
         compatible = "dht11";
         gpios = <&gpiok 5 0>;
     };
-# 151 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-som-mx.dtb.pre.tmp"
+# 151 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-som-mx.dtb.pre.tmp"
  pwmleds {
   compatible = "pwm-leds";
   control {
@@ -4461,12 +4478,12 @@
 };
 
 
-# 1 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/stm32mp157c-telemach-som-mx-u-boot.dtsi" 1
-# 16 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/stm32mp157c-telemach-som-mx-u-boot.dtsi"
+# 1 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/stm32mp157c-telemach-som-mx-u-boot.dtsi" 1
+# 16 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/stm32mp157c-telemach-som-mx-u-boot.dtsi"
 / {
 
 
 
 
 };
-# 1287 "/home/mw/openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-som-mx.dtb.pre.tmp" 2
+# 1287 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-som-mx.dtb.pre.tmp" 2
