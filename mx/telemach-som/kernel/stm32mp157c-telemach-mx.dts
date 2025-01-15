@@ -740,8 +740,7 @@
 	pinctrl-names = "default", "sleep";
 	pinctrl-0 = <&eth1_pins_mx>;
 	pinctrl-1 = <&eth1_sleep_pins_mx>;
-	/*status = "okay";*/
-	status = "disabled";
+	status = "okay";
 
 	/* USER CODE BEGIN ethernet0 */
 	phy-mode = "rgmii-id";
