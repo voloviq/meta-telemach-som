@@ -4,10 +4,13 @@ dtb-$(CONFIG_STM32MP13X) += \
 
 
 dtb-$(CONFIG_STM32MP15X) += \
-     stm32mp157c-telemach-som-mx.dtb \
+     stm32mp157c-telemach-mx.dtb \
 
 
 dtb-$(CONFIG_STM32MP25X) += \
+
+
+dtb-$(CONFIG_STM32MP23X) += \
 
 
 #include $(srctree)/scripts/Makefile.dts

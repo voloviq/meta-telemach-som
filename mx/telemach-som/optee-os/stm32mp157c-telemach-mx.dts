@@ -1,0 +1,388 @@
+// SPDX-License-Identifier: (GPL-2.0-or-later OR BSD-3-Clause)
+/*
+ * Copyright (C) 2025, STMicroelectronics - All Rights Reserved
+ * Author: STM32CubeMX code generation for STMicroelectronics.
+ */
+
+/* For more information on Device Tree configuration, please refer to
+ * https://wiki.st.com/stm32mpu/wiki/Category:Device_tree_configuration
+ */
+
+/dts-v1/;
+
+#include <dt-bindings/pinctrl/stm32-pinfunc.h>
+#include <dt-bindings/clock/stm32mp1-clksrc.h>
+#include <dt-bindings/soc/stm32mp15-etzpc.h>
+#include "stm32mp157.dtsi"
+#include "stm32mp15xc.dtsi"
+#include "stm32mp15xxaa-pinctrl.dtsi"
+
+/* USER CODE BEGIN includes */
+#include <dt-bindings/soc/stm32mp15-tzc400.h>
+#include <dt-bindings/gpio/stm32mp_gpio.h>
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/power/stm32mp1-power.h>
+#include <dt-bindings/mfd/st,stpmic1.h>
+#include <dt-bindings/soc/stm32mp-provisioning.h>
+#include <dt-bindings/tamper/st,stm32-tamp.h>
+#include "stm32mp15xa.dtsi"
+#include "stm32mp15-pinctrl.dtsi"
+/* USER CODE END includes */
+
+/ {
+	model = "Telemach SOM";
+	compatible = "st,stm32mp157c-telemach-mx", "st,stm32mp157";
+
+	memory@c0000000 {
+		device_type = "memory";
+		reg = <0xc0000000 0x20000000>;
+
+		/* USER CODE BEGIN memory */
+		/* USER CODE END memory */
+	};
+
+	reserved-memory {
+		#address-cells = <1>;
+		#size-cells = <1>;
+		ranges;
+
+		/* USER CODE BEGIN reserved-memory */
+		gpu_reserved: gpu@d4000000 {
+			reg = <0xd4000000 0x4000000>;
+			no-map;
+		};
+		/* USER CODE END reserved-memory */
+	};
+
+	/* USER CODE BEGIN root */
+
+	shadow-prov {
+		compatible = "st,provisioning";
+		hw2_prov {
+			nvmem-cells = <&hw2_otp>;
+			st,shadow-value = <0x000001E0>;
+			st,shadow-lock = <STICKY_LOCK_SR>;
+		};
+	};
+
+	aliases {
+		serial0 = &uart4;
+		mmc0 = &sdmmc1;
+	};
+
+	chosen {
+		stdout-path = "serial0:115200n8";
+	};
+
+	vin: vin {
+		compatible = "regulator-fixed";
+		regulator-name = "vin";
+		regulator-min-microvolt = <5000000>;
+		regulator-max-microvolt = <5000000>;
+		regulator-always-on;
+	};
+
+	vmmc: fixedregulator@1 {
+		compatible = "regulator-fixed";
+		regulator-name = "vmmc";
+		regulator-min-microvolt = <3300000>;
+		regulator-max-microvolt = <3300000>;
+		startup-delay-us = <70000>;
+		enable-active-high;
+	};
+
+	vddcore: vddcore {
+		compatible = "regulator-fixed";
+		regulator-name = "vddcore";
+		regulator-min-microvolt = <1200000>;
+		regulator-max-microvolt = <1350000>;
+		regulator-always-on;
+	};
+
+	vdd_usb: vdd_usb {
+		compatible = "regulator-fixed";
+		regulator-name = "vdd_usb";
+		regulator-min-microvolt = <3300000>;
+		regulator-max-microvolt = <3300000>;
+		regulator-always-on;
+	};
+
+	vdd: vdd {
+		compatible = "regulator-fixed";
+		regulator-name = "vdd";
+		regulator-min-microvolt = <3300000>;
+		regulator-max-microvolt = <3300000>;
+		regulator-always-on;
+	};
+
+	/* USER CODE END root */
+
+	clocks {
+		/* USER CODE BEGIN clocks */
+		/* USER CODE END clocks */
+
+		clk_hsi: clk-hsi {
+			clock-frequency = <64000000>;
+
+			/* USER CODE BEGIN clk_hsi */
+			/* USER CODE END clk_hsi */
+		};
+		clk_lse: clk-lse {
+			clock-frequency = <32768>;
+			st,drive = < LSEDRV_MEDIUM_HIGH >;
+
+			/* USER CODE BEGIN clk_lse */
+			/* USER CODE END clk_lse */
+		};
+		clk_hse: clk-hse {
+			clock-frequency = <24000000>;
+			st,digbypass;
+
+			/* USER CODE BEGIN clk_hse */
+			/* USER CODE END clk_hse */
+		};
+	};
+
+}; /*root*/
+
+/*Warning: the configuration of the secured GPIOs should be added in (addons) User Section*/
+&pinctrl {
+	/* USER CODE BEGIN pinctrl */
+	/* USER CODE END pinctrl */
+};
+
+&pinctrl_z {
+	/* USER CODE BEGIN pinctrl_z */
+	/* USER CODE END pinctrl_z */
+};
+
+&bsec {
+	status = "okay";
+
+	/* USER CODE BEGIN bsec */
+	board_id: board_id@ec {
+		reg = <0xec 0x4>;
+		st,non-secure-otp;
+	};
+	/* USER CODE END bsec */
+};
+
+&etzpc {
+	status = "okay";
+	st,decprot = <
+	/*"Non Secured" peripherals*/
+	DECPROT(STM32MP1_ETZPC_ADC_ID, DECPROT_NS_RW, DECPROT_UNLOCK)
+	DECPROT(STM32MP1_ETZPC_DAC_ID, DECPROT_NS_RW, DECPROT_UNLOCK)
+	DECPROT(STM32MP1_ETZPC_DMA1_ID, DECPROT_NS_RW, DECPROT_UNLOCK)
+	DECPROT(STM32MP1_ETZPC_DMAMUX_ID, DECPROT_NS_RW, DECPROT_UNLOCK)
+	DECPROT(STM32MP1_ETZPC_ETH_ID, DECPROT_NS_RW, DECPROT_UNLOCK)
+	DECPROT(STM32MP1_ETZPC_HASH1_ID, DECPROT_NS_RW, DECPROT_UNLOCK)
+	DECPROT(STM32MP1_ETZPC_I2C2_ID, DECPROT_NS_RW, DECPROT_UNLOCK)
+	DECPROT(STM32MP1_ETZPC_I2C4_ID, DECPROT_NS_RW, DECPROT_UNLOCK)
+	DECPROT(STM32MP1_ETZPC_TIM2_ID, DECPROT_NS_RW, DECPROT_UNLOCK)
+	DECPROT(STM32MP1_ETZPC_TIM4_ID, DECPROT_NS_RW, DECPROT_UNLOCK)
+	DECPROT(STM32MP1_ETZPC_UART4_ID, DECPROT_NS_RW, DECPROT_UNLOCK)
+	DECPROT(STM32MP1_ETZPC_OTG_ID, DECPROT_NS_RW, DECPROT_UNLOCK)
+	/*"NS_R S_W" peripherals*/
+	DECPROT(STM32MP1_ETZPC_DDRCTRL_ID, DECPROT_NS_R_S_W, DECPROT_LOCK)
+	DECPROT(STM32MP1_ETZPC_DDRPHYC_ID, DECPROT_NS_R_S_W, DECPROT_LOCK)
+	/*"Secured" peripherals*/
+	DECPROT(STM32MP1_ETZPC_RNG1_ID, DECPROT_S_RW, DECPROT_UNLOCK)
+	DECPROT(STM32MP1_ETZPC_STGENC_ID, DECPROT_S_RW, DECPROT_UNLOCK)
+	/*"Mcu Isolation" peripherals*/
+	DECPROT(STM32MP1_ETZPC_DMA2_ID, DECPROT_MCU_ISOLATION, DECPROT_UNLOCK)
+
+	/*Restriction: following IDs are not managed  - please to use User-Section if needed:
+		  STM32MP1_ETZPC_SRAMx_ID  STM32MP1_ETZPC_RETRAM_ID  STM32MP1_ETZPC_BKPSRAM_ID*/
+
+	/* USER CODE BEGIN etzpc_decprot */
+		/*STM32CubeMX generates a basic and standard configuration for ETZPC.
+		Additional device configurations can be added here if needed.
+		"etzpc" node could be also overloaded in "addons" User-Section.*/
+	/* USER CODE END etzpc_decprot */
+	>;
+
+	/* USER CODE BEGIN etzpc */
+	/* USER CODE END etzpc */
+};
+
+&pwr_regulators {
+	status = "okay";
+
+	/* USER CODE BEGIN pwr_regulators */
+	system_suspend_supported_soc_modes = <
+		STM32_PM_CSLEEP_RUN
+		STM32_PM_CSTOP_ALLOW_LP_STOP
+		STM32_PM_CSTOP_ALLOW_STANDBY_DDR_SR
+	>;
+	system_off_soc_mode = <STM32_PM_CSTOP_ALLOW_STANDBY_DDR_OFF>;
+	vdd-supply = <&vdd>;
+	vdd_3v3_usbfs-supply = <&vdd_usb>;
+	/* USER CODE END pwr_regulators */
+};
+
+&rcc {
+	status = "okay";
+
+	/* USER CODE BEGIN rcc */
+	compatible = "st,stm32mp1-rcc-secure", "st,stm32mp1-rcc", "syscon";
+	/* USER CODE END rcc */
+
+	st,clksrc = <
+		CLK_CKPER_HSE
+		CLK_ETH_PLL3Q
+		CLK_SDMMC12_HCLK6
+		CLK_STGEN_HSE
+		CLK_USBPHY_HSE
+		CLK_I2C46_PCLK5
+		CLK_USBO_USBPHY
+		CLK_ADC_CKPER
+		CLK_I2C12_PCLK1
+		CLK_UART24_PCLK1
+		CLK_RNG1_CSI
+		CLK_MPU_PLL1P
+		CLK_AXI_HSE
+		CLK_MCU_PLL3P
+		CLK_RTC_LSE
+		CLK_MCO1_DISABLED
+		CLK_MCO2_DISABLED
+	>;
+	st,clkdiv = <
+		DIV(DIV_MPU, 1)
+		DIV(DIV_AXI, 0)
+		DIV(DIV_MCU, 0)
+		DIV(DIV_APB1, 1)
+		DIV(DIV_APB2, 1)
+		DIV(DIV_APB3, 1)
+		DIV(DIV_APB4, 0)
+		DIV(DIV_APB5, 0)
+		DIV(DIV_RTC, 0)
+		DIV(DIV_MCO1, 0)
+		DIV(DIV_MCO2, 0)
+	>;
+	st,pll_vco {
+		pll1_vco_1296Mhz: pll1-vco-1296Mhz {
+			src = < CLK_PLL12_HSE >;
+			divmn = < 1 53 >;
+		};
+		pll2_vco_1066Mhz: pll2-vco-1066Mhz {
+			src = < CLK_PLL12_HSE >;
+			divmn = < 2 65 >;
+			frac = < 0x1400 >;
+		};
+		pll3_vco_400Mhz: pll3-vco-400Mhz {
+			src = < CLK_PLL3_HSE >;
+			divmn = < 2 49 >;
+		};
+		pll4_vco_499Mhz: pll4-vco-499Mhz {
+			src = < CLK_PLL4_HSE >;
+			divmn = < 4 103 >;
+		};
+		/* USER CODE BEGIN rcc_st-pll_vco */
+		/* USER CODE END rcc_st-pll_vco */
+	};
+
+	pll1:st,pll@0 {
+		compatible = "st,stm32mp1-pll";
+		reg = <0>;
+
+		st,pll = < &pll1_cfg1 >;
+
+		pll1_cfg1: pll1_cfg1 {
+			st,pll_vco = < &pll1_vco_1296Mhz >;
+			st,pll_div_pqr = < 0 1 1 >;
+		};
+		/* USER CODE BEGIN pll1 */
+		/* USER CODE END pll1 */
+	};
+
+	pll2:st,pll@1 {
+		compatible = "st,stm32mp1-pll";
+		reg = <1>;
+
+		st,pll = < &pll2_cfg1 >;
+
+		pll2_cfg1: pll2_cfg1 {
+			st,pll_vco = < &pll2_vco_1066Mhz >;
+			st,pll_div_pqr = < 1 1 0 >;
+		};
+		/* USER CODE BEGIN pll2 */
+		/* USER CODE END pll2 */
+	};
+
+	pll3:st,pll@2 {
+		compatible = "st,stm32mp1-pll";
+		reg = <2>;
+
+		st,pll = < &pll3_cfg1 >;
+
+		pll3_cfg1: pll3_cfg1 {
+			st,pll_vco = < &pll3_vco_400Mhz >;
+			st,pll_div_pqr = < 1 7 1 >;
+		};
+		/* USER CODE BEGIN pll3 */
+		/* USER CODE END pll3 */
+	};
+
+	pll4:st,pll@3 {
+		compatible = "st,stm32mp1-pll";
+		reg = <3>;
+
+		st,pll = < &pll4_cfg1 >;
+
+		pll4_cfg1: pll4_cfg1 {
+			st,pll_vco = < &pll4_vco_499Mhz >;
+			st,pll_div_pqr = < 4 7 1 >;
+		};
+		/* USER CODE BEGIN pll4 */
+		/* USER CODE END pll4 */
+	};
+
+};
+
+&rng1 {
+	status = "okay";
+
+	/* USER CODE BEGIN rng1 */
+	/* USER CODE END rng1 */
+};
+
+&rtc {
+	status = "okay";
+
+	/* USER CODE BEGIN rtc */
+	/* USER CODE END rtc */
+};
+
+&tamp {
+	status = "okay";
+
+	/* USER CODE BEGIN tamp */
+	/* USER CODE END tamp */
+};
+
+/* USER CODE BEGIN addons */
+&clk_hse {
+	st,digbypass;
+};
+/*
+&gpioz{
+	st,protreg = < (TZPROT(4)|TZPROT(5)) >;
+};*/
+
+&gpu {
+	contiguous-area = <&gpu_reserved>;
+};
+
+&cpu0{
+	cpu-supply = <&vddcore>;
+	cpu-frequency = <650000000>;
+};
+
+&cpu1{
+	cpu-supply = <&vddcore>;
+	cpu-frequency = <650000000>;
+};
+
+/* USER CODE END addons */
+
