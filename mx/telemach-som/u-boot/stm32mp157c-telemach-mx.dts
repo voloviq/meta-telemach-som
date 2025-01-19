@@ -1177,16 +1177,6 @@
         clocks = <&scmi_clk CK_SCMI_MPU>;
 };
 
-&uart4_pins_mx {
-	u-boot,dm-pre-reloc;
-	pins1 {
-		u-boot,dm-pre-reloc;
-	};
-	pins2 {
-		u-boot,dm-pre-reloc;
-	};
-};
-
 &gpioz {
         clocks = <&scmi_clk CK_SCMI_GPIOZ>;
 };

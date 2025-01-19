@@ -10,22 +10,18 @@
 
 /dts-v1/;
 
-#include <dt-bindings/pinctrl/stm32-pinfunc.h>
 #include "stm32mp157.dtsi"
-#include "stm32mp15xc.dtsi"
+#include "stm32mp15xa.dtsi"
+#include "stm32mp15-pinctrl.dtsi"
 #include "stm32mp15xxaa-pinctrl.dtsi"
 #include "stm32mp15-m4-srm.dtsi"
+#include "stm32mp15-m4-srm-pinctrl.dtsi"
 
 /* USER CODE BEGIN includes */
 #include "stm32mp15-scmi.dtsi"
-#include <dt-bindings/gpio/gpio.h>
-#include <dt-bindings/mfd/st,stpmic1.h>
 #include <dt-bindings/rtc/rtc-stm32.h>
+#include <dt-bindings/mfd/st,stpmic1.h>
 /* USER CODE END includes */
-
-//#include "stm32mp151.dtsi"
-//#include "stm32mp15xa.dtsi"
-//#include "stm32mp15xxac-pinctrl.dtsi"
 
 / {
 	model = "Telemach SOM";
@@ -45,14 +41,25 @@
 		ranges;
 
 		/* USER CODE BEGIN reserved-memory */
-		optee@de000000 {
-			reg = <0xde000000 0x2000000>;
-			no-map;
-		};
-		
+                gpu_reserved: gpu@d4000000 {
+                        reg = <0xd4000000 0x4000000>;
+                        no-map;
+                };
+
+                optee@de000000 {
+                        reg = <0xde000000 0x2000000>;
+                        no-map;
+                };
+
 		mcuram2:mcuram2@10000000{
 			compatible = "shared-dma-pool";
 			reg = <0x10000000 0x40000>;
+			no-map;
+		};
+
+		mcuram:mcuram@30000000{
+			compatible = "shared-dma-pool";
+			reg = <0x30000000 0x40000>;
 			no-map;
 		};
 
@@ -74,15 +81,9 @@
 			no-map;
 		};
 
-		mcu_rsc_table:mcu-rsc-table@10048000{
+		mcu_rsc_table: mcu_rsc_table@10048000 {
 			compatible = "shared-dma-pool";
 			reg = <0x10048000 0x8000>;
-			no-map;
-		};
-
-		mcuram:mcuram@30000000{
-			compatible = "shared-dma-pool";
-			reg = <0x30000000 0x40000>;
 			no-map;
 		};
 
@@ -91,10 +92,52 @@
 			reg = <0x38000000 0x10000>;
 			no-map;
 		};
+
+                linux,cma {
+                        compatible = "shared-dma-pool";
+                        reusable;
+                        size = <0x8000000>;
+                        alignment = <0x2000>;
+                        linux,cma-default;
+                };
 		/* USER CODE END reserved-memory */
 	};
 
 	/* USER CODE BEGIN root */
+
+	aliases{
+		serial0 = &uart4;
+		mmc0 = &sdmmc1;
+		mmc1 = &sdmmc2;
+	};
+
+	vin:vin{
+		compatible = "regulator-fixed";
+		regulator-name = "vin";
+		regulator-min-microvolt = <5000000>;
+		regulator-max-microvolt = <5000000>;
+		regulator-always-on;
+	};
+
+	vrefadc_fixed: fixedregulator@0 {
+		compatible = "regulator-fixed";
+		regulator-name = "vrefadc_fixed";
+		regulator-min-microvolt = <2500000>;
+		regulator-max-microvolt = <2500000>;
+		regulator-always-on;
+	};
+
+	usb_phy_tuning: usb-phy-tuning {
+			st,hs-dc-level = <2>;
+			st,fs-rftime-tuning;
+			st,hs-rftime-reduction;
+			st,hs-current-trim = <15>;
+			st,hs-impedance-trim = <1>;
+			st,squelch-level = <3>;
+			st,hs-rx-offset = <2>;
+			st,no-lsfs-sc;
+	};
+
 	led{
 		compatible = "gpio-leds";
 
@@ -128,15 +171,6 @@
 		};
 	};
 
-	pwmleds {
-		compatible = "pwm-leds";
-		control {
-			label = "pb7-pwm4-ch2";
-			pwms = <&ledpwm 1 500000 0>;
-			max-brightness = <4096>;
-		};
-	};
-
 	panel_backlight: panel_backlight {
 		compatible = "pwm-backlight";
 		pwms = <&backlight 0 500000 0>;
@@ -146,102 +180,40 @@
 		status = "okay";
 	};
 
-	usb_phy_tuning:usb-phy-tuning{
-		st,hs-dc-level = <2>;
-		st,fs-rftime-tuning;
-		st,hs-rftime-reduction;
-		st,hs-current-trim = <15>;
-		st,hs-impedance-trim = <1>;
-		st,squelch-level = <3>;
-		st,hs-rx-offset = <2>;
-		st,no-lsfs-sc;
-	};
-
-	vin:vin{
-		compatible = "regulator-fixed";
-		regulator-name = "vin";
-		regulator-min-microvolt = <5000000>;
-		regulator-max-microvolt = <5000000>;
-		regulator-always-on;
-	};
-
-	vmmcsd_fixed: fixedregulator@0 {
-		compatible = "regulator-fixed";
-		regulator-name = "vmmcsd_fixed";
-		regulator-min-microvolt = <3300000>;
-		regulator-max-microvolt = <3300000>;
-		regulator-always-on;
-	};
-
-	vrefadc_fixed: fixedregulator@0 {
-		compatible = "regulator-fixed";
-		regulator-name = "vrefadc_fixed";
-		regulator-min-microvolt = <2500000>;
-		regulator-max-microvolt = <2500000>;
-		regulator-always-on;
-	};
-
-	vmmc: fixedregulator@1 {
-		compatible = "regulator-fixed";
-		regulator-name = "vmmc";
-		regulator-min-microvolt = <3300000>;
-		regulator-max-microvolt = <3300000>;
-		startup-delay-us = <70000>;
-		enable-active-high;
-		regulator-always-on;
-		};
-
-	aliases{
-		serial0 = &uart4;
-		mmc0 = &sdmmc1;
-		mmc1 = &sdmmc2;
-	};
-
-	chosen{
-		#address-cells = <1>;
-		#size-cells = <1>;
-		ranges;
-		stdout-path = "serial0:115200n8";
-		framebuffer {
-			compatible = "simple-framebuffer";
-			clocks = <&rcc LTDC_PX>;
-			status = "disabled";
-		};
-	};
 	/* USER CODE END root */
 
 	clocks{
 
 		/* USER CODE BEGIN clocks */
 		clk_csi: clk-csi {
-			#clock-cells = <0>;
-			compatible = "fixed-clock";
-			clock-frequency = <4000000>;
+		#clock-cells = <0>;
+		compatible = "fixed-clock";
+		clock-frequency = <4000000>;
 		};
 
 		clk_hse: clk-hse {
-			#clock-cells = <0>;
-			compatible = "fixed-clock";
-			clock-frequency = <24000000>;
+		#clock-cells = <0>;
+		compatible = "fixed-clock";
+		clock-frequency = <24000000>;
 		};
 
 		clk_hsi: clk-hsi {
-			#clock-cells = <0>;
-			compatible = "fixed-clock";
-			clock-frequency = <64000000>;
+		#clock-cells = <0>;
+		compatible = "fixed-clock";
+		clock-frequency = <64000000>;
 		};
 
 		clk_lse: clk-lse {
-			#clock-cells = <0>;
-			compatible = "fixed-clock";
-			clock-frequency = <32768>;
+		#clock-cells = <0>;
+		compatible = "fixed-clock";
+		clock-frequency = <32768>;
 		};
 
 		clk_lsi: clk-lsi {
-			#clock-cells = <0>;
-			compatible = "fixed-clock";
-			clock-frequency = <32000>;
-		};	
+		#clock-cells = <0>;
+		compatible = "fixed-clock";
+		clock-frequency = <32000>;
+		};		
 		/* USER CODE END clocks */
 	};
 
@@ -565,12 +537,8 @@
 	status = "okay";
 
 	/* USER CODE BEGIN m4_rproc */
-	resets = <&scmi_reset RST_SCMI_MCU>, <&scmi_reset RST_SCMI_MCU_HOLD_BOOT>;
-	reset-names = "mcu_rst", "hold_boot";
-	/*/delete-property/ st,syscfg-holdboot;*/
-	mboxes = <&ipcc 0>, <&ipcc 1>, <&ipcc 2>, <&ipcc 3>;
-	mbox-names = "vq0", "vq1", "shutdown", "detach";
-	memory-region = <&retram>, <&mcuram>, <&mcuram2>, <&vdev0vring0>, <&vdev0vring1>, <&vdev0buffer>, <&mcu_rsc_table>;
+	memory-region = <&retram>, <&mcuram>, <&mcuram2>, <&vdev0vring0>,
+			<&vdev0vring1>, <&vdev0buffer>;
 	interrupt-parent = <&exti>;
 	interrupts = <68 1>;
 	wakeup-source;
@@ -671,7 +639,6 @@
 	status = "okay";
 
 	/* USER CODE BEGIN dma1 */
-	resets = <&scmi_reset RST_SCMI_MDMA>;
 	/* USER CODE END dma1 */
 };
 
@@ -770,7 +737,17 @@
 	status = "okay";
 
 	/* USER CODE BEGIN gpu */
+	contiguous-area = <&gpu_reserved>;
 	/* USER CODE END gpu */
+};
+
+&hash1 {
+	status = "okay";
+
+	/* USER CODE BEGIN hash1 */
+        clocks = <&scmi_clk CK_SCMI_HASH1>;
+        resets = <&scmi_reset RST_SCMI_HASH1>;
+	/* USER CODE END hash1 */
 };
 
 &hsem {
@@ -983,7 +960,7 @@
 };
 
 &m4_dma2 {
-	status = "okay";
+	status = "disabled";
 
 	/* USER CODE BEGIN m4_dma2 */
 	/* USER CODE END m4_dma2 */
@@ -993,6 +970,7 @@
 	status = "okay";
 
 	/* USER CODE BEGIN mdma1 */
+	resets = <&scmi_reset RST_SCMI_MDMA>;
 	/* USER CODE END mdma1 */
 };
 
@@ -1009,21 +987,32 @@
 	status = "okay";
 
 	/* USER CODE BEGIN rcc */
-	compatible = "st,stm32mp1-rcc-secure", "syscon";
-	clock-names = "hse", "hsi", "csi", "lse", "lsi";
-	clocks = <&scmi_clk CK_SCMI_HSE>,
-		 <&scmi_clk CK_SCMI_HSI>,
-		 <&scmi_clk CK_SCMI_CSI>,
-		 <&scmi_clk CK_SCMI_LSE>,
-		 <&scmi_clk CK_SCMI_LSI>;
+        compatible = "st,stm32mp1-rcc-secure", "syscon";
+        clock-names = "hse", "hsi", "csi", "lse", "lsi";
+        clocks = <&scmi_clk CK_SCMI_HSE>,
+                 <&scmi_clk CK_SCMI_HSI>,
+                 <&scmi_clk CK_SCMI_CSI>,
+                 <&scmi_clk CK_SCMI_LSE>,
+                 <&scmi_clk CK_SCMI_LSI>;
 	/* USER CODE END rcc */
+};
+
+&rng1 {
+	status = "okay";
+
+	/* USER CODE BEGIN rng1 */
+	status = "disabled";
+        clocks = <&scmi_clk CK_SCMI_RNG1>;
+        resets = <&scmi_reset RST_SCMI_RNG1>;
+	/* USER CODE END rng1 */
 };
 
 &rtc {
 	status = "okay";
 
 	/* USER CODE BEGIN rtc */
-	clocks = <&scmi_clk CK_SCMI_RTCAPB>, <&scmi_clk CK_SCMI_RTC>;
+        clocks = <&scmi_clk CK_SCMI_RTCAPB>, <&scmi_clk CK_SCMI_RTC>;
+        st,lsco = <RTC_OUT1>;
 	/* USER CODE END rtc */
 };
 
@@ -1040,7 +1029,7 @@
 	disable-wp;
 	st,neg-edge;
 	bus-width = <4>;
-	vmmc-supply = <&v3v3>;
+	vmmc-supply = <&vdd>;
 	/* USER CODE END sdmmc1 */
 };
 
@@ -1057,8 +1046,8 @@
 	no-sdio;
 	st,neg-edge;
 	bus-width = <8>;
-	vmmc-supply = <&vmmc>;
-	vqmmc-supply = <&vmmc>;
+	vmmc-supply = <&vdd>;
+	vqmmc-supply = <&vdd>;
 	mmc-ddr-3_3v;
 	/* USER CODE END sdmmc2 */
 };
@@ -1112,8 +1101,8 @@
 	status = "okay";
 
 	/* USER CODE BEGIN uart4 */
-	/delete-property/dmas;
-	/delete-property/dma-names;
+        /delete-property/dmas;
+        /delete-property/dma-names;
 	/* USER CODE END uart4 */
 };
 
@@ -1172,6 +1161,24 @@
 };
 
 /* USER CODE BEGIN addons */
+
+&mlahb {
+        resets = <&scmi_reset RST_SCMI_MCU>;
+};
+
+&gpioz {
+        clocks = <&scmi_clk CK_SCMI_GPIOZ>;
+};
+
+&dts {
+        status = "okay";
+};
+
+&arm_wdt {
+        timeout-sec = <32>;
+        status = "okay";
+};
+
 &cpu0 {
         clock-frequency = <650000000>;
         cpu-supply = <&vddcore>;
@@ -1184,18 +1191,8 @@
         clocks = <&scmi_clk CK_SCMI_MPU>;
 };
 
-&gpioz {
-        clocks = <&scmi_clk CK_SCMI_GPIOZ>;
-};
-
-&uart4_pins_mx {
-	u-boot,dm-pre-reloc;
-	pins1 {
-		u-boot,dm-pre-reloc;
-	};
-	pins2 {
-		u-boot,dm-pre-reloc;
-	};
+&crc1 {
+        status = "okay";
 };
 
 /* USER CODE END addons */
