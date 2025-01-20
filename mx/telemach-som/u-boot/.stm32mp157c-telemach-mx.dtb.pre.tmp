@@ -41,11 +41,12 @@
 		ranges;
 
 		/* USER CODE BEGIN reserved-memory */
-		optee@fe000000 {
-			reg = <0xfe000000 0x2000000>;
-			no-map;
+		mcuram:mcuram@0x30000000 {
+		compatible = "shared-dma-pool";
+		reg =  <0x30000000 0x40000>; /* define memory base and size for Cortex-M4 firmware*/
+		no-map;
 		};
-		
+
 		mcuram2:mcuram2@10000000{
 			compatible = "shared-dma-pool";
 			reg = <0x10000000 0x40000>;
@@ -70,32 +71,22 @@
 			no-map;
 		};
 
-		mcu_rsc_table:mcu-rsc-table@10048000{
-			compatible = "shared-dma-pool";
-			reg = <0x10048000 0x8000>;
-			no-map;
-		};
 
-		mcuram:mcuram@30000000{
-			compatible = "shared-dma-pool";
-			reg = <0x30000000 0x40000>;
-			no-map;
-		};
-
-		retram:retram@38000000{
-			compatible = "shared-dma-pool";
+		/* RETRAM memory region reserved for firmware code and data */
+		retram: retram@0x38000000 {
 			reg = <0x38000000 0x10000>;
+		};
+
+		optee_memory:optee@0xde000000{
+			reg = <0xde000000 0x02000000>;
+			no-map;
+			status = "okay";
+		};
+
+		fb_reserved: fb@fd000000 {
+			reg = <0xfd000000 0x8000000>;
 			no-map;
 		};
-
-		linux,cma {
-				compatible = "shared-dma-pool";
-				reusable;
-				size = <0x8000000>;
-				alignment = <0x2000>;
-				linux,cma-default;
-		};
-
 		/* USER CODE END reserved-memory */
 	};
 
@@ -1189,6 +1180,12 @@
 &gpioz {
         clocks = <&scmi_clk CK_SCMI_GPIOZ>;
 };
+
+&arm_wdt {
+        timeout-sec = <32>;
+        status = "okay";
+};
+
 
 /* USER CODE END addons */
 

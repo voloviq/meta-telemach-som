@@ -3245,9 +3245,10 @@
   ranges;
 
 
-  optee@fe000000 {
-   reg = <0xfe000000 0x2000000>;
-   no-map;
+  mcuram:mcuram@0x30000000 {
+  compatible = "shared-dma-pool";
+  reg = <0x30000000 0x40000>;
+  no-map;
   };
 
   mcuram2:mcuram2@10000000{
@@ -3274,32 +3275,22 @@
    no-map;
   };
 
-  mcu_rsc_table:mcu-rsc-table@10048000{
-   compatible = "shared-dma-pool";
-   reg = <0x10048000 0x8000>;
-   no-map;
-  };
 
-  mcuram:mcuram@30000000{
-   compatible = "shared-dma-pool";
-   reg = <0x30000000 0x40000>;
-   no-map;
-  };
 
-  retram:retram@38000000{
-   compatible = "shared-dma-pool";
+  retram: retram@0x38000000 {
    reg = <0x38000000 0x10000>;
+  };
+
+  optee_memory:optee@0xde000000{
+   reg = <0xde000000 0x02000000>;
+   no-map;
+   status = "okay";
+  };
+
+  fb_reserved: fb@fd000000 {
+   reg = <0xfd000000 0x8000000>;
    no-map;
   };
-
-  linux,cma {
-    compatible = "shared-dma-pool";
-    reusable;
-    size = <0x8000000>;
-    alignment = <0x2000>;
-    linux,cma-default;
-  };
-
 
  };
 
@@ -4394,6 +4385,12 @@
         clocks = <&scmi_clk 11>;
 };
 
+&arm_wdt {
+        timeout-sec = <32>;
+        status = "okay";
+};
+
+
 
 
 # 1 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/stm32mp157c-telemach-mx-u-boot.dtsi" 1
@@ -4404,4 +4401,4 @@
 
 
 };
-# 1196 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-mx.dtb.pre.tmp" 2
+# 1193 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-mx.dtb.pre.tmp" 2
