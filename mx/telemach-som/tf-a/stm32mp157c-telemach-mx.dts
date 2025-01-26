@@ -78,7 +78,7 @@
 		};
 		clk_lse: clk-lse {
 			clock-frequency = <32768>;
-			st,drive = < LSEDRV_MEDIUM_HIGH >;
+			st,digbypass;
 
 			/* USER CODE BEGIN clk_lse */
 			/* USER CODE END clk_lse */
@@ -329,15 +329,15 @@
 	/* USER CODE END rcc */
 
 	st,clksrc = <
-		CLK_CKPER_HSE
-		CLK_SDMMC12_HCLK6
+		CLK_CKPER_DISABLED
+		CLK_SDMMC12_PLL4P
 		CLK_STGEN_HSE
 		CLK_USBPHY_HSE
 		CLK_I2C46_PCLK5
 		CLK_USBO_USBPHY
 		CLK_UART24_PCLK1
 		CLK_MPU_PLL1P
-		CLK_AXI_HSE
+		CLK_AXI_PLL2P
 		CLK_MCU_PLL3P
 	>;
 	st,clkdiv = <
@@ -347,17 +347,13 @@
 		DIV(DIV_APB1, 1)
 		DIV(DIV_APB2, 1)
 		DIV(DIV_APB3, 1)
-		DIV(DIV_APB4, 0)
-		DIV(DIV_APB5, 0)
+		DIV(DIV_APB4, 1)
+		DIV(DIV_APB5, 2)
 		DIV(DIV_RTC, 0)
 		DIV(DIV_MCO1, 0)
 		DIV(DIV_MCO2, 0)
 	>;
 	st,pll_vco {
-		pll1_vco_1296Mhz: pll1-vco-1296Mhz {
-			src = < CLK_PLL12_HSE >;
-			divmn = < 1 53 >;
-		};
 		pll2_vco_1066Mhz: pll2-vco-1066Mhz {
 			src = < CLK_PLL12_HSE >;
 			divmn = < 2 65 >;
@@ -367,22 +363,12 @@
 			src = < CLK_PLL3_HSE >;
 			divmn = < 2 49 >;
 		};
+		pll4_vco_594Mhz: pll4-vco-594Mhz {
+			src = < CLK_PLL4_HSE >;
+			divmn = < 3 98 >;
+		};
 		/* USER CODE BEGIN rcc_st-pll_vco */
 		/* USER CODE END rcc_st-pll_vco */
-	};
-
-	pll1:st,pll@0 {
-		compatible = "st,stm32mp1-pll";
-		reg = <0>;
-
-		st,pll = < &pll1_cfg1 >;
-
-		pll1_cfg1: pll1_cfg1 {
-			st,pll_vco = < &pll1_vco_1296Mhz >;
-			st,pll_div_pqr = < 0 1 1 >;
-		};
-		/* USER CODE BEGIN pll1 */
-		/* USER CODE END pll1 */
 	};
 
 	pll2:st,pll@1 {
@@ -393,7 +379,7 @@
 
 		pll2_cfg1: pll2_cfg1 {
 			st,pll_vco = < &pll2_vco_1066Mhz >;
-			st,pll_div_pqr = < 1 1 0 >;
+			st,pll_div_pqr = < 1 0 0 >;
 		};
 		/* USER CODE BEGIN pll2 */
 		/* USER CODE END pll2 */
@@ -407,10 +393,24 @@
 
 		pll3_cfg1: pll3_cfg1 {
 			st,pll_vco = < &pll3_vco_400Mhz >;
-			st,pll_div_pqr = < 1 7 1 >;
+			st,pll_div_pqr = < 1 7 31 >;
 		};
 		/* USER CODE BEGIN pll3 */
 		/* USER CODE END pll3 */
+	};
+
+	pll4:st,pll@3 {
+		compatible = "st,stm32mp1-pll";
+		reg = <3>;
+
+		st,pll = < &pll4_cfg1 >;
+
+		pll4_cfg1: pll4_cfg1 {
+			st,pll_vco = < &pll4_vco_594Mhz >;
+			st,pll_div_pqr = < 5 7 5 >;
+		};
+		/* USER CODE BEGIN pll4 */
+		/* USER CODE END pll4 */
 	};
 
 };
@@ -534,3 +534,4 @@
 };
 
 /* USER CODE END addons */
+

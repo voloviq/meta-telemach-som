@@ -323,6 +323,23 @@
 		};
 	};
 
+	i2c5_pins_mx: i2c5_mx-0 {
+		pins {
+			pinmux = <STM32_PINMUX('A', 11, AF4)>, /* I2C5_SCL */
+					 <STM32_PINMUX('A', 12, AF4)>; /* I2C5_SDA */
+			bias-pull-up;
+			drive-open-drain;
+			slew-rate = <0>;
+		};
+	};
+
+	i2c5_sleep_pins_mx: i2c5_sleep_mx-0 {
+		pins {
+			pinmux = <STM32_PINMUX('A', 11, ANALOG)>, /* I2C5_SCL */
+					 <STM32_PINMUX('A', 12, ANALOG)>; /* I2C5_SDA */
+		};
+	};
+
 	sdmmc1_pins_mx: sdmmc1_mx-0 {
 		pins1 {
 			pinmux = <STM32_PINMUX('C', 8, AF12)>, /* SDMMC1_D0 */
@@ -625,6 +642,13 @@
 	/* USER CODE END bsec */
 };
 
+&crc1 {
+	status = "okay";
+
+	/* USER CODE BEGIN crc1 */
+	/* USER CODE END crc1 */
+};
+
 &dac {
 	pinctrl-names = "default", "sleep";
 	pinctrl-0 = <&dac1_pins_mx>;
@@ -705,6 +729,13 @@
 		};
 	};
 	/* USER CODE END dsi */
+};
+
+&dts {
+	status = "okay";
+
+	/* USER CODE BEGIN dts */
+	/* USER CODE END dts */
 };
 
 &ethernet0 {
@@ -923,6 +954,40 @@
 		};
 	};
 	/* USER CODE END i2c4 */
+};
+
+&i2c5 {
+	pinctrl-names = "default", "sleep";
+	pinctrl-0 = <&i2c5_pins_mx>;
+	pinctrl-1 = <&i2c5_sleep_pins_mx>;
+	status = "okay";
+
+	/* USER CODE BEGIN i2c5 */
+	/delete-property/ dmas;
+	/delete-property/ dma-names;
+
+	goodixat0x14: gt911@14 {
+		compatible = "goodix,gt911";
+		reg = <0x14>;
+		pinctrl-names = "default";
+		interrupt-parent = <&gpioi>;
+		interrupts = <8 IRQ_TYPE_EDGE_FALLING>;
+		reset-gpios = <&gpiob 11 GPIO_ACTIVE_LOW>;
+		touchscreen-size-x = <720>;
+		touchscreen-size-y = <1280>;
+	};
+
+	goodixat0x5d: gt911@5d {
+		compatible = "goodix,gt911";
+		reg = <0x5d>;
+		pinctrl-names = "default";
+		interrupt-parent = <&gpioi>;
+		interrupts = <8 IRQ_TYPE_EDGE_FALLING>;
+		reset-gpios = <&gpiob 11 GPIO_ACTIVE_LOW>;
+		touchscreen-size-x = <720>;
+		touchscreen-size-y = <1280>;
+	};
+	/* USER CODE END i2c5 */
 };
 
 &ipcc {
@@ -1162,10 +1227,6 @@
 
 &gpioz {
         clocks = <&scmi_clk CK_SCMI_GPIOZ>;
-};
-
-&dts {
-        status = "okay";
 };
 
 &arm_wdt {

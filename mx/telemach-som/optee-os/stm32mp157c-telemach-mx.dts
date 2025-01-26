@@ -114,7 +114,7 @@
 		};
 		clk_lse: clk-lse {
 			clock-frequency = <32768>;
-			st,drive = < LSEDRV_MEDIUM_HIGH >;
+			st,digbypass;
 
 			/* USER CODE BEGIN clk_lse */
 			/* USER CODE END clk_lse */
@@ -162,8 +162,8 @@
 	DECPROT(STM32MP1_ETZPC_DMAMUX_ID, DECPROT_NS_RW, DECPROT_UNLOCK)
 	DECPROT(STM32MP1_ETZPC_ETH_ID, DECPROT_NS_RW, DECPROT_UNLOCK)
 	DECPROT(STM32MP1_ETZPC_HASH1_ID, DECPROT_NS_RW, DECPROT_UNLOCK)
-	DECPROT(STM32MP1_ETZPC_I2C2_ID, DECPROT_NS_RW, DECPROT_UNLOCK)
 	DECPROT(STM32MP1_ETZPC_I2C4_ID, DECPROT_NS_RW, DECPROT_UNLOCK)
+	DECPROT(STM32MP1_ETZPC_I2C5_ID, DECPROT_NS_RW, DECPROT_UNLOCK)
 	DECPROT(STM32MP1_ETZPC_TIM2_ID, DECPROT_NS_RW, DECPROT_UNLOCK)
 	DECPROT(STM32MP1_ETZPC_TIM4_ID, DECPROT_NS_RW, DECPROT_UNLOCK)
 	DECPROT(STM32MP1_ETZPC_UART4_ID, DECPROT_NS_RW, DECPROT_UNLOCK)
@@ -224,15 +224,15 @@
 	/* USER CODE END rcc */
 
 	st,clksrc = <
-		CLK_CKPER_HSE
+		CLK_CKPER_DISABLED
 		CLK_ETH_PLL3Q
 		CLK_SDMMC12_PLL4P
-		CLK_STGEN_HSI
+		CLK_STGEN_HSE
 		CLK_USBPHY_HSE
 		CLK_I2C46_PCLK5
 		CLK_USBO_USBPHY
-		CLK_ADC_CKPER
-		CLK_I2C12_PCLK1
+		CLK_ADC_PLL3Q
+		CLK_I2C35_PCLK1
 		CLK_UART24_PCLK1
 		CLK_RNG1_CSI
 		CLK_MPU_PLL1P
@@ -243,7 +243,6 @@
 		CLK_MCO1_DISABLED
 		CLK_MCO2_DISABLED
 	>;
-
 	st,clkdiv = <
 		DIV(DIV_MPU, 1)
 		DIV(DIV_AXI, 0)
@@ -253,60 +252,70 @@
 		DIV(DIV_APB3, 1)
 		DIV(DIV_APB4, 1)
 		DIV(DIV_APB5, 2)
+		DIV(DIV_RTC, 0)
 		DIV(DIV_MCO1, 0)
 		DIV(DIV_MCO2, 0)
 	>;
-        st,pll_vco {
-                pll2_vco_1066Mhz: pll2-vco-1066Mhz {
-                        src = < CLK_PLL12_HSE >;
-                        divmn = < 2 65 >;
-                        frac = < 0x1400 >;
-                };
-                pll3_vco_400Mhz: pll3-vco-400Mhz {
-                        src = < CLK_PLL3_HSE >;
-                        divmn = < 2 49 >;
-                };
-                pll4_vco_594Mhz: pll4-vco-594Mhz {
-                        src = < CLK_PLL4_HSE >;
-                        divmn = < 3 98 >;
-                };
-        };
+	st,pll_vco {
+		pll2_vco_1066Mhz: pll2-vco-1066Mhz {
+			src = < CLK_PLL12_HSE >;
+			divmn = < 2 65 >;
+			frac = < 0x1400 >;
+		};
+		pll3_vco_400Mhz: pll3-vco-400Mhz {
+			src = < CLK_PLL3_HSE >;
+			divmn = < 2 49 >;
+		};
+		pll4_vco_594Mhz: pll4-vco-594Mhz {
+			src = < CLK_PLL4_HSE >;
+			divmn = < 3 98 >;
+		};
+		/* USER CODE BEGIN rcc_st-pll_vco */
+		/* USER CODE END rcc_st-pll_vco */
+	};
 
-        pll2:st,pll@1 {
-                compatible = "st,stm32mp1-pll";
-                reg = <1>;
+	pll2:st,pll@1 {
+		compatible = "st,stm32mp1-pll";
+		reg = <1>;
 
-                st,pll = < &pll2_cfg1 >;
+		st,pll = < &pll2_cfg1 >;
 
-                pll2_cfg1: pll2_cfg1 {
-                        st,pll_vco = < &pll2_vco_1066Mhz >;
-                        st,pll_div_pqr = < 1 0 0 >;
-                };
-        };
+		pll2_cfg1: pll2_cfg1 {
+			st,pll_vco = < &pll2_vco_1066Mhz >;
+			st,pll_div_pqr = < 1 0 0 >;
+		};
+		/* USER CODE BEGIN pll2 */
+		/* USER CODE END pll2 */
+	};
 
-        pll3:st,pll@2 {
-                compatible = "st,stm32mp1-pll";
-                reg = <2>;
+	pll3:st,pll@2 {
+		compatible = "st,stm32mp1-pll";
+		reg = <2>;
 
-                st,pll = < &pll3_cfg1 >;
+		st,pll = < &pll3_cfg1 >;
 
-                pll3_cfg1: pll3_cfg1 {
-                        st,pll_vco = < &pll3_vco_400Mhz >;
-                        st,pll_div_pqr = < 1 7 31 >;
-                };
-        };
+		pll3_cfg1: pll3_cfg1 {
+			st,pll_vco = < &pll3_vco_400Mhz >;
+			st,pll_div_pqr = < 1 7 31 >;
+		};
+		/* USER CODE BEGIN pll3 */
+		/* USER CODE END pll3 */
+	};
 
-        pll4:st,pll@3 {
-                compatible = "st,stm32mp1-pll";
-                reg = <3>;
+	pll4:st,pll@3 {
+		compatible = "st,stm32mp1-pll";
+		reg = <3>;
 
-                st,pll = < &pll4_cfg1 >;
+		st,pll = < &pll4_cfg1 >;
 
-                pll4_cfg1: pll4_cfg1 {
-                        st,pll_vco = < &pll4_vco_594Mhz >;
-                        st,pll_div_pqr = < 5 7 5 >;
-                };
-        };
+		pll4_cfg1: pll4_cfg1 {
+			st,pll_vco = < &pll4_vco_594Mhz >;
+			st,pll_div_pqr = < 5 7 5 >;
+		};
+		/* USER CODE BEGIN pll4 */
+		/* USER CODE END pll4 */
+	};
+
 };
 
 &rng1 {
@@ -346,3 +355,4 @@
 };
 
 /* USER CODE END addons */
+

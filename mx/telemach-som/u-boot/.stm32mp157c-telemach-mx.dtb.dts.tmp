@@ -3527,6 +3527,23 @@
   };
  };
 
+ i2c5_pins_mx: i2c5_mx-0 {
+  pins {
+   pinmux = <(((((('A') - 'A') * 0x10 + (11))) << 8) | (0x5))>,
+      <(((((('A') - 'A') * 0x10 + (12))) << 8) | (0x5))>;
+   bias-pull-up;
+   drive-open-drain;
+   slew-rate = <0>;
+  };
+ };
+
+ i2c5_sleep_pins_mx: i2c5_sleep_mx-0 {
+  pins {
+   pinmux = <(((((('A') - 'A') * 0x10 + (11))) << 8) | (0x11))>,
+      <(((((('A') - 'A') * 0x10 + (12))) << 8) | (0x11))>;
+  };
+ };
+
  sdmmc1_pins_mx: sdmmc1_mx-0 {
   pins1 {
    pinmux = <(((((('C') - 'A') * 0x10 + (8))) << 8) | (0xd))>,
@@ -3829,6 +3846,13 @@
 
 };
 
+&crc1 {
+ status = "okay";
+
+
+
+};
+
 &dac {
  pinctrl-names = "default", "sleep";
  pinctrl-0 = <&dac1_pins_mx>;
@@ -3908,6 +3932,13 @@
    };
   };
  };
+
+};
+
+&dts {
+ status = "okay";
+
+
 
 };
 
@@ -4125,6 +4156,40 @@
    compatible = "st,stpmic1-wdt";
    status = "disabled";
   };
+ };
+
+};
+
+&i2c5 {
+ pinctrl-names = "default", "sleep";
+ pinctrl-0 = <&i2c5_pins_mx>;
+ pinctrl-1 = <&i2c5_sleep_pins_mx>;
+ status = "okay";
+
+
+ /delete-property/ dmas;
+ /delete-property/ dma-names;
+
+ goodixat0x14: gt911@14 {
+  compatible = "goodix,gt911";
+  reg = <0x14>;
+  pinctrl-names = "default";
+  interrupt-parent = <&gpioi>;
+  interrupts = <8 2>;
+  reset-gpios = <&gpiob 11 1>;
+  touchscreen-size-x = <720>;
+  touchscreen-size-y = <1280>;
+ };
+
+ goodixat0x5d: gt911@5d {
+  compatible = "goodix,gt911";
+  reg = <0x5d>;
+  pinctrl-names = "default";
+  interrupt-parent = <&gpioi>;
+  interrupts = <8 2>;
+  reset-gpios = <&gpiob 11 1>;
+  touchscreen-size-x = <720>;
+  touchscreen-size-y = <1280>;
  };
 
 };
@@ -4368,10 +4433,6 @@
         clocks = <&scmi_clk 11>;
 };
 
-&dts {
-        status = "okay";
-};
-
 &arm_wdt {
         timeout-sec = <32>;
         status = "okay";
@@ -4403,4 +4464,4 @@
 
 
 };
-# 1195 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-mx.dtb.pre.tmp" 2
+# 1256 "/home/mw/openstlinux-6.6-yocto-scarthgap-mpu-v24.12.05/layers/meta-st/meta-telemach-som/mx/telemach-som/u-boot/.stm32mp157c-telemach-mx.dtb.pre.tmp" 2
