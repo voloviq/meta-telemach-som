@@ -19,4 +19,5 @@ CORE_IMAGE_EXTRA_INSTALL += " \
 	ffmpeg \
     lvgl \
     lvgl-demo-fb \
+    modemmanager \
 "
