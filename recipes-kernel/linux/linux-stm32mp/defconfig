@@ -2568,7 +2568,10 @@ CONFIG_IEEE802154_DRIVERS=m
 #
 # Wireless WAN
 #
-# CONFIG_WWAN is not set
+CONFIG_WWAN=y
+CONFIG_WWAN_DEBUGFS=y
+# CONFIG_WWAN_HWSIM is not set
+# CONFIG_RPMSG_WWAN_CTRL is not set
 # end of Wireless WAN
 
 # CONFIG_NETDEVSIM is not set
