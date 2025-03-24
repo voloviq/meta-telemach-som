@@ -31,8 +31,6 @@ git clone -b scarthgap git@github.com:voloviq/meta-telemach-som.git
 cd ../../
 DISTRO=openstlinux-weston MACHINE=telemach-som source layers/meta-st/scripts/envsetup.sh
 bitbake-layers add-layer ../layers/meta-st/meta-st-stm32mp-addons/
-bitbake-layers add-layer ../layers/meta-st/meta-telemach-som/meta-semtech
-bitbake-layers add-layer ../layers/meta-st/meta-telemach-som/meta-aws
 bitbake st-image-weston
 ```
 **Note:**
