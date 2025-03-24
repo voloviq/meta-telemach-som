@@ -11,13 +11,13 @@ Stm32mp157 SOM - Telemach <br>
 
 ## Before any compilation activity. Check if installed follownig packages
 
-    ***sudo apt install gawk wget git diffstat unzip texinfo gcc build-essential chrpath socat cpio python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping python3-git python3-jinja2 python3-subunit zstd file locales libacl1 lz4 git-lfs libgmp-dev libmpc-dev libsdl1.2-dev libssl-dev pylint repo***
+***sudo apt install gawk wget git diffstat unzip texinfo gcc build-essential chrpath socat cpio python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping python3-git python3-jinja2 python3-subunit zstd file locales libacl1 lz4 git-lfs libgmp-dev libmpc-dev libsdl1.2-dev libssl-dev pylint repo***
     
-    on Ubuntu 24.04 also issue<br>
-        ***sudo apparmor_parser -R /etc/apparmor.d/unprivileged_userns***
+on Ubuntu 24.04 also issue<br>
+***sudo apparmor_parser -R /etc/apparmor.d/unprivileged_userns***
 
-    **Note:**
-        More informations can be found on Yocto reference manual.
+**Note:**
+More informations can be found on Yocto reference manual.
 
 ## System image
 
