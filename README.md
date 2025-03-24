@@ -9,7 +9,7 @@ Stm32mp157 SOM - Telemach <br>
 
 ![Product View](stm32mp157-som.png) <br>
 
-## Before any compilation activity. Check if installed follownig packages
+## Before any compilation activity, check if installed follownig packages
 
 ***sudo apt install gawk wget git diffstat unzip texinfo gcc build-essential chrpath socat cpio python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping python3-git python3-jinja2 python3-subunit zstd file locales libacl1 lz4 git-lfs libgmp-dev libmpc-dev libsdl1.2-dev libssl-dev pylint repo***
     
