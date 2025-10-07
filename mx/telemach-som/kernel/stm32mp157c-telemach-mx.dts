@@ -93,13 +93,13 @@
 			no-map;
 		};
 
-                linux,cma {
-                        compatible = "shared-dma-pool";
-                        reusable;
-                        size = <0x8000000>;
-                        alignment = <0x2000>;
-                        linux,cma-default;
-                };
+		linux,cma {
+				compatible = "shared-dma-pool";
+				reusable;
+				size = <0x8000000>;
+				alignment = <0x2000>;
+				linux,cma-default;
+		};
 		/* USER CODE END reserved-memory */
 	};
 
@@ -107,6 +107,7 @@
 
 	aliases{
 		serial0 = &uart4;
+		serial1 = &uart7;
 		mmc0 = &sdmmc1;
 		mmc1 = &sdmmc2;
 	};
@@ -323,6 +324,23 @@
 		};
 	};
 
+	i2c2_pins_mx: i2c2_mx-0 {
+		pins {
+			pinmux = <STM32_PINMUX('F', 1, AF4)>, /* I2C2_SCL */
+					 <STM32_PINMUX('G', 15, AF4)>; /* I2C2_SDA */
+			bias-pull-up;
+			drive-open-drain;
+			slew-rate = <0>;
+		};
+	};
+
+	i2c2_sleep_pins_mx: i2c2_sleep_mx-0 {
+		pins {
+			pinmux = <STM32_PINMUX('F', 1, ANALOG)>, /* I2C2_SCL */
+					 <STM32_PINMUX('G', 15, ANALOG)>; /* I2C2_SDA */
+		};
+	};
+
 	i2c5_pins_mx: i2c5_mx-0 {
 		pins {
 			pinmux = <STM32_PINMUX('A', 11, AF4)>, /* I2C5_SCL */
@@ -337,6 +355,12 @@
 		pins {
 			pinmux = <STM32_PINMUX('A', 11, ANALOG)>, /* I2C5_SCL */
 					 <STM32_PINMUX('A', 12, ANALOG)>; /* I2C5_SDA */
+		};
+	};
+
+	m4_tim5_pwm_pins_mx: m4_tim5_pwm_mx-0 {
+		pins {
+			pinmux = <STM32_PINMUX('H', 10, RSVD)>; /* TIM5_CH1 */
 		};
 	};
 
@@ -460,6 +484,25 @@
 		};
 	};
 
+	spi3_pins_mx: spi3_mx-0 {
+		pins {
+			pinmux = <STM32_PINMUX('B', 5, AF7)>, /* SPI3_MOSI */
+					 <STM32_PINMUX('D', 10, AF5)>, /* SPI3_MISO */
+					 <STM32_PINMUX('E', 0, AF5)>; /* SPI3_SCK */
+			bias-disable;
+			drive-push-pull;
+			slew-rate = <1>;
+		};
+	};
+
+	spi3_sleep_pins_mx: spi3_sleep_mx-0 {
+		pins {
+			pinmux = <STM32_PINMUX('B', 5, ANALOG)>, /* SPI3_MOSI */
+					 <STM32_PINMUX('D', 10, ANALOG)>, /* SPI3_MISO */
+					 <STM32_PINMUX('E', 0, ANALOG)>; /* SPI3_SCK */
+		};
+	};
+
 	tim2_pwm_pins_mx: tim2_pwm_mx-0 {
 		pins {
 			pinmux = <STM32_PINMUX('A', 15, AF1)>; /* TIM2_CH1 */
@@ -517,6 +560,36 @@
 		pins {
 			pinmux = <STM32_PINMUX('H', 13, ANALOG)>, /* UART4_TX */
 					 <STM32_PINMUX('H', 14, ANALOG)>; /* UART4_RX */
+		};
+	};
+
+	uart7_pins_mx: uart7_mx-0 {
+		pins1 {
+			pinmux = <STM32_PINMUX('E', 7, AF7)>; /* UART7_RX */
+			bias-disable;
+		};
+		pins2 {
+			pinmux = <STM32_PINMUX('E', 8, AF7)>; /* UART7_TX */
+			bias-disable;
+			drive-push-pull;
+			slew-rate = <0>;
+		};
+	};
+
+	uart7_idle_pins_mx: uart7_idle_mx-0 {
+		pins1 {
+			pinmux = <STM32_PINMUX('E', 7, AF7)>; /* UART7_RX */
+			bias-disable;
+		};
+		pins2 {
+			pinmux = <STM32_PINMUX('E', 8, ANALOG)>; /* UART7_TX */
+		};
+	};
+
+	uart7_sleep_pins_mx: uart7_sleep_mx-0 {
+		pins {
+			pinmux = <STM32_PINMUX('E', 7, ANALOG)>, /* UART7_RX */
+					 <STM32_PINMUX('E', 8, ANALOG)>; /* UART7_TX */
 		};
 	};
 
@@ -788,6 +861,23 @@
 	/* USER CODE END hsem */
 };
 
+&i2c2 {
+	pinctrl-names = "default", "sleep";
+	pinctrl-0 = <&i2c2_pins_mx>;
+	pinctrl-1 = <&i2c2_sleep_pins_mx>;
+	status = "okay";
+
+	/* USER CODE BEGIN i2c2 */
+	/*clocks = <&scmi_clk CK_SCMI_I2C2>;*/
+	/*resets = <&scmi_reset RST_SCMI_I2C2>;*/
+	i2c-scl-rising-time-ns = <185>;
+	i2c-scl-falling-time-ns = <20>;
+	clock-frequency = <400000>;
+	/delete-property/ dmas;
+	/delete-property/ dma-names;
+	/* USER CODE END i2c2 */
+};
+
 &i2c4 {
 	pinctrl-names = "default", "sleep";
 	pinctrl-0 = <&i2c4_pins_z_mx>;
@@ -1017,6 +1107,15 @@
 	/* USER CODE END m4_dma2 */
 };
 
+&m4_timers5 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&m4_tim5_pwm_pins_mx>;
+	status = "okay";
+
+	/* USER CODE BEGIN m4_timers5 */
+	/* USER CODE END m4_timers5 */
+};
+
 &mdma1 {
 	status = "okay";
 
@@ -1103,6 +1202,23 @@
 	/* USER CODE END sdmmc2 */
 };
 
+&spi3 {
+	pinctrl-names = "default", "sleep";
+	pinctrl-0 = <&spi3_pins_mx>;
+	pinctrl-1 = <&spi3_sleep_pins_mx>;
+	status = "okay";
+
+	/* USER CODE BEGIN spi3 */
+	cs-gpios = <&gpioj 15 0>;
+	spidev@0{
+		compatible = "rohm,bh2228fv";
+		reg = <0>;
+		spi-max-frequency = <1000000>;
+		status = "okay";
+    	};
+	/* USER CODE END spi3 */
+};
+
 &tamp {
 	status = "okay";
 
@@ -1159,6 +1275,17 @@
         /delete-property/dmas;
         /delete-property/dma-names;
 	/* USER CODE END uart4 */
+};
+
+&uart7 {
+	pinctrl-names = "default", "idle", "sleep";
+	pinctrl-0 = <&uart7_pins_mx>;
+	pinctrl-1 = <&uart7_idle_pins_mx>;
+	pinctrl-2 = <&uart7_sleep_pins_mx>;
+	status = "okay";
+
+	/* USER CODE BEGIN uart7 */
+	/* USER CODE END uart7 */
 };
 
 &usbh_ehci {

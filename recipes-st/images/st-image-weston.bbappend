@@ -1,6 +1,7 @@
 IMAGE_INSTALL += " \
     gstreamer1.0 \
     gstreamer1.0-plugins-good \
+    minicom \
 "
 
 CORE_IMAGE_EXTRA_INSTALL += " \
